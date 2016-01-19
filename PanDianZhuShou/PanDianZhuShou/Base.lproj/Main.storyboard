@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WeR-Uh-PUv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Log In View Controller-->
@@ -17,12 +18,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="hzB-fn-9E5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="hzB-fn-9E5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_11.png" translatesAutoresizingMaskIntoConstraints="NO" id="g1r-jN-3f2">
+                                <rect key="frame" x="30" y="340" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nQH-Po-aTa"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_11.png" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-kB-rrX">
+                                <rect key="frame" x="30" y="285" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="boW-pD-rxh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAu-fq-d8r">
+                                <rect key="frame" x="30" y="435" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="qu8-lL-YFt"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="icon_01_14.png"/>
+                                <connections>
+                                    <action selector="LogIn_Button:" destination="WeR-Uh-PUv" eventType="touchUpInside" id="vxZ-MU-EuJ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_07.png" translatesAutoresizingMaskIntoConstraints="NO" id="OvD-lg-x9Q">
+                                <rect key="frame" x="150" y="190" width="300" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="KJZ-ow-UDR"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Zj1-Tj-ISu"/>
+                                    <constraint firstAttribute="width" constant="300" id="s6q-SI-Mdg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-wp-azN">
+                                <rect key="frame" x="255" y="60" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="4Wq-Lq-0HZ"/>
+                                    <constraint firstAttribute="height" constant="90" id="fko-LA-RFy"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nk-7k-SQT">
+                                <rect key="frame" x="65" y="296" width="18" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="0gN-Oe-mJt"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="Jla-zy-KSp"/>
+                                    <constraint firstAttribute="height" constant="20" id="Map-jo-6mP"/>
+                                    <constraint firstAttribute="width" constant="18" id="ZZo-JF-RC7"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="icon_03.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-fa-20c">
+                                <rect key="frame" x="65" y="352" width="18" height="20"/>
+                                <state key="normal" backgroundImage="icon_07.png"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="登陆账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thK-Eq-6uQ">
+                                <rect key="frame" x="108" y="291" width="427" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1HR-Jg-CUQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="登录密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CxB-bT-DxQ">
+                                <rect key="frame" x="108" y="347" width="427" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KGc-br-Nuc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="CxB-bT-DxQ" secondAttribute="trailing" constant="45" id="0sS-YW-22q"/>
+                            <constraint firstItem="g1r-jN-3f2" firstAttribute="leading" secondItem="vrg-kZ-Kc5" secondAttribute="leadingMargin" constant="10" id="14i-Re-VmP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iAu-fq-d8r" secondAttribute="trailing" constant="10" id="3B5-vr-kcb"/>
+                            <constraint firstItem="thK-Eq-6uQ" firstAttribute="top" secondItem="OvD-lg-x9Q" secondAttribute="bottom" constant="41" id="40L-0o-uhs"/>
+                            <constraint firstItem="OvD-lg-x9Q" firstAttribute="centerX" secondItem="vrg-kZ-Kc5" secondAttribute="centerX" id="4eN-uP-qD1"/>
+                            <constraint firstItem="hzB-fn-9E5" firstAttribute="top" secondItem="vrg-kZ-Kc5" secondAttribute="top" id="FBf-Fa-0oa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g1r-jN-3f2" secondAttribute="trailing" constant="10" id="HCN-Nh-EgF"/>
+                            <constraint firstItem="CxB-bT-DxQ" firstAttribute="leading" secondItem="2Fi-fa-20c" secondAttribute="trailing" constant="25" id="Hn2-tb-Lb3"/>
+                            <constraint firstItem="5kf-kB-rrX" firstAttribute="top" secondItem="OvD-lg-x9Q" secondAttribute="bottom" constant="35" id="KWj-01-lEv"/>
+                            <constraint firstItem="5kf-kB-rrX" firstAttribute="leading" secondItem="vrg-kZ-Kc5" secondAttribute="leading" constant="30" id="Kul-vz-ycO"/>
+                            <constraint firstItem="OvD-lg-x9Q" firstAttribute="top" secondItem="Yvc-wp-azN" secondAttribute="bottom" constant="40" id="MZc-Vt-E6e"/>
+                            <constraint firstAttribute="trailing" secondItem="hzB-fn-9E5" secondAttribute="trailing" id="N5c-x3-bCG"/>
+                            <constraint firstItem="2Fi-fa-20c" firstAttribute="leading" secondItem="8nk-7k-SQT" secondAttribute="leading" id="O2q-dQ-Kaw"/>
+                            <constraint firstItem="thK-Eq-6uQ" firstAttribute="centerY" secondItem="8nk-7k-SQT" secondAttribute="centerY" id="QfO-KE-dxM"/>
+                            <constraint firstItem="hzB-fn-9E5" firstAttribute="leading" secondItem="vrg-kZ-Kc5" secondAttribute="leading" id="Rq7-6G-1RQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="thK-Eq-6uQ" secondAttribute="trailing" constant="45" id="Slc-vB-z2Y"/>
+                            <constraint firstItem="Yvc-wp-azN" firstAttribute="centerX" secondItem="vrg-kZ-Kc5" secondAttribute="centerX" id="VgP-5c-qrn"/>
+                            <constraint firstItem="CxB-bT-DxQ" firstAttribute="centerY" secondItem="2Fi-fa-20c" secondAttribute="centerY" id="YBf-GD-Oop"/>
+                            <constraint firstItem="iAu-fq-d8r" firstAttribute="leading" secondItem="vrg-kZ-Kc5" secondAttribute="leadingMargin" constant="10" id="abM-te-q8d"/>
+                            <constraint firstItem="2Fi-fa-20c" firstAttribute="width" secondItem="8nk-7k-SQT" secondAttribute="width" id="dPK-Fu-kDX"/>
+                            <constraint firstItem="2Fi-fa-20c" firstAttribute="top" secondItem="5kf-kB-rrX" secondAttribute="bottom" constant="27" id="eZT-md-PbX"/>
+                            <constraint firstItem="g1r-jN-3f2" firstAttribute="top" secondItem="5kf-kB-rrX" secondAttribute="bottom" constant="15" id="hAb-xb-ZXV"/>
+                            <constraint firstItem="thK-Eq-6uQ" firstAttribute="leading" secondItem="8nk-7k-SQT" secondAttribute="trailing" constant="25" id="ii3-FX-h0e"/>
+                            <constraint firstItem="Yvc-wp-azN" firstAttribute="top" secondItem="PI8-Bj-53E" secondAttribute="bottom" constant="40" id="jee-oB-3IK"/>
+                            <constraint firstItem="2Fi-fa-20c" firstAttribute="height" secondItem="8nk-7k-SQT" secondAttribute="height" id="k93-9V-Tst"/>
+                            <constraint firstItem="naL-La-wab" firstAttribute="top" secondItem="hzB-fn-9E5" secondAttribute="bottom" id="knW-Xp-nFk"/>
+                            <constraint firstItem="iAu-fq-d8r" firstAttribute="top" secondItem="g1r-jN-3f2" secondAttribute="bottom" constant="55" id="nmw-Tn-2Rf"/>
+                            <constraint firstAttribute="trailing" secondItem="5kf-kB-rrX" secondAttribute="trailing" constant="30" id="qho-qq-F4D"/>
+                            <constraint firstItem="8nk-7k-SQT" firstAttribute="leading" secondItem="vrg-kZ-Kc5" secondAttribute="leadingMargin" constant="45" id="yqE-HD-mUZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LogIn_Button" destination="iAu-fq-d8r" id="wyx-Pr-UMF"/>
+                        <outlet property="Password_Text" destination="CxB-bT-DxQ" id="BGT-6j-FAS"/>
+                        <outlet property="Username_Text" destination="thK-Eq-6uQ" id="MWV-0I-gOr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vou-2w-x1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,5 +260,11 @@
     </scenes>
     <resources>
         <image name="bg.png" width="1080" height="1920"/>
+        <image name="icon_01_03.png" width="320" height="368"/>
+        <image name="icon_01_07.png" width="764" height="164"/>
+        <image name="icon_01_11.png" width="900" height="130"/>
+        <image name="icon_01_14.png" width="900" height="130"/>
+        <image name="icon_03.png" width="40" height="66"/>
+        <image name="icon_07.png" width="42" height="67"/>
     </resources>
 </document>
