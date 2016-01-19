@@ -16,6 +16,11 @@
                     <view key="view" contentMode="scaleToFill" id="vrg-kZ-Kc5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="hzB-fn-9E5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -149,4 +154,7 @@
             <point key="canvasLocation" x="1716" y="1091"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg.png" width="1080" height="1920"/>
+    </resources>
 </document>
