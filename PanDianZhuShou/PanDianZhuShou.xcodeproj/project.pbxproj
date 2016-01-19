@@ -161,6 +161,7 @@
 		952FD7A81C4E218C00F74A1E /* jianpan_mr_34.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7791C4E218C00F74A1E /* jianpan_mr_34.png */; };
 		952FD7A91C4E218C00F74A1E /* jianpan_mr_35.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD77A1C4E218C00F74A1E /* jianpan_mr_35.png */; };
 		952FD7AA1C4E218C00F74A1E /* jianpan_mr_36.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD77B1C4E218C00F74A1E /* jianpan_mr_36.png */; };
+		952FD7AD1C4E328A00F74A1E /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD7AC1C4E328A00F74A1E /* NavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +379,8 @@
 		952FD7791C4E218C00F74A1E /* jianpan_mr_34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jianpan_mr_34.png; sourceTree = "<group>"; };
 		952FD77A1C4E218C00F74A1E /* jianpan_mr_35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jianpan_mr_35.png; sourceTree = "<group>"; };
 		952FD77B1C4E218C00F74A1E /* jianpan_mr_36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jianpan_mr_36.png; sourceTree = "<group>"; };
+		952FD7AB1C4E328A00F74A1E /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationController.h; path = ../NavigationController.h; sourceTree = "<group>"; };
+		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +484,8 @@
 		952FD6671C4E1D0000F74A1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				952FD7AB1C4E328A00F74A1E /* NavigationController.h */,
+				952FD7AC1C4E328A00F74A1E /* NavigationController.m */,
 				952FD6211C4E189000F74A1E /* AppDelegate.h */,
 				952FD6221C4E189000F74A1E /* AppDelegate.m */,
 				952FD6271C4E189000F74A1E /* Main.storyboard */,
@@ -1033,6 +1038,7 @@
 				952FD73F1C4E205E00F74A1E /* NSObject+SBJson.m in Sources */,
 				952FD6591C4E1AA400F74A1E /* PanDian_ViewController.m in Sources */,
 				952FD74A1C4E205E00F74A1E /* SBJsonWriter.m in Sources */,
+				952FD7AD1C4E328A00F74A1E /* NavigationController.m in Sources */,
 				952FD71C1C4E204B00F74A1E /* AFNetworkReachabilityManager.m in Sources */,
 				952FD6621C4E1B2900F74A1E /* ZhuYe_ViewController.m in Sources */,
 				952FD7471C4E205E00F74A1E /* SBJsonStreamWriterState.m in Sources */,
@@ -1280,6 +1286,7 @@
 				952FD64A1C4E189000F74A1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		952FD64B1C4E189000F74A1E /* Build configuration list for PBXNativeTarget "PanDianZhuShouTests" */ = {
 			isa = XCConfigurationList;
@@ -1288,6 +1295,7 @@
 				952FD64D1C4E189000F74A1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		952FD64E1C4E189000F74A1E /* Build configuration list for PBXNativeTarget "PanDianZhuShouUITests" */ = {
 			isa = XCConfigurationList;
@@ -1296,6 +1304,7 @@
 				952FD6501C4E189000F74A1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
