@@ -7,6 +7,7 @@
 //
 
 #import "LogIn_ViewController.h"
+#import "NavigationController.h"
 
 @interface LogIn_ViewController ()
 
@@ -34,5 +35,17 @@
 
 
 - (IBAction)LogIn_Button:(id)sender {
+    
+   
+    NavigationController*chaxun=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navigationcontroller"];
+    
+    [self presentViewController:chaxun animated:YES completion:^{
+        
+//    [self setModalTransitionStyle: UIModalTransitionStyleCrossDissolve];
+        
+    }];
+    
+    
+    
 }
 @end
