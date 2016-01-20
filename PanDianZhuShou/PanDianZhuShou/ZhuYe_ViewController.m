@@ -19,19 +19,17 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+//提交盘点结果点击事件
+- (IBAction)TiJiao_Button:(id)sender {
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//同步全部库存点击事假
+- (IBAction)KuCun_Button:(id)sender {
 }
-*/
-
+//同步异常数据点击事件
+- (IBAction)ShuJu_Button:(id)sender {
+}
+//盘点药品点击事件
+- (IBAction)PanDian_Button:(id)sender {
+}
 @end
