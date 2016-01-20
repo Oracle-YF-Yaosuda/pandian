@@ -381,6 +381,7 @@
 		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 		9564E3C31C4F235900C39DE2 /* icon_02_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_03.png; sourceTree = "<group>"; };
 		9564E3C51C4F252900C39DE2 /* cehua_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cehua_12.png; sourceTree = "<group>"; };
+		D24AF3B11C4F373200E0FCC4 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +470,7 @@
 		952FD6661C4E1CDF00F74A1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D24AF3B01C4F371200E0FCC4 /* xiaolang */,
 				952FD7251C4E205E00F74A1E /* SBJSON */,
 				952FD6FE1C4E204B00F74A1E /* AFNetworking */,
 				952FD6F81C4E202C00F74A1E /* WarningBox.h */,
@@ -779,6 +781,14 @@
 				952FD77B1C4E218C00F74A1E /* jianpan_mr_36.png */,
 			);
 			path = "计算器";
+			sourceTree = "<group>";
+		};
+		D24AF3B01C4F371200E0FCC4 /* xiaolang */ = {
+			isa = PBXGroup;
+			children = (
+				D24AF3B11C4F373200E0FCC4 /* Header.h */,
+			);
+			name = xiaolang;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1202,6 +1212,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sk.PanDianZhuShou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1213,6 +1224,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sk.PanDianZhuShou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
