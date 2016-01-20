@@ -151,14 +151,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DT4-vw-wSV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-
+<<<<<<< Updated upstream
                         <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.20392156862745098" green="0.75294117647058822" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textShadowColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
-
+=======
+                        <animations/>
+>>>>>>> Stashed changes
                     </navigationBar>
                     <connections>
                         <segue destination="rvW-pU-2xK" kind="relationship" relationship="rootViewController" id="5CI-BM-1Dh"/>
@@ -179,7 +181,7 @@
                     <view key="view" contentMode="scaleToFill" id="SWm-qF-Q1L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-
+<<<<<<< Updated upstream
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_02_07.png" translatesAutoresizingMaskIntoConstraints="NO" id="O9s-nc-p3H">
                                 <rect key="frame" x="5" y="69" width="590" height="172"/>

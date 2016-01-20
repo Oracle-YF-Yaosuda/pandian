@@ -9,7 +9,7 @@
 #import "LogIn_ViewController.h"
 
 #import "NavigationController.h"
-#import "Header.h"
+
 #import "AFHTTPRequestOperationManager.h"
 #import "WarningBox.h"
 #import "SBJsonWriter.h"
@@ -53,32 +53,27 @@
 
 
 - (IBAction)LogIn_Button:(id)sender {
-    NSString*jiekou=@"login";
     
     AFHTTPRequestOperationManager*manager=[AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html", nil];
-//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     SBJsonWriter*writer=[[SBJsonWriter alloc] init];
     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:_Username_Text.text,@"username",_Password_Text.text,@"password", nil];
-   
     NSString*jsonstring=[writer stringWithObject:datadic];
-    NSDictionary*dic=[NSDictionary dictionaryWithObjectsAndKeys:jsonstring  ,@"params", nil];
-    NSLog(@"json---%@",jsonstring);
-    NSLog(@"datadic-----%@",datadic);
-    NSString*url=[NSString stringWithFormat: @"%@%@",wangzhi,jiekou];
-  
-    NSString *url2 = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet] ];
-    NSLog(@"%@",url2);
-    [manager POST:url2 parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSData *haha = responseObject;
-        NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
-        NSLog(@"------------%@",hehe);
-//  NSLog(@"%@",responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-       
-        NSLog(@"出错了!");
-    }];
+   
+    NSString*url=@"http://222.171.242.146/stock/stockIntf/login";
+    NSDictionary*dic=[NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"params", nil];
+ 
+   [manager POST:url parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"%@",responseObject);
+       if ([[responseObject objectForKey:@"flag"] intValue]==1) {
+           NavigationController*chaxun=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navigationcontroller"];
+           
+           [self presentViewController:chaxun animated:YES completion:^{
+               
+           }];
+       }
+   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+       NSLog(@"%@",error);
+   }];
 }
 @end
