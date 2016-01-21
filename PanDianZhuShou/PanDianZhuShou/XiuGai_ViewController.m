@@ -8,6 +8,10 @@
 
 #import "XiuGai_ViewController.h"
 #import "WarningBox.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "SBJson.h"
+#import "Header.h"
+#import "LogIn_ViewController.h"
 
 @interface XiuGai_ViewController ()
 
@@ -99,10 +103,14 @@
 }
 #pragma mark - 确认按钮
 - (IBAction)QueRen_Button:(id)sender {
-    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if (self.Oldpass_Field.text.length > 0 && self.Newpass_Field.text.length > 0 && self.Newpass_Field_2.text.length > 0)
     {
-        if (![self newpass1:self.Newpass_Field.text])
+        if(self.Oldpass_Field.text != [NSString stringWithFormat:@"%@",[defaults objectForKey:@"pass"]])
+        {
+            [WarningBox warningBoxModeText:@"旧密码不正确" andView:self.view];
+        }
+        else if (![self newpass1:self.Newpass_Field.text])
         {
              [WarningBox warningBoxModeText:@"密码长度不够" andView:self.view];
         }
@@ -112,7 +120,50 @@
         }
         else
         {
-            [WarningBox warningBoxModeText:@"修改成功" andView:self.view];
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
+            //接收数据类型
+            manager.responseSerializer = [AFCompoundResponseSerializer serializer];
+            
+            //上传数据类型
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            //请求地址
+            NSString *url = [NSString stringWithFormat:  @"%@resetpassword",wangzhi ];
+            //入参
+            
+            NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[defaults objectForKey:@"name"]],@"oldpassword":[NSString stringWithFormat:@"%@",[defaults objectForKey:@"pass"]],@"newpassword":self.Newpass_Field_2.text };
+            //post请求
+            [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                //返回数据转换json
+                NSData *haha = responseObject;
+                NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
+                NSString* str = [hehe stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                
+                //转换为字典
+                NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
+                NSError *err;
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                    options:NSJSONReadingMutableContainers
+                                                                      error:&err];
+                
+                if ([[dic objectForKey:@"flag"] intValue]==1)
+                {
+                    
+                    [WarningBox warningBoxModeText:@"修改成功" andView:self.view];
+                    
+                    LogIn_ViewController*login=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"login"];
+                    
+                    [self presentViewController:login animated:YES completion:^{
+                        
+                    }];
+
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+            }];
+
         }
     }
     else
