@@ -162,7 +162,6 @@
 		952FD7AD1C4E328A00F74A1E /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD7AC1C4E328A00F74A1E /* NavigationController.m */; };
 		9564E3C41C4F235900C39DE2 /* icon_02_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C31C4F235900C39DE2 /* icon_02_03.png */; };
 		9564E3C61C4F252900C39DE2 /* cehua_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C51C4F252900C39DE2 /* cehua_12.png */; };
-		9564E3C81C4F7D1600C39DE2 /* shuoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C71C4F7D1600C39DE2 /* shuoming.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,18 +381,6 @@
 		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 		9564E3C31C4F235900C39DE2 /* icon_02_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_03.png; sourceTree = "<group>"; };
 		9564E3C51C4F252900C39DE2 /* cehua_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cehua_12.png; sourceTree = "<group>"; };
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-		D24AF3B11C4F373200E0FCC4 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-=======
-<<<<<<< HEAD
-		9564E3C71C4F7D1600C39DE2 /* shuoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuoming.png; sourceTree = "<group>"; };
-=======
-		D24AF3B11C4F373200E0FCC4 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
->>>>>>> origin/master
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -590,7 +577,6 @@
 		952FD6701C4E1E2800F74A1E /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
-				9564E3C71C4F7D1600C39DE2 /* shuoming.png */,
 				9564E3C51C4F252900C39DE2 /* cehua_12.png */,
 				9564E3C31C4F235900C39DE2 /* icon_02_03.png */,
 				952FD6711C4E1E2800F74A1E /* about.png */,
@@ -979,7 +965,6 @@
 				952FD6D51C4E1E2800F74A1E /* jianpan_dk_02_03.png in Resources */,
 				952FD7821C4E218C00F74A1E /* icon_02_07.png in Resources */,
 				952FD7991C4E218C00F74A1E /* jianpan_dk_04_10.png in Resources */,
-				9564E3C81C4F7D1600C39DE2 /* shuoming.png in Resources */,
 				952FD6C11C4E1E2800F74A1E /* icon_01_03.png in Resources */,
 				952FD6C91C4E1E2800F74A1E /* icon_02_18.png in Resources */,
 				952FD6E51C4E1E2800F74A1E /* jianpan_mr_21.png in Resources */,
