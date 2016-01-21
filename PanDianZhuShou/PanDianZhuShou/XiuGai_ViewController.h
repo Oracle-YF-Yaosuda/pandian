@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XiuGai_ViewController : UIViewController
+@interface XiuGai_ViewController : UIViewController<UITextFieldDelegate>
 //旧密码
 @property (weak, nonatomic) IBOutlet UITextField *Oldpass_Field;
 //新密码

@@ -48,5 +48,7 @@
 //电话
 - (IBAction)DianHuan_Button:(id)sender {
     
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://18390907126"]];
+    
 }
 @end
