@@ -42,9 +42,6 @@
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //form 传plist文件
         
-        
-        
-        
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];
         //返回数据转换json
