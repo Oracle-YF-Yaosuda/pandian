@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //设置view
     [self shezhi];
 }
@@ -38,11 +39,14 @@
     }
 //微信
 - (IBAction)WeiXin_Button:(id)sender {
+    
 }
 //qq
 - (IBAction)QQ_Button:(id)sender {
+    
 }
 //电话
 - (IBAction)DianHuan_Button:(id)sender {
+    
 }
 @end
