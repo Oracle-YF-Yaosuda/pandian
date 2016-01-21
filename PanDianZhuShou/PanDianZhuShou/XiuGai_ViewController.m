@@ -120,6 +120,7 @@
         }
         else
         {
+            [WarningBox warningBoxModeIndeterminate:@"正在修改密码..." andView:self.view];
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
             //接收数据类型
@@ -134,7 +135,7 @@
             NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[defaults objectForKey:@"name"]],@"oldpassword":[NSString stringWithFormat:@"%@",[defaults objectForKey:@"pass"]],@"newpassword":self.Newpass_Field_2.text };
             //post请求
             [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                
+                [WarningBox warningBoxHide:YES andView:self.view];
                 //返回数据转换json
                 NSData *haha = responseObject;
                 NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
@@ -146,7 +147,7 @@
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                     options:NSJSONReadingMutableContainers
                                                                       error:&err];
-                
+                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
                 if ([[dic objectForKey:@"flag"] intValue]==1)
                 {
                     
@@ -161,7 +162,8 @@
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
+                [WarningBox warningBoxHide:YES andView:self.view];
+                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
             }];
 
         }

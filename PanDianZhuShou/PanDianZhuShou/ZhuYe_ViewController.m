@@ -30,6 +30,7 @@
 }
 //同步全部库存点击事假
 - (IBAction)KuCun_Button:(id)sender {
+    [WarningBox warningBoxModeIndeterminate:@"全部库存同步中..." andView:self.view];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
@@ -43,7 +44,7 @@
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]] };
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+        [WarningBox warningBoxHide:YES andView:self.view];
         //返回数据转换json
         NSData *haha = responseObject;
         NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
@@ -55,13 +56,14 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-      
+        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
         NSLog(@"%@",NSHomeDirectory());
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [WarningBox warningBoxHide:YES andView:self.view];
+         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
         NSLog(@"%@",error);
         
     }];
@@ -70,6 +72,7 @@
 }
 //同步异常数据点击事件
 - (IBAction)ShuJu_Button:(id)sender {
+    [WarningBox warningBoxModeText:@"异常数据同步中..." andView:self.view];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
@@ -83,7 +86,7 @@
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]] };
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+        [WarningBox warningBoxHide:YES andView:self.view];
         //返回数据转换json
         NSData *haha = responseObject;
         NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
@@ -95,11 +98,13 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
+        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
         NSLog(@"%@",dic);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
         NSLog(@"%@",error);
         
     }];
