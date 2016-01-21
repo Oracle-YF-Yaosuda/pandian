@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ShuoMing_ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *ShuoMing;
 
 @end
