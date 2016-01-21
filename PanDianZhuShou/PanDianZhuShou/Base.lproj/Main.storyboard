@@ -410,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duM-op-01m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="1122"/>
+            <point key="canvasLocation" x="503" y="1114"/>
         </scene>
         <!--设置-->
         <scene sceneID="aG9-fQ-GZ8">
