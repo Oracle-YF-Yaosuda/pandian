@@ -26,7 +26,48 @@
 //提交盘点结果点击事件
 - (IBAction)TiJiao_Button:(id)sender {
     //如果上传成功  需要删除本地所有plist文件
+    [WarningBox warningBoxModeIndeterminate:@"提交数据中..." andView:self.view];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
+    //接收数据类型
+    manager.responseSerializer = [AFCompoundResponseSerializer serializer];
     
+    //上传数据类型
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //请求地址
+    NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
+    //入参
+    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]] };
+    //post请求
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //form 传plist文件
+        
+        
+        
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [WarningBox warningBoxHide:YES andView:self.view];
+        //返回数据转换json
+        NSData *haha = responseObject;
+        NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
+        NSString* str = [hehe stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        //转换为字典
+        NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:&err];
+        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
+        NSLog(@"%@",error);
+    }];
+    
+
 }
 //同步全部库存点击事假
 - (IBAction)KuCun_Button:(id)sender {
