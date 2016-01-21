@@ -7,7 +7,7 @@
 //
 
 #import "LianXi_ViewController.h"
-#import "Color+Hex.h"
+
 @interface LianXi_ViewController ()
 
 @end
@@ -16,44 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //设置view圆角
-    [self View_yuanjiao];
-   
+    // Do any additional setup after loading the view.
 }
 
-//设置view圆角
--(void)View_yuanjiao
-{
-    //微信
-    //圆角
-    self.WeiXin_View.layer.cornerRadius = 5.0;
-    //边框颜色
-    self.WeiXin_View.layer.borderColor = [UIColor colorWithHexString:@"00eac3" alpha:1].CGColor;
-    //边框宽度
-    self.WeiXin_View.layer.borderWidth = 1.0;
-    //qq
-    //圆角
-    self.QQ_View.layer.cornerRadius = 5.0;
-     //边框颜色
-    self.QQ_View.layer.borderColor = [UIColor colorWithHexString:@"00eac3" alpha:1].CGColor;
-    //边框宽度
-    self.QQ_View.layer.borderWidth = 1.0;
-    //电话
-    //圆角
-    self.DianHua_View.layer.cornerRadius = 5.0;
-     //边框颜色
-    self.DianHua_View.layer.borderColor = [UIColor colorWithHexString:@"00eac3" alpha:1].CGColor;
-    //边框宽度
-    self.DianHua_View.layer.borderWidth = 1.0;
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-//微信点击事件
-- (IBAction)WeiXin_Button:(id)sender {
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-//QQ点击事件
-- (IBAction)QQ_Button:(id)sender {
-}
-//电话点击事件
-- (IBAction)DianHuan_Button:(id)sender {
-}
+*/
+
 @end

@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShuoMing_ViewController : UIViewController<UIScrollViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIScrollView *scroll_view;
-
+@interface ShuoMing_ViewController : UIViewController
 
 @end
