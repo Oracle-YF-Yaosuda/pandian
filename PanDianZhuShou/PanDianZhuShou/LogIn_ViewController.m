@@ -7,7 +7,7 @@
 //
 
 #import "LogIn_ViewController.h"
-
+#import "Header.h"
 #import "NavigationController.h"
 
 #import "AFHTTPRequestOperationManager.h"
@@ -49,49 +49,48 @@
     self.Password_Text.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.Password_Text.placeholder attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
-
-
 - (IBAction)LogIn_Button:(id)sender {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html", nil];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
+    //接收数据类型
+    manager.responseSerializer = [AFCompoundResponseSerializer serializer];
     
-    
+    //上传数据类型
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSString *url = @"http://222.171.242.146/stock/stockIntf/login";
-    
-    NSDictionary *params = @{@"username":@"fdfapp",@"password":@"123456"};
-    
+    //请求地址
+    NSString *url = [NSString stringWithFormat:  @"%@login",wangzhi ];
+    //入参
+    NSDictionary *params = @{@"username":_Username_Text.text,@"password":_Password_Text.text };
+    //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        
+
+        //返回数据转换json
         NSData *haha = responseObject;
         NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
-        NSLog(@"------------%@",hehe);
+        NSString* str = [hehe stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        
-//        if ([[responseObject objectForKey:@"flag"] intValue]==1) {
-//            NavigationController*chaxun=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navigationcontroller"];
-//            
-//            [self presentViewController:chaxun animated:YES completion:^{
-//                
-//                //    [self setModalTransitionStyle: UIModalTransitionStyleCrossDissolve];
-//                
-//            }];
-        
+        //转换为字典
+        NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:&err];
+  
+        if ([[dic objectForKey:@"flag"] intValue]==1) {
+            NavigationController*chaxun=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navigationcontroller"];
+            
+            [self presentViewController:chaxun animated:YES completion:^{
 
-//        }
-        
-        
-        
+            }];
+  
+        }
+  
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"%@",error);
         
     }];
-    
     
 }
 @end

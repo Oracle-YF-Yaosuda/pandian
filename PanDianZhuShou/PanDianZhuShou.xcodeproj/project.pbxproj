@@ -381,6 +381,7 @@
 		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 		9564E3C31C4F235900C39DE2 /* icon_02_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_03.png; sourceTree = "<group>"; };
 		9564E3C51C4F252900C39DE2 /* cehua_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cehua_12.png; sourceTree = "<group>"; };
+		D25674621C50AAC600FB2242 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = ../Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +512,7 @@
 		952FD6691C4E1D5600F74A1E /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
+				D25674621C50AAC600FB2242 /* Header.h */,
 				952FD6511C4E197C00F74A1E /* LogIn_ViewController.h */,
 				952FD6521C4E197C00F74A1E /* LogIn_ViewController.m */,
 			);
