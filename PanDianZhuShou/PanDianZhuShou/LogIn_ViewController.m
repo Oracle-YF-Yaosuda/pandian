@@ -15,17 +15,24 @@
 #import "SBJsonWriter.h"
 
 @interface LogIn_ViewController ()
-
+{
+    NSUserDefaults*defaults;
+}
 @end
 
 @implementation LogIn_ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    defaults=[NSUserDefaults standardUserDefaults];
     _Password_Text.delegate=self;
     _Username_Text.delegate=self;
-    _Username_Text.text=@"fdfapp";
-    _Password_Text.text=@"123456";
+    if ([defaults objectForKey:@"name"]==nil) {
+        NSLog(@"xixi");
+    }else{
+    _Username_Text.text=[NSString stringWithFormat:@"%@",[defaults objectForKey:@"name"]];
+    _Password_Text.text=[NSString stringWithFormat:@"%@",[defaults objectForKey:@"pass"]];
+    }
     //设置  textfield  placeholder  颜色
     [self text_placeholder];
     
@@ -50,7 +57,8 @@
 }
 
 - (IBAction)LogIn_Button:(id)sender {
-    
+    [defaults setObject:_Password_Text.text forKey:@"pass"];
+    [defaults setObject:_Username_Text.text forKey:@"name"];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
