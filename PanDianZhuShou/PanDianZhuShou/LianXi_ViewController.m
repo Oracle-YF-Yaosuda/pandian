@@ -7,6 +7,7 @@
 //
 
 #import "LianXi_ViewController.h"
+#import "Color+Hex.h"
 
 @interface LianXi_ViewController ()
 
@@ -16,22 +17,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //设置view
+    [self shezhi];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//设置VIEW
+-(void)shezhi
+{
+    //微信
+    self.WeinXin_View.layer.cornerRadius = 5.0;
+    self.WeinXin_View.layer.borderWidth = 1.0;
+    self.WeinXin_View.layer.borderColor = [UIColor colorWithHexString:@"00dcb4" alpha:1].CGColor;
+    //QQ
+    self.QQ_View.layer.cornerRadius = 5.0;
+    self.QQ_View.layer.borderWidth = 1.0;
+    self.QQ_View.layer.borderColor = [UIColor colorWithHexString:@"00dcb4" alpha:1].CGColor;
+    //电话
+    self.DianHuan_View.layer.cornerRadius = 5.0;
+    self.DianHuan_View.layer.borderWidth = 1.0;
+    self.DianHuan_View.layer.borderColor = [UIColor colorWithHexString:@"00dcb4" alpha:1].CGColor;
+    }
+//微信
+- (IBAction)WeiXin_Button:(id)sender {
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//qq
+- (IBAction)QQ_Button:(id)sender {
 }
-*/
-
+//电话
+- (IBAction)DianHuan_Button:(id)sender {
+}
 @end
