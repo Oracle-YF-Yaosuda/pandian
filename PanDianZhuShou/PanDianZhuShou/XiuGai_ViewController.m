@@ -42,12 +42,11 @@
     }
     else
     {
+        //结束编辑
         [self.view endEditing:YES];
     }
     return YES;
 }
-//点击完成
-
 #pragma mark - 限制textField位数
 -(void)xianzhi
 {
