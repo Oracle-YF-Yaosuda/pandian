@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PanDian_ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITextFieldDelegate>
+@interface PanDian_ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *sousuo;
 
 - (IBAction)ling:(id)sender;

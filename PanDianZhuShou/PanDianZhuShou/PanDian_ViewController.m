@@ -19,15 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _sousuo.delegate=self;
     _tableview.delegate=self;
     _tableview.dataSource=self;
-    _search.delegate=self;
     NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
     NSDictionary*dic=[NSDictionary dictionaryWithContentsOfFile:path];
     arr=[dic objectForKey:@"data"];
-    NSLog(@"arr---%@",dic);
-    NSLog(@"%@",NSHomeDirectory());
+   
    
     
 }
@@ -36,7 +34,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+-(void)shuosou:(NSString*)search{
     liebiao=[[NSMutableArray alloc] init];
     NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
     NSFileManager*fm=[NSFileManager defaultManager];
@@ -44,7 +42,7 @@
     if ([fm fileExistsAtPath:path1]) {
         NSArray*aa=[NSArray arrayWithContentsOfFile:path1];
         for (int i=0; i<aa.count; i++) {
-            if ([searchBar.text isEqualToString:[aa[i] objectForKey:@"txm"]]) {
+            if ([search isEqualToString:[aa[i] objectForKey:@"txm"]]) {
                 p++;
                 [self textfuzhi:aa[i]];
                 [liebiao addObject:aa[i]];
@@ -54,39 +52,39 @@
         [_tableview reloadData];
     }
     else{
-    
-    for (int i=0; i<arr.count; i++) {
-        if ([searchBar.text isEqualToString:[arr[i] objectForKey:@"txm"]]) {
-            q++;
-//            if (![fm fileExistsAtPath:path1]) {
-//                NSMutableArray*aa=[[NSMutableArray alloc] init];
-//                [aa addObject:arr[i]];
-//                [aa writeToFile:path1 atomically:YES];
+        
+        for (int i=0; i<arr.count; i++) {
+            if ([search isEqualToString:[arr[i] objectForKey:@"txm"]]) {
+                q++;
+                //            if (![fm fileExistsAtPath:path1]) {
+                //                NSMutableArray*aa=[[NSMutableArray alloc] init];
+                //                [aa addObject:arr[i]];
+                //                [aa writeToFile:path1 atomically:YES];
                 [liebiao addObject:arr[i]];
                 [self textfuzhi:arr[i]];
-//            }
-//            
-//            else{
-//             
-//                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-//                NSDictionary*d=[NSDictionary dictionaryWithDictionary:arr[i]];
-//                [arp addObject:d];
-//                [liebiao addObject:arr[i]];
-//                [arp writeToFile:path1 atomically:YES];
-//                [self textfuzhi:arr[i]];
-//                NSLog(@"%@",liebiao);
-//                
-//            }
-
+                //            }
+                //
+                //            else{
+                //
+                //                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                //                NSDictionary*d=[NSDictionary dictionaryWithDictionary:arr[i]];
+                //                [arp addObject:d];
+                //                [liebiao addObject:arr[i]];
+                //                [arp writeToFile:path1 atomically:YES];
+                //                [self textfuzhi:arr[i]];
+                //                NSLog(@"%@",liebiao);
+                //
+                //            }
+                
+            }
+            
         }
-        
-    }
-    [_tableview reloadData];
+        [_tableview reloadData];
     }
     if (p==0) {
         
         for (int i=0; i<arr.count; i++) {
-            if ([searchBar.text isEqualToString:[arr[i] objectForKey:@"txm"]]) {
+            if ([search isEqualToString:[arr[i] objectForKey:@"txm"]]) {
                 [liebiao addObject:arr[i]];
                 [self textfuzhi:arr[i]];
             }
@@ -97,7 +95,10 @@
     if (q==0) {
         [WarningBox warningBoxModeText:@"" andView:self.view];
     }
+
 }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+   }
 -(void)textfuzhi:(NSDictionary*)dd{
     _yaoming.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypmc"]];
     _bianhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypbh"]];
@@ -125,10 +126,12 @@
         
         shuliang.text=@"批        号:";
         pp=[[UILabel alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
-        if ([liebiao[indexPath.section ]isEqual: nil]) {
+        NSLog(@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]);
+        if (liebiao==nil) {
             pp.text=@"";
-        }
+        }else{
         pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
+        }
     }
     
     [cell addSubview:shuliang];
