@@ -51,24 +51,77 @@
 //视图上移的方法
 - (void) animateTextField: (UITextField *) textField up: (BOOL) up
 {
-    //设置视图上移的距离，单位像素
-    const int movementDistance = 300; // tweak as needed
-    if (self.view.frame.size.height == 0 ) {
-        
+      if (self.view.frame.size.height == 480 ) {
+          //设置视图上移的距离，单位像素
+          const int movementDistance = 215; // tweak as needed
+          //三目运算，判定是否需要上移视图或者不变
+          int movement = (up ? -movementDistance : movementDistance);
+          //设置动画的名字
+          [UIView beginAnimations: @"Animation" context: nil];
+          //设置动画的开始移动位置
+          [UIView setAnimationBeginsFromCurrentState: YES];
+          //设置动画的间隔时间
+          [UIView setAnimationDuration: 0.20];
+          //设置视图移动的位移
+          self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+          //设置动画结束
+          [UIView commitAnimations];
     }
-    
-    //三目运算，判定是否需要上移视图或者不变
-    int movement = (up ? -movementDistance : movementDistance);
-    //设置动画的名字
-    [UIView beginAnimations: @"Animation" context: nil];
-    //设置动画的开始移动位置
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    //设置动画的间隔时间
-    [UIView setAnimationDuration: 0.20];
-    //设置视图移动的位移
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    //设置动画结束
-    [UIView commitAnimations];
+    else if (self.view.frame.size.height == 568)
+    {
+        //设置视图上移的距离，单位像素
+        const int movementDistance = 130; // tweak as needed
+        //三目运算，判定是否需要上移视图或者不变
+        int movement = (up ? -movementDistance : movementDistance);
+        //设置动画的名字
+        [UIView beginAnimations: @"Animation" context: nil];
+        //设置动画的开始移动位置
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        //设置动画的间隔时间
+        [UIView setAnimationDuration: 0.20];
+        //设置视图移动的位移
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        //设置动画结束
+        [UIView commitAnimations];
+
+    }
+    else if (self.view.frame.size.height == 667)
+    {
+        //设置视图上移的距离，单位像素
+        const int movementDistance = 30; // tweak as needed
+        //三目运算，判定是否需要上移视图或者不变
+        int movement = (up ? -movementDistance : movementDistance);
+        //设置动画的名字
+        [UIView beginAnimations: @"Animation" context: nil];
+        //设置动画的开始移动位置
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        //设置动画的间隔时间
+        [UIView setAnimationDuration: 0.20];
+        //设置视图移动的位移
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        //设置动画结束
+        [UIView commitAnimations];
+
+    }
+    else
+    {
+        //设置视图上移的距离，单位像素
+        const int movementDistance = 10; // tweak as needed
+        //三目运算，判定是否需要上移视图或者不变
+        int movement = (up ? -movementDistance : movementDistance);
+        //设置动画的名字
+        [UIView beginAnimations: @"Animation" context: nil];
+        //设置动画的开始移动位置
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        //设置动画的间隔时间
+        [UIView setAnimationDuration: 0.20];
+        //设置视图移动的位移
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        //设置动画结束
+        [UIView commitAnimations];
+
+    }
+   
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
