@@ -10,6 +10,7 @@
 
 @interface PanDian_ViewController (){
     NSArray*arr;
+    NSMutableArray* liebiao;
 }
 
 @end
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _tableview.delegate=self;
     _tableview.dataSource=self;
     _search.delegate=self;
@@ -35,27 +37,48 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    liebiao=[[NSMutableArray alloc] init];
+    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+    NSFileManager*fm=[NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:path1]) {
+        NSArray*aa=[NSArray arrayWithContentsOfFile:path1];
+        for (int i=0; i<aa.count; i++) {
+            if ([searchBar.text isEqualToString:[aa[i] objectForKey:@"txm"]]) {
+                
+                [self textfuzhi:aa[i]];
+                [liebiao addObject:aa[i]];
+                
+            }
+        }
+    }
+    
     for (int i=0; i<arr.count; i++) {
         if ([searchBar.text isEqualToString:[arr[i] objectForKey:@"txm"]]) {
-            NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
-            NSFileManager*fm=[NSFileManager defaultManager];
-            if ([fm fileExistsAtPath:path1]) {
-                [arr[i] writeToFile:path1 atomically:YES];
-                
+            
+            if (![fm fileExistsAtPath:path1]) {
+                NSMutableArray*aa=[[NSMutableArray alloc] init];
+                [aa addObject:arr[i]];
+                [aa writeToFile:path1 atomically:YES];
+                [liebiao addObject:arr[i]];
                 [self textfuzhi:arr[i]];
             }
             
             else{
-                
+             
                 NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-                [arp addObject:arr[i]];
+                NSDictionary*d=[NSDictionary dictionaryWithDictionary:arr[i]];
+                [arp addObject:d];
+                [liebiao addObject:arr[i]];
                 [arp writeToFile:path1 atomically:YES];
                 [self textfuzhi:arr[i]];
+                NSLog(@"%@",liebiao);
+                
             }
 
         }
         
     }
+    [_tableview reloadData];
     
 }
 -(void)textfuzhi:(NSDictionary*)dd{
@@ -80,7 +103,13 @@
     return 20;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    if (liebiao!=nil) {
+
+        return liebiao.count;
+    }
+   
+    return 0;
+    
 }
 /*
 #pragma mark - Navigation
