@@ -18,4 +18,18 @@
 
 - (IBAction)LogIn_Button:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *img1;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img2;
+
+@property (weak, nonatomic) IBOutlet UIButton *img3;
+
+@property (weak, nonatomic) IBOutlet UIButton *img4;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img5;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img6;
+
+
 @end

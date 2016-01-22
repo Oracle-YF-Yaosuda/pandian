@@ -38,7 +38,44 @@
     //设置  textfield  placeholder  颜色
     [self text_placeholder];
     
+    //1.创建一个 NSNotificationCenter 对象
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    //2.监听键盘弹出的通知
+    [center addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
 }
+- (void)keyboardWillChangeFrame:(NSNotification*)noteInfo{
+    
+    //view 整体上移
+    //1.获取键盘显示完毕或者隐藏完毕后的Y值
+    CGRect rectEnd =  [noteInfo.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardY = rectEnd.origin.y ;
+    
+    //用键盘的Y值减去屏幕的高度计算出平移的值
+    //1.如果键盘弹出事件，那么计算出的值就是负的键盘的高度
+    //2.如果是键盘的隐藏事件，那么计算出的值就是零，因为键盘在隐藏以后，键盘的Y值就等于屏幕的高度
+    CGFloat tranformValue = keyboardY - self.view.frame.size.height - 90 ;
+    
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        //让控制器的view执行一次平移
+        self.view.transform = CGAffineTransformMakeTranslation(0, tranformValue + 90);
+        self.Username_Text.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.Password_Text.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img1.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img2.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img3.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img4.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img5.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.img6.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        self.LogIn_Button.transform = CGAffineTransformMakeTranslation(0,  tranformValue + 90);
+        
+    }];
+
+    
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField==_Username_Text) {
         [_Username_Text resignFirstResponder];
