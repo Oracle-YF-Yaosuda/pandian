@@ -886,7 +886,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aXo-c7-CGw"/>
                     <connections>
-                        <outlet property="bianhao" destination="rUg-hl-ney" id="Px2-Wk-kIZ"/>
+                        <outlet property="bianhao" destination="EtV-dM-Hol" id="SlH-xG-3xE"/>
                         <outlet property="changjia" destination="3QB-6w-G1U" id="gRA-Bp-neP"/>
                         <outlet property="guige" destination="0Fw-1b-1xX" id="u0X-k3-c2p"/>
                         <outlet property="huowei" destination="Pge-xb-my1" id="0Vp-WC-o5x"/>

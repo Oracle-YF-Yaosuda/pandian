@@ -8,7 +8,9 @@
 
 #import "PanDian_ViewController.h"
 
-@interface PanDian_ViewController ()
+@interface PanDian_ViewController (){
+    NSArray*arr;
+}
 
 @end
 
@@ -19,7 +21,11 @@
     _tableview.delegate=self;
     _tableview.dataSource=self;
     _search.delegate=self;
-    
+    NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
+    NSDictionary*dic=[NSDictionary dictionaryWithContentsOfFile:path];
+    arr=[dic objectForKey:@"data"];
+  
+   
     
 }
 
@@ -28,7 +34,35 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    for (int i=0; i<arr.count; i++) {
+        if ([searchBar.text isEqualToString:[arr[i] objectForKey:@"txm"]]) {
+            NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+            NSFileManager*fm=[NSFileManager defaultManager];
+            if (![fm fileExistsAtPath:path1]) {
+                [arr[i] writeToFile:path1 atomically:YES];
+                [self textfuzhi:arr[i]];
+            }
+            
+            else{
+                
+                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                [arp addObject:arr[i]];
+                [arp writeToFile:path1 atomically:YES];
+                [self textfuzhi:arr[i]];
+            }
+
+        }
+        
+    }
     
+}
+-(void)textfuzhi:(NSDictionary*)dd{
+    _yaoming.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypmc"]];
+    _bianhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypbh"]];
+    _huowei.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"hwh"]];
+    _wenhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"pzwh"]];
+    _changjia.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"sccj"]];
+    _guige.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"gg"]];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *id1 =@"mycell2";

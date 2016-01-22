@@ -25,7 +25,7 @@
 - (IBAction)shangyitiao:(id)sender;
 - (IBAction)chaxun:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *yaoming;
-@property (weak, nonatomic) IBOutlet UIView *bianhao;
+@property (weak, nonatomic) IBOutlet UILabel *bianhao;
 @property (weak, nonatomic) IBOutlet UILabel *huowei;
 @property (weak, nonatomic) IBOutlet UILabel *wenhao;
 @property (weak, nonatomic) IBOutlet UILabel *changjia;
