@@ -217,6 +217,6 @@
 }
 
 - (IBAction)chaxun:(id)sender {
-    [self searchBarSearchButtonClicked:sender];
+   
 }
 @end
