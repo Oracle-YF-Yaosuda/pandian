@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PanDian_ViewController : UIViewController
+@interface PanDian_ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITextFieldDelegate>
 
 - (IBAction)ling:(id)sender;
 - (IBAction)yi:(id)sender;

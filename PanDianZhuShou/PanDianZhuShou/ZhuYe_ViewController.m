@@ -37,12 +37,9 @@
     //请求地址
     NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
     //入参
-    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]] };
+    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]]};
     //post请求
-    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //form 传plist文件
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];
         //返回数据转换json
         NSData *haha = responseObject;
@@ -58,11 +55,14 @@
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
         
 
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
         NSLog(@"%@",error);
+        
     }];
+
     
 
 }
