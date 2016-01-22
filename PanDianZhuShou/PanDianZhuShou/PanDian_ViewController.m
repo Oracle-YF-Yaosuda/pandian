@@ -11,6 +11,7 @@
 @interface PanDian_ViewController (){
     NSArray*arr;
     NSMutableArray* liebiao;
+    int oo;
 }
 
 @end
@@ -25,11 +26,24 @@
     NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
     NSDictionary*dic=[NSDictionary dictionaryWithContentsOfFile:path];
     arr=[dic objectForKey:@"data"];
-   
-   
+    
+    
     
 }
-
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField!=_sousuo) {
+        oo=1;
+    }else
+        oo=0;
+    NSLog(@"-------------%d",oo);
+    return YES;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField==_sousuo) {
+        [self shuosou:_sousuo.text];
+    }
+    return YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -93,19 +107,31 @@
         [_tableview reloadData];
     }
     if (q==0) {
-        [WarningBox warningBoxModeText:@"" andView:self.view];
+        [WarningBox warningBoxModeText:@"没有找到您要找的药品～" andView:self.view];
+        [self textfuzhi:nil];
+        [_tableview reloadData];
     }
-
+    
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-   }
+}
 -(void)textfuzhi:(NSDictionary*)dd{
-    _yaoming.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypmc"]];
-    _bianhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypbh"]];
-    _huowei.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"hwh"]];
-    _wenhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"pzwh"]];
-    _changjia.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"sccj"]];
-    _guige.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"gg"]];
+    if (dd==nil) {
+        _yaoming.text=@"";
+        _bianhao.text=@"";
+        _huowei.text=@"";
+        _wenhao.text=@"";
+        _changjia.text=@"";
+        _guige.text=@"";
+        
+    }else{
+        _yaoming.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypmc"]];
+        _bianhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"ypbh"]];
+        _huowei.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"hwh"]];
+        _wenhao.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"pzwh"]];
+        _changjia.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"sccj"]];
+        _guige.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"gg"]];
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *id1 =@"mycell2";
@@ -118,26 +144,24 @@
     UITextField*tt;
     UILabel*pp;
     if (indexPath.row==0) {
-               shuliang.text=@"药品数量:";
+        shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
         tt.delegate=self;
         tt.tag=indexPath.section+1000;
     }else{
-        
         shuliang.text=@"批        号:";
         pp=[[UILabel alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
-        NSLog(@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]);
         if (liebiao==nil) {
             pp.text=@"";
         }else{
-        pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
+            pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
         }
     }
     
     [cell addSubview:shuliang];
     [cell addSubview:tt];
     [cell addSubview:pp];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -147,7 +171,7 @@
     }
     
     return 1;
-
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 30;
@@ -156,17 +180,17 @@
     return 2;
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)ling:(id)sender {
-    _search.text=[_search.text stringByAppendingString:@"0"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"0"];
 }
 
 - (IBAction)yi:(id)sender {
@@ -174,52 +198,77 @@
 }
 
 - (IBAction)er:(id)sender {
-    _search.text=[_search.text stringByAppendingString:@"2"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"2"];
 }
 
 - (IBAction)san:(id)sender {
-   _search.text=[_search.text stringByAppendingString:@"3"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"3"];
 }
 
 - (IBAction)si:(id)sender {
-   _search.text=[_search.text stringByAppendingString:@"4"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"4"];
 }
 
 - (IBAction)wu:(id)sender {
-    _search.text=[_search.text stringByAppendingString:@"5"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"5"];
 }
 
 - (IBAction)liu:(id)sender {
-   _search.text=[_search.text stringByAppendingString:@"6"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"6"];
 }
 
 - (IBAction)qi:(id)sender {
-   _search.text=[_search.text stringByAppendingString:@"7"];
+    _search.text=[_sousuo.text stringByAppendingString:@"7"];
 }
 
 - (IBAction)ba:(id)sender {
-   _search.text=[_search.text stringByAppendingString:@"8"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"8"];
 }
 
 - (IBAction)jiu:(id)sender {
-    _search.text=[_search.text stringByAppendingString:@"9"];
+    _sousuo.text=[_sousuo.text stringByAppendingString:@"9"];
 }
 
 - (IBAction)qingkong:(id)sender {
-    _search.text=@"";
+    _sousuo.text=@"";
 }
 
 - (IBAction)houtui:(id)sender {
-    if ([_search.text isEqual:@""]) {
+    if ([_sousuo.text isEqual:@""]) {
         
     }else
-    _search.text= [_search.text substringToIndex:[_search.text length] - 1];
+        _sousuo.text= [_sousuo.text substringToIndex:[_sousuo.text length] - 1];
 }
 
 - (IBAction)shangyitiao:(id)sender {
 }
 
 - (IBAction)chaxun:(id)sender {
-   
+    if(oo==1){
+        [self queding];
+    }else{
+        [self shuosou:_sousuo.text];
+    }
+}
+-(void)queding{
+    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+    NSFileManager*fm=[NSFileManager defaultManager];
+    if (![fm fileExistsAtPath:path1]) {
+        NSMutableArray*aa=[[NSMutableArray alloc] init];
+        [aa addObject:liebiao];
+        [aa writeToFile:path1 atomically:YES];
+      
+    }
+    
+    else{
+        
+        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+        for (NSDictionary*d in liebiao) {
+            [arp addObject:d];
+        }
+        [arp writeToFile:path1 atomically:YES];
+        
+    }
+    
 }
 @end

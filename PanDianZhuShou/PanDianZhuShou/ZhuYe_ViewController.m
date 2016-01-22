@@ -97,6 +97,7 @@
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
+        NSLog(@"%@",dic);
         NSLog(@"%@",NSHomeDirectory());
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -139,7 +140,6 @@
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
-        NSLog(@"%@",dic);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
