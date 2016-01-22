@@ -34,4 +34,45 @@
 }
 */
 
+- (IBAction)ling:(id)sender {
+}
+
+- (IBAction)yi:(id)sender {
+}
+
+- (IBAction)er:(id)sender {
+}
+
+- (IBAction)san:(id)sender {
+}
+
+- (IBAction)si:(id)sender {
+}
+
+- (IBAction)wu:(id)sender {
+}
+
+- (IBAction)liu:(id)sender {
+}
+
+- (IBAction)qi:(id)sender {
+}
+
+- (IBAction)ba:(id)sender {
+}
+
+- (IBAction)jiu:(id)sender {
+}
+
+- (IBAction)qingkong:(id)sender {
+}
+
+- (IBAction)houtui:(id)sender {
+}
+
+- (IBAction)shangyitiao:(id)sender {
+}
+
+- (IBAction)chaxun:(id)sender {
+}
 @end
