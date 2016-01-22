@@ -119,11 +119,15 @@
     if (indexPath.row==0) {
                shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
-        
+        tt.delegate=self;
+        tt.tag=indexPath.section+1000;
     }else{
         
         shuliang.text=@"批        号:";
         pp=[[UILabel alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
+        if ([liebiao[indexPath.section ]isEqual: nil]) {
+            pp.text=@"";
+        }
         pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
     }
     
@@ -139,7 +143,7 @@
         return liebiao.count;
     }
     
-    return 0;
+    return 1;
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
