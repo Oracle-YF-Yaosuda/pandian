@@ -24,7 +24,8 @@
     NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
     NSDictionary*dic=[NSDictionary dictionaryWithContentsOfFile:path];
     arr=[dic objectForKey:@"data"];
-  
+    NSLog(@"arr---%@",dic);
+    NSLog(@"%@",NSHomeDirectory());
    
     
 }
@@ -38,8 +39,9 @@
         if ([searchBar.text isEqualToString:[arr[i] objectForKey:@"txm"]]) {
             NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
             NSFileManager*fm=[NSFileManager defaultManager];
-            if (![fm fileExistsAtPath:path1]) {
+            if ([fm fileExistsAtPath:path1]) {
                 [arr[i] writeToFile:path1 atomically:YES];
+                
                 [self textfuzhi:arr[i]];
             }
             
