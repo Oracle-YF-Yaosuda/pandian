@@ -564,8 +564,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOd-UE-i1A">
                                         <rect key="frame" x="481" y="70" width="114" height="125"/>
                                         <animations/>
-                                        <state key="normal" backgroundImage="jianpan_chaxun.png"/>
-                                        <state key="highlighted" backgroundImage="jianpan_chaxun_press.png"/>
                                         <connections>
                                             <action selector="chaxun:" destination="CaW-2O-whF" eventType="touchUpInside" id="xEH-Rv-0ca"/>
                                         </connections>
@@ -890,6 +888,7 @@
                     <navigationItem key="navigationItem" id="aXo-c7-CGw"/>
                     <connections>
                         <outlet property="bianhao" destination="EtV-dM-Hol" id="SlH-xG-3xE"/>
+                        <outlet property="chading" destination="ZOd-UE-i1A" id="3gl-ke-j81"/>
                         <outlet property="changjia" destination="3QB-6w-G1U" id="gRA-Bp-neP"/>
                         <outlet property="guige" destination="0Fw-1b-1xX" id="u0X-k3-c2p"/>
                         <outlet property="huowei" destination="Pge-xb-my1" id="0Vp-WC-o5x"/>
@@ -1523,8 +1522,6 @@
         <image name="icon_02_23.png" width="280" height="168"/>
         <image name="icon_03.png" width="40" height="66"/>
         <image name="icon_07.png" width="42" height="67"/>
-        <image name="jianpan_chaxun.png" width="190" height="327"/>
-        <image name="jianpan_chaxun_press.png" width="190" height="324"/>
         <image name="jianpan_dk_01_03.png" width="190" height="151"/>
         <image name="jianpan_dk_01_03_03.png" width="190" height="151"/>
         <image name="jianpan_dk_02.png" width="190" height="151"/>

@@ -10,6 +10,7 @@
 
 @interface PanDian_ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *sousuo;
+@property (weak, nonatomic) IBOutlet UIButton *chading;
 
 - (IBAction)ling:(id)sender;
 - (IBAction)yi:(id)sender;
