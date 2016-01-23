@@ -9,19 +9,24 @@
 #import "PanDian_ViewController.h"
 #import "WarningBox.h"
 @interface PanDian_ViewController (){
+    //下载下来的数据列表
     NSArray*arr;
+    //需要在tableview中显示出来的数据
     NSMutableArray* liebiao;
-    //
+    //是否为搜索框；
     int oo;
-    //判段是否为上传文档数据
+    //判段是否为上传文档数据；
     int w;
-    //接受点击
+    //接受点击的是哪个section里的textfield；
     int po;
+    //把tt全部装进pop里;
     NSMutableArray*pop;
 }
 
 @end
-
+/**
+ *  现在我的思路就是点击一个tableview里的textfiled，取得对应tableview的section值，使po＝section值，在点击键盘的时候 改变的就是pop[po].text=[pop[po].text stringByAppendingString:@"0"];
+ */
 @implementation PanDian_ViewController
 
 - (void)viewDidLoad {
@@ -40,7 +45,7 @@
     //一出来让tableview第一个textfield为  第一人称
     
     //[_sousuo becomeFirstResponder];
-    [(UITextField*)pop[0] becomeFirstResponder];
+    //[(UITextField*)pop[0] becomeFirstResponder];
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (textField!=_sousuo) {
