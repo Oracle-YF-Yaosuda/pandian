@@ -21,6 +21,7 @@
     int po;
     //把tt全部装进pop里;
     NSMutableArray*pop;
+   
 }
 
 @end
@@ -52,13 +53,15 @@
         oo=1;
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_mr_27.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_dk_04_10.png"] forState:UIControlStateHighlighted];
+        po=(int)textField.tag-10000;
+        NSLog(@"%d",po);
     }else{
         oo=0;
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun_press.png"] forState:UIControlStateHighlighted];
         
     }
-
+   
     return YES;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -176,6 +179,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id1];
     }
+    NSArray *row1=[cell.contentView subviews];
+    for (UIView *vv2 in row1) {
+        [vv2 removeFromSuperview];
+    }
+
     UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(5, 10, 75, 20)];
     UITextField*tt;
     UILabel*pp;
@@ -183,7 +191,7 @@
         shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
         tt.delegate=self;
-       
+        tt.tag=10000+indexPath.section;
         [pop addObject:tt];
         
         if (liebiao!=nil&&w!=0) {
@@ -193,6 +201,7 @@
             //如果实在上传列表中取出的数据  那么  tt需要赋值
             tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
         }
+        [cell addSubview:tt];
     }
     else{
         shuliang.text=@"批        号:";
@@ -202,11 +211,12 @@
         }else{
             pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
         }
+        [cell addSubview:pp];
     }
     
     [cell addSubview:shuliang];
-    [cell addSubview:tt];
-    [cell addSubview:pp];
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -243,7 +253,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"0"];
     }else{
-       // (UITextField*)pop[po].text=[(UITextField*)pop[po].text stringByAppendingString:@"0"];
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"0"];
+        
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
     
 }
@@ -252,7 +265,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"1"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"1"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -260,7 +276,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"2"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"2"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -268,7 +287,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"3"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"3"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -276,7 +298,10 @@
     if (oo==1) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"4"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"4"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -284,7 +309,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"5"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"5"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -292,7 +320,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"6"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"6"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -300,7 +331,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"7"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"7"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -308,7 +342,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"8"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"8"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -316,7 +353,10 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"9"];
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=[xixi.text stringByAppendingString:@"9"];
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
 }
 
@@ -324,7 +364,10 @@
     if (oo==0) {
         _sousuo.text=@"";
     }else{
+        UITextField*xixi=pop[po];
+        xixi.text=@"";
         
+        [pop replaceObjectAtIndex:po withObject:xixi];
     }
     
 }
@@ -336,7 +379,15 @@
     }else
         _sousuo.text= [_sousuo.text substringToIndex:[_sousuo.text length] - 1];
     }else{
+        UITextField*xixi=pop[po];
         
+        if ([xixi.text isEqual:@""]) {
+            [WarningBox warningBoxModeText:@"已经没有了..." andView:self.view];
+        }else
+         xixi.text= [xixi.text substringToIndex:[xixi.text length] - 1];
+        
+        [pop replaceObjectAtIndex:po withObject:xixi];
+            
     }
 }
 
@@ -351,21 +402,6 @@
     }
 }
 
-//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-//    if (textField!=_sousuo) {
-//        
-//    }else{
-//    //找到当前cell
-//    UITableViewCell *cell=(UITableViewCell*)[[textField superview] superview ];
-//    
-//    // 找到当前 没值 ?
-//    NSIndexPath *index=[self.tableview indexPathForCell:cell];
-//    
-//    if([string isEqualToString:@""]){
-//        
-//        
-//    return YES;
-//}
 
 -(void)queding{
     
@@ -376,8 +412,7 @@
         for (int i=0; i<liebiao.count; i++) {
            
         }
-        
-       
+   
         [liebiao writeToFile:path1 atomically:YES];
         
     }
