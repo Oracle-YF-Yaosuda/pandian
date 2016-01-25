@@ -408,14 +408,14 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="vtd-FF-YNc">
-                        <barButtonItem key="backBarButtonItem" title="返回" id="zWi-2x-LPs"/>
+                        <barButtonItem key="backBarButtonItem" title="返回" id="Npt-UN-JWc"/>
                         <barButtonItem key="leftBarButtonItem" title="盘点助手" id="t14-90-1ay">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cehua_12.png" id="riv-xT-thx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="dPI-Ic-MUZ" kind="push" id="RmX-8E-0dO"/>
+                                <action selector="tiaoshezhi:" destination="rvW-pU-2xK" id="jz7-g4-5wZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -882,7 +882,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="aXo-c7-CGw"/>
+                    <navigationItem key="navigationItem" id="aXo-c7-CGw">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="cTy-eb-fYX">
+                            <connections>
+                                <action selector="fanfanhui:" destination="CaW-2O-whF" id="ZJw-YS-aW4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bianhao" destination="EtV-dM-Hol" id="SlH-xG-3xE"/>
                         <outlet property="chading" destination="ZOd-UE-i1A" id="3gl-ke-j81"/>
@@ -898,7 +904,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duM-op-01m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="563" y="1120"/>
+            <point key="canvasLocation" x="454" y="1211"/>
         </scene>
         <!--设置-->
         <scene sceneID="aG9-fQ-GZ8">

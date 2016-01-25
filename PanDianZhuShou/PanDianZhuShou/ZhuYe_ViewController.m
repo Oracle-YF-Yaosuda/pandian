@@ -11,7 +11,9 @@
 #import "Header.h"
 #import "PanDian_ViewController.h"
 #import "WarningBox.h"
+#import "SheZhi_ViewController.h"
 @interface ZhuYe_ViewController ()
+- (IBAction)tiaoshezhi:(id)sender;
 
 @end
 
@@ -159,5 +161,9 @@
         [self.navigationController pushViewController:pandian animated:YES];
     }
     
+}
+- (IBAction)tiaoshezhi:(id)sender {
+    SheZhi_ViewController*shezhi=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"shezhi"];
+    [self.navigationController pushViewController:shezhi animated:YES];
 }
 @end

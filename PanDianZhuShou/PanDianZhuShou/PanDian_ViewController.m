@@ -9,6 +9,7 @@
 #import "PanDian_ViewController.h"
 #import "WarningBox.h"
 #import "TextFlowView.h"
+
 @interface PanDian_ViewController (){
     //下载下来的数据列表
     NSArray*arr;
@@ -266,10 +267,26 @@
  // Pass the selected object to the new view controller.
  }
  */
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+- (IBAction)fanfanhui:(id)sender {
+    UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"退出提示" message:@"确定要结束本次盘点吗?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction*action1=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popoverPresentationController];
+    }];
+    UIAlertAction*action2=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
     
-    NSLog(@"%ld",indexPath.section);
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+    
+
 }
+
 - (IBAction)ling:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"0"];

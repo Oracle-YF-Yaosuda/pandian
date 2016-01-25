@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *vvvv;
 @property (weak, nonatomic) IBOutlet UIView *yaoyao;
 @property (weak, nonatomic) IBOutlet UIView *changchang;
-
+- (IBAction)fanfanhui:(id)sender;
 - (IBAction)ling:(id)sender;
 - (IBAction)yi:(id)sender;
 - (IBAction)er:(id)sender;
@@ -33,9 +33,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *bianhao;
 @property (weak, nonatomic) IBOutlet UILabel *huowei;
 @property (weak, nonatomic) IBOutlet UILabel *wenhao;
-
 @property (weak, nonatomic) IBOutlet UILabel *guige;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (weak, nonatomic) IBOutlet UISearchBar *search;
-
 @end
