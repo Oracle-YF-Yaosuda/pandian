@@ -163,6 +163,7 @@
 		952FD7AD1C4E328A00F74A1E /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD7AC1C4E328A00F74A1E /* NavigationController.m */; };
 		9564E3C41C4F235900C39DE2 /* icon_02_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C31C4F235900C39DE2 /* icon_02_03.png */; };
 		9564E3C61C4F252900C39DE2 /* cehua_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C51C4F252900C39DE2 /* cehua_12.png */; };
+		D202BCD81C55EFB20047EC12 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D202BCD71C55EFB20047EC12 /* TextFlowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +384,8 @@
 		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 		9564E3C31C4F235900C39DE2 /* icon_02_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_03.png; sourceTree = "<group>"; };
 		9564E3C51C4F252900C39DE2 /* cehua_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cehua_12.png; sourceTree = "<group>"; };
+		D202BCD61C55EFB20047EC12 /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
+		D202BCD71C55EFB20047EC12 /* TextFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFlowView.m; sourceTree = "<group>"; };
 		D25674621C50AAC600FB2242 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = ../Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -472,6 +475,7 @@
 		952FD6661C4E1CDF00F74A1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D202BCD51C55EFA40047EC12 /* lable */,
 				952FD7251C4E205E00F74A1E /* SBJSON */,
 				952FD6FE1C4E204B00F74A1E /* AFNetworking */,
 				952FD6F81C4E202C00F74A1E /* WarningBox.h */,
@@ -786,6 +790,15 @@
 			path = "计算器";
 			sourceTree = "<group>";
 		};
+		D202BCD51C55EFA40047EC12 /* lable */ = {
+			isa = PBXGroup;
+			children = (
+				D202BCD61C55EFB20047EC12 /* TextFlowView.h */,
+				D202BCD71C55EFB20047EC12 /* TextFlowView.m */,
+			);
+			name = lable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1063,6 +1076,7 @@
 				952FD7221C4E204B00F74A1E /* AFDownloadRequestOperation.m in Sources */,
 				952FD71B1C4E204B00F74A1E /* AFHTTPSessionManager.m in Sources */,
 				952FD6651C4E1BD300F74A1E /* SheZhi_ViewController.m in Sources */,
+				D202BCD81C55EFB20047EC12 /* TextFlowView.m in Sources */,
 				952FD65F1C4E1AF000F74A1E /* ShuoMing_ViewController.m in Sources */,
 				952FD7431C4E205E00F74A1E /* SBJsonStreamParserAdapter.m in Sources */,
 				952FD7421C4E205E00F74A1E /* SBJsonStreamParserAccumulator.m in Sources */,
