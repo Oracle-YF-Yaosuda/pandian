@@ -55,7 +55,13 @@
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
-        
+        //删除本地文件
+        NSFileManager *defaultManager;
+        defaultManager = [NSFileManager defaultManager];
+        NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
+        NSString*path1=[NSString stringWithFormat:@"%@/Documents/xiazaishuju.plist",NSHomeDirectory()];
+        [defaultManager removeItemAtPath:path error:NULL];
+        [defaultManager removeItemAtPath:path1 error:NULL];
 
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
