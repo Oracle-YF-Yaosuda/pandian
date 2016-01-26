@@ -32,7 +32,7 @@
 
 @end
 /**
- *  现在我的思路就是点击一个tableview里的textfiled，取得对应tableview的section值，使po＝section值，在点击键盘的时候 改变的就是pop[po].text=[pop[po].text stringByAppendingString:@"0"];
+ *  textfield 消失再出现的时候文本也会跟着消失;
  */
 @implementation PanDian_ViewController
 
