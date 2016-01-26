@@ -25,7 +25,11 @@
     NSMutableArray*pop;
     //储存查过的信息
     NSMutableArray*tiaoshu;
+    //上一条数据记录
     int tiao;
+    //存储滑动tableview 数字不丢失
+    int zi;
+    int ji;
 //    6902083886417
 //    6953150800508
 //    6922507005033
@@ -45,9 +49,12 @@
     _tableview.dataSource=self;
     NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
     NSDictionary*dic=[NSDictionary dictionaryWithContentsOfFile:path];
+    //下载文件读取;
     arr=[dic objectForKey:@"data"];
     tiaoshu=[[NSMutableArray alloc] init];
     tiao=0;
+    zi=0;
+    
    
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -56,10 +63,7 @@
     
     liebiao=nil;
     [_tableview reloadData];
-    //一出来让tableview第一个textfield为  第一人称
-    
-    //[_sousuo becomeFirstResponder];
-    //[(UITextField*)pop[0] becomeFirstResponder];
+   
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (textField!=_sousuo) {
@@ -67,6 +71,7 @@
         oo=1;
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_mr_27.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_dk_04_10.png"] forState:UIControlStateHighlighted];
+        //下边这句话憋了我一天半  十分重要；tableview里textfield取值
         po=(int)textField.tag-10000;
     }else{
         oo=0;
@@ -95,21 +100,38 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)shuosou:(NSString*)search{
-    
+   //这句话想实现的是 只要一搜索 那么tableview上的第一个textfield 变成第一人称  可是功能 还没有实现。。。。
+//    for (UITextField *find_label in self.view.subviews) {
+//        
+//        if (find_label.tag == 10000)
+//            
+//        {
+//            
+//            [find_label becomeFirstResponder];
+//            
+//        }
+//        
+//    }
     if ([search isEqualToString:@""]) {
         [WarningBox warningBoxModeText:@"请输入条形码号!" andView:self.view];
     }else{
+        zi=1;
         pop=[[NSMutableArray alloc] init];
         liebiao=[[NSMutableArray alloc] init];
         NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
         NSFileManager*fm=[NSFileManager defaultManager];
+        //三个int  是逻辑判断的主要依据
         int p=0;int q=0; w=0;
+        //下边的 if从句是二选一的意思  千万不要大意 因为可能还可能会做二次判断
+        //上传文件存在
         if ([fm fileExistsAtPath:path1]) {
+         
             NSArray*aa=[NSArray arrayWithContentsOfFile:path1];
-            
+         
             for (int i=0; i<[aa count]; i++) {
                 
                 if ([search isEqualToString:[aa[i] objectForKey:@"txm"]]) {
+                    //上传文件里有
                     w++;
                     p++;q++;
                     [self textfuzhi:aa[i]];
@@ -120,11 +142,11 @@
             [_tableview reloadData];
         }
         else{
-            
+            //上传文件不存在
             for (int i=0; i<arr.count; i++) {
                 if ([search isEqualToString:[arr[i] objectForKey:@"txm"]]) {
                     q++;p++;
-
+                    //下载文件里有
                     [liebiao addObject:arr[i]];
                     
                     [self textfuzhi:arr[i]];
@@ -134,13 +156,14 @@
             }
             [_tableview reloadData];
         }
-        //搜索 后plist  没有 符合  则p＝＝0
-        //实现  先查上传列表  再查同步列表
+        //搜索 上传文件  没有 符合  则p＝＝0
+        //＊＊＊＊＊＊＊实现  先查上传列表  再查下载文件＊＊＊＊＊
         if (p==0) {
             
             for (int i=0; i<arr.count; i++) {
                 if ([search isEqualToString:[arr[i] objectForKey:@"txm"]]) {
                     q++;
+                    //下载文件里有
                     [liebiao addObject:arr[i]];
                     [self textfuzhi:arr[i]];
                 }
@@ -162,6 +185,7 @@
         
     }
 }
+//这个不用看 跟逻辑没啥关系
 -(void)textfuzhi:(NSDictionary*)dd{
    
     for (UIView*v in [self.vvvv subviews]) {
@@ -199,7 +223,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *id1 =@"mycell2";
-    
+
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath ];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id1];
@@ -215,17 +239,37 @@
     if (indexPath.row==0) {
         shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
-        tt.text=@"";
         tt.delegate=self;
         tt.tag=10000+indexPath.section;
-        [pop addObject:tt];
+        
         
         if (liebiao!=nil&&w!=0) {
+            //有上传文件
             if ([liebiao[indexPath.section]objectForKey:@"shuliang"]==nil) {
+                //但是  数据是在下载文件拿到的;
                 tt.text=@"";
-            }else
-                //如果实在上传列表中取出的数据  那么  tt需要赋值
+                [pop addObject:tt];
+                //这个小的if从句  就是决解滑动tableview  数字消失的 方法
+                if (zi==1) {
+                    tt =pop[indexPath.section];
+                }
+            }else{
+                //如果是在上传列表中取出的数据  那么  tt需要赋值
                 tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
+                [pop addObject:tt];
+            if (zi==1) {
+                tt =pop[indexPath.section];
+               }
+            }
+        }else{
+            //没有上传文件
+            //直接下载列表
+            tt.text=@"";
+            [pop addObject:tt];
+            if (zi==1) {
+                tt =pop[indexPath.section];
+            }
+
         }
         [cell addSubview:tt];
     }
@@ -239,10 +283,7 @@
         }
         [cell addSubview:pp];
     }
-    
     [cell addSubview:shuliang];
-    
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -337,7 +378,7 @@
 }
 
 - (IBAction)si:(id)sender {
-    if (oo==1) {
+    if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"4"];
     }else{
         UITextField*xixi=pop[po];
@@ -345,6 +386,7 @@
         
         [pop replaceObjectAtIndex:po withObject:xixi];
     }
+
 }
 
 - (IBAction)wu:(id)sender {
@@ -392,6 +434,7 @@
 }
 
 - (IBAction)jiu:(id)sender {
+    NSLog(@"%ld",pop.count);
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"9"];
     }else{
@@ -464,6 +507,7 @@
 
 -(void)queding{
     tiao=0;
+    zi=0;
     //判断是否数量有空值
     int h=0;
     NSLog(@"pop---%ld",pop.count);
