@@ -37,17 +37,16 @@
     if (textField == self.Oldpass_Field)
     {
         [self.Newpass_Field becomeFirstResponder];
-        return YES;
     }
     else if (textField == self.Newpass_Field)
     {
         [self.Newpass_Field_2 becomeFirstResponder];
-        return YES;
     }
     else
     {
         //结束编辑
         [self.view endEditing:YES];
+        [self QueRen_Button];
     }
     return YES;
 }

@@ -12,7 +12,6 @@
 
 #import "AFHTTPRequestOperationManager.h"
 #import "WarningBox.h"
-#import "SBJsonWriter.h"
 
 @interface LogIn_ViewController ()
 {
@@ -30,7 +29,7 @@
     _Password_Text.delegate=self;
     _Username_Text.delegate=self;
     if ([defaults objectForKey:@"name"]==nil) {
-        NSLog(@"xixi");
+        
     }else{
         _Username_Text.text=[NSString stringWithFormat:@"%@",[defaults objectForKey:@"name"]];
         _Password_Text.text=[NSString stringWithFormat:@"%@",[defaults objectForKey:@"pass"]];

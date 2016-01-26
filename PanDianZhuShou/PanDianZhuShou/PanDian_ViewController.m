@@ -28,6 +28,8 @@
     int tiao;
 //    6902083886417
 //    6953150800508
+//    6922507005033
+//    6902083881559
 }
 
 @end
@@ -185,8 +187,9 @@
         haha.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"sccj"]];
         _guige.text=[NSString stringWithFormat:@"%@",[dd objectForKey:@"gg"]];
     }
+    //使过长的字滚动
     TextFlowView* tete=[[TextFlowView alloc] initWithFrame:_yaoyao.frame Text:xixi.text textColor:[UIColor blackColor] font:[UIFont systemFontOfSize:18] backgroundColor:[UIColor clearColor] alignLeft:YES];
-     TextFlowView* te=[[TextFlowView alloc] initWithFrame:_changchang.frame Text:haha.text textColor:[UIColor blackColor] font:[UIFont systemFontOfSize:18] backgroundColor:[UIColor clearColor] alignLeft:YES];
+     TextFlowView* te=[[TextFlowView alloc] initWithFrame:_changchang.frame Text:haha.text textColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:15] backgroundColor:[UIColor clearColor] alignLeft:YES];
     tete.tag=101;
     te.tag=101;
     [te addSubview:haha];
@@ -212,6 +215,7 @@
     if (indexPath.row==0) {
         shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
+        tt.text=@"";
         tt.delegate=self;
         tt.tag=10000+indexPath.section;
         [pop addObject:tt];
@@ -256,6 +260,7 @@
     return 30;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     return 2;
 }
 /*
@@ -461,6 +466,7 @@
     tiao=0;
     //判断是否数量有空值
     int h=0;
+    NSLog(@"pop---%ld",pop.count);
     for (int i=0; i<liebiao.count; i++) {
         UITextField*xixi=pop[i];
         if ([xixi.text isEqual:@""]) {
