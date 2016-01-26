@@ -27,19 +27,30 @@
 
 //提交盘点结果点击事件
 - (IBAction)TiJiao_Button:(id)sender {
+     NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
+    NSFileManager*fm=[NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:path]) {
     //如果上传成功  需要删除本地所有plist文件
     [WarningBox warningBoxModeIndeterminate:@"提交数据中..." andView:self.view];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
     manager.responseSerializer = [AFCompoundResponseSerializer serializer];
-    
     //上传数据类型
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //请求地址
     NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
     //入参
-    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]]};
+        NSMutableArray*shang1chuan=[[NSMutableArray alloc] init];
+        NSArray*guodu=[NSArray arrayWithContentsOfFile:path];
+        for (NSDictionary*dd in guodu) {
+            NSMutableDictionary*guo=[[NSMutableDictionary alloc] init];
+            [guo setValue:[dd objectForKey:@"shuliang"] forKey:@"imp_quantity"];
+            [guo setValue:[dd objectForKey:@"imp_detail_id"] forKey:@"imp_detail_id"];
+            [guo setValue:@"" forKey:@"scrq"];
+            [shang1chuan addObject:guo];
+        }
+    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];
@@ -71,7 +82,9 @@
         
     }];
 
-    
+    }else{
+        [WarningBox warningBoxModeText:@"请先盘点数据!" andView:self.view];
+    }
 
 }
 //同步全部库存点击事假
