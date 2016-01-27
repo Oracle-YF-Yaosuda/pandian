@@ -101,17 +101,19 @@
 }
 -(void)shuosou:(NSString*)search{
    //这句话想实现的是 只要一搜索 那么tableview上的第一个textfield 变成第一人称  可是功能 还没有实现。。。。
-//    for (UITextField *find_label in self.view.subviews) {
-//        
-//        if (find_label.tag == 10000)
-//            
-//        {
-//            
-//            [find_label becomeFirstResponder];
-//            
-//        }
-//        
-//    }
+    UITableViewCell *cell=(UITableViewCell*)[[pop[0] superview] superview ];
+    //NSIndexPath *index=[self.tableview indexPathForCell:cell];
+    for (UITextField *find_label in cell.subviews) {
+        
+        if (find_label.tag == 10000)
+            
+        {
+            
+            [find_label becomeFirstResponder];
+            
+        }
+        
+    }
     if ([search isEqualToString:@""]) {
         [WarningBox warningBoxModeText:@"请输入条形码号!" andView:self.view];
     }else{
@@ -285,6 +287,7 @@
     }
     [cell addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
     return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -485,7 +488,7 @@
         tiao ++;
         
         NSArray*arp=[NSArray arrayWithContentsOfFile:path1];
-        if ((int)arp.count - tiao <= 0) {
+        if ((int)arp.count - tiao < 0) {
             [WarningBox warningBoxModeText:@"已经没有上一条了!" andView:self.view];
         }else{
             _sousuo.text=[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ];
