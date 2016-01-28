@@ -9,7 +9,6 @@
 #import "PanDian_ViewController.h"
 #import "WarningBox.h"
 #import "TextFlowView.h"
-
 @interface PanDian_ViewController (){
     //下载下来的数据列表
     NSArray*arr;
@@ -43,6 +42,7 @@
 @implementation PanDian_ViewController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     _sousuo.delegate=self;
     _tableview.delegate=self;
@@ -261,6 +261,7 @@
 
         }
         //查询之后，tableview中的第一个textfield成为第一响应者；
+        NSLog(@"%ld-------%ld",pop.count , liebiao.count);
         if (pop.count==liebiao.count) {
             [pop[0] becomeFirstResponder];
         }
@@ -477,14 +478,22 @@
     if (![fm fileExistsAtPath:path1]){
         [WarningBox warningBoxModeText:@"还没有添加数据哟..." andView:self.view];
     }else{
-        tiao ++;
         
+        tiao ++;
         NSArray*arp=[NSArray arrayWithContentsOfFile:path1];
         if ((int)arp.count - tiao < 0) {
             [WarningBox warningBoxModeText:@"已经没有上一条了!" andView:self.view];
         }else{
+            w=1;
             _sousuo.text=[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ];
-            [self shuosou:[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ]];
+            [self textfuzhi:arp[arp.count - tiao]];
+            liebiao=nil;
+            pop=nil;
+            NSArray*xixi=[[NSArray alloc] initWithObjects:arp[arp.count - tiao], nil];
+            pop=[NSMutableArray array];
+            liebiao=[NSMutableArray arrayWithArray:xixi];
+            [_sousuo resignFirstResponder];
+            [_tableview reloadData];
         }
     }
     
@@ -495,6 +504,7 @@
     if(oo==1){
         [self queding];
     }else{
+        tiao=0;
         [self shuosou:_sousuo.text];
     }
 }
