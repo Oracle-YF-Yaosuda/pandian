@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		952195AA1C52089E0035CEEB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 952195A91C52089E0035CEEB /* icon.png */; };
 		952FD6201C4E189000F74A1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD61F1C4E189000F74A1E /* main.m */; };
 		952FD6231C4E189000F74A1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD6221C4E189000F74A1E /* AppDelegate.m */; };
 		952FD6291C4E189000F74A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952FD6271C4E189000F74A1E /* Main.storyboard */; };
@@ -163,6 +162,7 @@
 		952FD7AD1C4E328A00F74A1E /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD7AC1C4E328A00F74A1E /* NavigationController.m */; };
 		9564E3C41C4F235900C39DE2 /* icon_02_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C31C4F235900C39DE2 /* icon_02_03.png */; };
 		9564E3C61C4F252900C39DE2 /* cehua_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C51C4F252900C39DE2 /* cehua_12.png */; };
+		957C2D0F1C59F37900AFBAC0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 957C2D0E1C59F37900AFBAC0 /* icon.png */; };
 		D202BCD81C55EFB20047EC12 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D202BCD71C55EFB20047EC12 /* TextFlowView.m */; };
 /* End PBXBuildFile section */
 
@@ -184,7 +184,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		952195A91C52089E0035CEEB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		952FD61B1C4E189000F74A1E /* PanDianZhuShou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanDianZhuShou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		952FD61F1C4E189000F74A1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		952FD6211C4E189000F74A1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -384,6 +383,7 @@
 		952FD7AC1C4E328A00F74A1E /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = ../NavigationController.m; sourceTree = "<group>"; };
 		9564E3C31C4F235900C39DE2 /* icon_02_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_03.png; sourceTree = "<group>"; };
 		9564E3C51C4F252900C39DE2 /* cehua_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cehua_12.png; sourceTree = "<group>"; };
+		957C2D0E1C59F37900AFBAC0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D202BCD61C55EFB20047EC12 /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
 		D202BCD71C55EFB20047EC12 /* TextFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFlowView.m; sourceTree = "<group>"; };
 		D25674621C50AAC600FB2242 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = ../Header.h; sourceTree = "<group>"; };
@@ -585,7 +585,7 @@
 		952FD6701C4E1E2800F74A1E /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
-				952195A91C52089E0035CEEB /* icon.png */,
+				957C2D0E1C59F37900AFBAC0 /* icon.png */,
 				9564E3C51C4F252900C39DE2 /* cehua_12.png */,
 				9564E3C31C4F235900C39DE2 /* icon_02_03.png */,
 				952FD6711C4E1E2800F74A1E /* about.png */,
@@ -967,7 +967,7 @@
 				952FD77D1C4E218C00F74A1E /* icon_01_03.png in Resources */,
 				9564E3C61C4F252900C39DE2 /* cehua_12.png in Resources */,
 				952FD77E1C4E218C00F74A1E /* icon_01_07.png in Resources */,
-				952195AA1C52089E0035CEEB /* icon.png in Resources */,
+				957C2D0F1C59F37900AFBAC0 /* icon.png in Resources */,
 				952FD6E71C4E1E2800F74A1E /* jianpan_mr_25.png in Resources */,
 				952FD7861C4E218C00F74A1E /* icon_02_23.png in Resources */,
 				952FD6CA1C4E1E2800F74A1E /* icon_02_23.png in Resources */,
