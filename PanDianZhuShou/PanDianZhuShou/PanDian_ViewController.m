@@ -100,20 +100,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)shuosou:(NSString*)search{
-   //这句话想实现的是 只要一搜索 那么tableview上的第一个textfield 变成第一人称  可是功能 还没有实现。。。。
-    UITableViewCell *cell=(UITableViewCell*)[[pop[0] superview] superview ];
-    //NSIndexPath *index=[self.tableview indexPathForCell:cell];
-    for (UITextField *find_label in cell.subviews) {
-        
-        if (find_label.tag == 10000)
-            
-        {
-            
-            [find_label becomeFirstResponder];
-            
-        }
-        
-    }
+   
     if ([search isEqualToString:@""]) {
         [WarningBox warningBoxModeText:@"请输入条形码号!" andView:self.view];
     }else{
@@ -273,6 +260,11 @@
             }
 
         }
+        //查询之后，tableview中的第一个textfield成为第一响应者；
+        if (pop.count==liebiao.count) {
+            [pop[0] becomeFirstResponder];
+        }
+        
         [cell addSubview:tt];
     }
     else{
@@ -514,6 +506,9 @@
     //判断是否数量有空值
     int h=0;
     NSLog(@"pop---%ld",pop.count);
+    if (pop.count!=liebiao.count) {
+        [WarningBox warningBoxModeText:@"请仔细检查数量问题!" andView:self.view];
+    }else{
     for (int i=0; i<liebiao.count; i++) {
         UITextField*xixi=pop[i];
         if ([xixi.text isEqual:@""]) {
@@ -555,6 +550,6 @@
     else{
         [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
     }
-    
+    }
 }
 @end
