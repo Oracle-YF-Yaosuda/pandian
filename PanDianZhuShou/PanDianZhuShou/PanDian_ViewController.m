@@ -42,7 +42,7 @@
 @implementation PanDian_ViewController
 
 - (void)viewDidLoad {
-
+    ji=0;
     [super viewDidLoad];
     _sousuo.delegate=self;
     _tableview.delegate=self;
@@ -100,7 +100,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)shuosou:(NSString*)search{
-   
+   ji=0;
     if ([search isEqualToString:@""]) {
         [WarningBox warningBoxModeText:@"请输入条形码号!" andView:self.view];
     }else{
@@ -478,11 +478,12 @@
     if (![fm fileExistsAtPath:path1]){
         [WarningBox warningBoxModeText:@"还没有添加数据哟..." andView:self.view];
     }else{
-        
+        ji=1;
         tiao ++;
         NSArray*arp=[NSArray arrayWithContentsOfFile:path1];
         if ((int)arp.count - tiao < 0) {
             [WarningBox warningBoxModeText:@"已经没有上一条了!" andView:self.view];
+            
         }else{
             w=1;
             _sousuo.text=[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ];
@@ -496,7 +497,7 @@
             [_tableview reloadData];
         }
     }
-    
+     NSLog(@"%d----",ji);
     
 }
 
@@ -511,11 +512,15 @@
 
 
 -(void)queding{
-    tiao=0;
-    zi=0;
-    //判断是否数量有空值
-    int h=0;
-    NSLog(@"pop---%ld",pop.count);
+   
+    if (ji==1) {
+        [WarningBox warningBoxModeText:@"请重新填写条形码哟~" andView:self.view];
+    }else{
+        tiao=0;
+        zi=0;
+        //判断是否数量有空值
+        int h=0;
+    
     if (pop.count!=liebiao.count) {
         [WarningBox warningBoxModeText:@"请仔细检查数量问题!" andView:self.view];
     }else{
@@ -543,7 +548,25 @@
         
         else{
             if (w!=0) {
-                [liebiao writeToFile:path1 atomically:YES];
+         //这里有一点点 漏洞     应该好使了
+                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                //删除文件中原有数据
+                int op=0;
+                for (int kl=0; kl<arp.count+op; kl++) {
+                    if ([_sousuo.text isEqual:[NSString stringWithFormat:@
+                                            "%@",[liebiao[kl] objectForKey:@"txm"]]]) {
+                        [arp removeObjectAtIndex:kl-op];
+                        op++;
+                        NSLog(@"/*/*/*/*%ld",arp.count);
+                    }
+                }
+                //添加新数据
+                for (NSDictionary*d in liebiao) {
+                    [arp addObject:d];
+                }
+                //写入
+                [arp writeToFile:path1 atomically:YES];
+
             }else{
                 NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
                 for (NSDictionary*d in liebiao) {
@@ -559,6 +582,7 @@
     }
     else{
         [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
+    }
     }
     }
 }
