@@ -176,17 +176,19 @@
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:&err];
             
-            [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+            
             if ([[dic objectForKey:@"flag"] intValue]==1) {
                 [defaults setObject:_Password_Text.text forKey:@"pass"];
                 [defaults setObject:_Username_Text.text forKey:@"name"];
-                
+                [WarningBox warningBoxModeText:@"登录成功" andView:self.view];
                 NavigationController*chaxun=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navigationcontroller"];
                 
                 [self presentViewController:chaxun animated:YES completion:^{
                     
                 }];
                 
+            }else{
+                [WarningBox warningBoxModeText:@"登录失败,用户名或密码不正确!" andView:self.view];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

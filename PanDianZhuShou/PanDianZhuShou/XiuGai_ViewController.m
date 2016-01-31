@@ -146,7 +146,7 @@
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                     options:NSJSONReadingMutableContainers
                                                                       error:&err];
-                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+                
                 if ([[dic objectForKey:@"flag"] intValue]==1)
                 {
                     
@@ -158,6 +158,8 @@
                         
                     }];
 
+                }else{
+                    [WarningBox warningBoxModeText:@"修改失败" andView:self.view];
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

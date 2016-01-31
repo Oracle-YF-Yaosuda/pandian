@@ -65,7 +65,9 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        if([[responseObject objectForKey:@"flag"] intValue]==1){
+            
+            [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
         //删除本地文件
         NSFileManager *defaultManager;
         defaultManager = [NSFileManager defaultManager];
@@ -74,7 +76,7 @@
         [defaultManager removeItemAtPath:path error:NULL];
         [defaultManager removeItemAtPath:path1 error:NULL];
 
-        
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
@@ -115,7 +117,7 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
         NSLog(@"%@",dic);
@@ -123,7 +125,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
-         [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
+         [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
         NSLog(@"%@",error);
         
     }];
@@ -158,12 +160,12 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        [WarningBox warningBoxModeText:@"同步异常数据成功!" andView:self.view];
         NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
         [dic writeToFile:path atomically:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
+        [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
         NSLog(@"%@",error);
         
     }];
