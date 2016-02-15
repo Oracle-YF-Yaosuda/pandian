@@ -47,7 +47,7 @@
             NSMutableDictionary*guo=[[NSMutableDictionary alloc] init];
             [guo setValue:[dd objectForKey:@"shuliang"] forKey:@"imp_quantity"];
             [guo setValue:[dd objectForKey:@"imp_detail_id"] forKey:@"imp_detail_id"];
-            [guo setValue:@"" forKey:@"scrq"];
+            [guo setValue:[dd objectForKey:@"date"] forKey:@"scrq"];
             [shang1chuan addObject:guo];
         }
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
@@ -65,7 +65,7 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        if([[responseObject objectForKey:@"flag"] intValue]==1){
+        if([[dic objectForKey:@"flag"] intValue]==1){
             
             [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
         //删除本地文件

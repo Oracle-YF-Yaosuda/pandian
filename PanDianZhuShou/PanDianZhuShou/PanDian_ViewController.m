@@ -539,6 +539,11 @@
         //先把数量添加到liebiao中；
         for (int m=0; m<liebiao.count; m++) {
             UITextField*xixi=pop[m];
+            NSString* date;
+            NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+            date = [formatter stringFromDate:[NSDate date]];
+            [liebiao[m] setObject:date forKey:@"date"];
             [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
         }
         NSLog(@"%@",liebiao);
