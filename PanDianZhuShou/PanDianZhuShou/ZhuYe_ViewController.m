@@ -24,7 +24,6 @@
     // Do any additional setup after loading the view.
 }
 
-
 //提交盘点结果点击事件
 - (IBAction)TiJiao_Button:(id)sender {
      NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
