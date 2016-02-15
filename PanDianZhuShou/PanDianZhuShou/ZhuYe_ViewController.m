@@ -50,6 +50,7 @@
             [shang1chuan addObject:guo];
         }
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
+        NSLog(@"%@",params);
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];

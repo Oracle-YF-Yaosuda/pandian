@@ -10,6 +10,8 @@
 #import "WarningBox.h"
 #import "TextFlowView.h"
 @interface PanDian_ViewController (){
+    UILabel*pp;
+    UITextField*tt;
     //下载下来的数据列表
     NSArray*arr;
     //需要在tableview中显示出来的数据
@@ -185,6 +187,7 @@
     UILabel*xixi=[[UILabel alloc] init];
     UILabel*haha=[[UILabel alloc] init];
     if (dd==nil) {
+        tt.text=@"";
         xixi.text=@"";
         _bianhao.text=@"";
         _huowei.text=@"";
@@ -223,8 +226,8 @@
     }
     
     UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(5, 10, 75, 20)];
-    UITextField*tt;
-    UILabel*pp;
+    
+    
     if (indexPath.row==0) {
         shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
@@ -512,9 +515,38 @@
 
 
 -(void)queding{
-   
+    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+    NSFileManager*fm=[NSFileManager defaultManager];
     if (ji==1) {
-        [WarningBox warningBoxModeText:@"请重新填写条形码哟~" andView:self.view];
+        UITextField*xixi=pop[0];
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval a=[dat timeIntervalSince1970];
+        NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
+        [liebiao[0] setObject:timeSp forKey:@"date"];
+        [liebiao[0] setObject:xixi.text forKey:@"shuliang"];
+         NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+        int op=0;
+        for (int kl=0; kl<arp.count-op; kl++) {
+            if ([_sousuo.text isEqual:[NSString stringWithFormat:@
+                                       "%@",[arp[kl] objectForKey:@"txm"]]]) {
+                if([pp.text isEqual:[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"ph" ]]]){
+                    
+                [arp removeObjectAtIndex:kl-op];
+                op++;
+                NSLog(@"/*/*/*/*%ld",arp.count);
+                }
+               
+            }
+        }
+        //添加新数据
+        
+        [arp addObject:liebiao[0]];
+        
+        //写入
+        [arp writeToFile:path1 atomically:YES];
+        [WarningBox warningBoxModeText:@"数据更改成功!" andView:self.view];
+        oo=3;
+        [self viewWillAppear:YES];
     }else{
         tiao=0;
         zi=0;
@@ -532,8 +564,7 @@
         
     }
     
-    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
-    NSFileManager*fm=[NSFileManager defaultManager];
+    
     //如果没有空值
     if (h==0) {
         //先把数量添加到liebiao中；
@@ -544,6 +575,7 @@
             NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
             [liebiao[m] setObject:timeSp forKey:@"date"];
             [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
+            
         }
         NSLog(@"%@",liebiao);
         if (![fm fileExistsAtPath:path1]) {
@@ -558,7 +590,7 @@
                 int op=0;
                 for (int kl=0; kl<arp.count+op; kl++) {
                     if ([_sousuo.text isEqual:[NSString stringWithFormat:@
-                                            "%@",[liebiao[kl] objectForKey:@"txm"]]]) {
+                                            "%@",[arp[kl-op] objectForKey:@"txm"]]]) {
                         [arp removeObjectAtIndex:kl-op];
                         op++;
                         NSLog(@"/*/*/*/*%ld",arp.count);
