@@ -24,22 +24,23 @@
     // Do any additional setup after loading the view.
 }
 
+
 //提交盘点结果点击事件
 - (IBAction)TiJiao_Button:(id)sender {
-     NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
+    NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
     NSFileManager*fm=[NSFileManager defaultManager];
     if ([fm fileExistsAtPath:path]) {
-    //如果上传成功  需要删除本地所有plist文件
-    [WarningBox warningBoxModeIndeterminate:@"提交数据中..." andView:self.view];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
-    //接收数据类型
-    manager.responseSerializer = [AFCompoundResponseSerializer serializer];
-    //上传数据类型
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //请求地址
-    NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
-    //入参
+        //如果上传成功  需要删除本地所有plist文件
+        [WarningBox warningBoxModeIndeterminate:@"提交数据中..." andView:self.view];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
+        //接收数据类型
+        manager.responseSerializer = [AFCompoundResponseSerializer serializer];
+        //上传数据类型
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        //请求地址
+        NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
+        //入参
         NSMutableArray*shang1chuan=[[NSMutableArray alloc] init];
         NSArray*guodu=[NSArray arrayWithContentsOfFile:path];
         for (NSDictionary*dd in guodu) {
@@ -49,45 +50,48 @@
             [guo setValue:[dd objectForKey:@"date"] forKey:@"scrq"];
             [shang1chuan addObject:guo];
         }
-    NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
+        NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
         NSLog(@"%@",params);
-    //post请求
-    [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [WarningBox warningBoxHide:YES andView:self.view];
-        //返回数据转换json
-        NSData *haha = responseObject;
-        NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
-        NSString* str = [hehe stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        //转换为字典
-        NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *err;
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                            options:NSJSONReadingMutableContainers
-                                                              error:&err];
-        if([[dic objectForKey:@"flag"] intValue]==1){
+        //post请求
+        [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [WarningBox warningBoxHide:YES andView:self.view];
+            //返回数据转换json
+            NSData *haha = responseObject;
+            NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
+            NSString* str = [hehe stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
-            [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
-        //删除本地文件
-        NSFileManager *defaultManager;
-        defaultManager = [NSFileManager defaultManager];
-        NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
-        NSString*path1=[NSString stringWithFormat:@"%@/Documents/xiazaishuju.plist",NSHomeDirectory()];
-        [defaultManager removeItemAtPath:path error:NULL];
-        [defaultManager removeItemAtPath:path1 error:NULL];
-
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [WarningBox warningBoxHide:YES andView:self.view];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
-        NSLog(@"%@",error);
+            //转换为字典
+            NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:&err];
+            if([[dic objectForKey:@"flag"] intValue]==1){
+                
+                [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
+                
+                //删除本地文件
+                NSFileManager *defaultManager;
+                defaultManager = [NSFileManager defaultManager];
+                NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
+                NSString*path1=[NSString stringWithFormat:@"%@/Documents/xiazaishuju.plist",NSHomeDirectory()];
+                [defaultManager removeItemAtPath:path error:NULL];
+                [defaultManager removeItemAtPath:path1 error:NULL];
+                
+            }else{
+                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [WarningBox warningBoxHide:YES andView:self.view];
+            [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
+            NSLog(@"%@",error);
+            
+        }];
         
-    }];
-
     }else{
         [WarningBox warningBoxModeText:@"请先盘点数据!" andView:self.view];
     }
-
+    
 }
 //同步全部库存点击事假
 - (IBAction)KuCun_Button:(id)sender {
@@ -117,20 +121,55 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
-        NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
-        [dic writeToFile:path atomically:YES];
-        NSLog(@"%@",dic);
-        NSLog(@"%@",NSHomeDirectory());
-        
+        if ([[dic objectForKey:@"flag"]intValue]==1) {
+            for (int i=0; i<[[dic objectForKey:@"data"] count]; i++) {
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"gg"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"gg"];
+                    
+                    
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"hwh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"hwh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"'imp_detail_id'"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"'imp_detail_id'"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ph"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ph"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"pzwh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"pzwh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"sccj"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"sccj"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"txm"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"txm"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ypbh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ypbh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ypmc"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ypmc"];
+                }
+            }
+            [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
+            NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
+            [dic  writeToFile:path atomically:YES];
+            NSLog(@"%@",dic);
+            NSLog(@"%@",NSHomeDirectory());
+            
+        }else{
+            [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
-         [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
+        [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
         NSLog(@"%@",error);
         
     }];
     
-
+    
 }
 //同步异常数据点击事件
 - (IBAction)ShuJu_Button:(id)sender {
@@ -160,9 +199,51 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
-        [WarningBox warningBoxModeText:@"同步异常数据成功!" andView:self.view];
-        NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
-        [dic writeToFile:path atomically:YES];
+        if ([[dic objectForKey:@"flag"]intValue]==1) {
+            [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
+            for (int i=0; i<[[dic objectForKey:@"data"] count]; i++) {
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"gg"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"gg"];
+                    
+                    
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"hwh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"hwh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"'imp_detail_id'"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"'imp_detail_id'"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ph"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ph"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"pzwh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"pzwh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"sccj"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"sccj"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"txm"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"txm"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ypbh"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ypbh"];
+                }
+                if ([[[dic objectForKey:@"data"][i] objectForKey:@"ypmc"]isEqual:[NSNull null]]) {
+                    [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"ypmc"];
+                }
+                
+            }
+            
+            NSLog(@"%@",dic);
+            NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
+            [dic writeToFile:path atomically:YES];
+            NSLog(@"%@",NSHomeDirectory());
+            
+        }else{
+            [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+        }
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
@@ -173,7 +254,7 @@
 }
 //盘点药品点击事件
 - (IBAction)PanDian_Button:(id)sender {
-     NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
+    NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
     NSFileManager*fm=[NSFileManager defaultManager];
     if (![fm fileExistsAtPath:path]) {
         [WarningBox warningBoxModeText:@"请同步数据!" andView:self.view];

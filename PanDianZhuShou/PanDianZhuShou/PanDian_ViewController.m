@@ -31,10 +31,6 @@
     //存储滑动tableview 数字不丢失
     int zi;
     int ji;
-//    6902083886417
-//    6953150800508
-//    6922507005033
-//    6902083881559
 }
 
 @end
@@ -102,7 +98,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)shuosou:(NSString*)search{
-   ji=0;
+    ji=0;
     if ([search isEqualToString:@""]) {
         [WarningBox warningBoxModeText:@"请输入条形码号!" andView:self.view];
     }else{
@@ -116,9 +112,9 @@
         //下边的 if从句是二选一的意思  千万不要大意 因为可能还可能会做二次判断
         //上传文件存在
         if ([fm fileExistsAtPath:path1]) {
-         
+            
             NSArray*aa=[NSArray arrayWithContentsOfFile:path1];
-         
+            
             for (int i=0; i<[aa count]; i++) {
                 
                 if ([search isEqualToString:[aa[i] objectForKey:@"txm"]]) {
@@ -141,7 +137,7 @@
                     [liebiao addObject:arr[i]];
                     
                     [self textfuzhi:arr[i]];
-
+                    
                 }
                 
             }
@@ -178,7 +174,7 @@
 }
 //这个不用看 跟逻辑没啥关系
 -(void)textfuzhi:(NSDictionary*)dd{
-   
+    
     for (UIView*v in [self.vvvv subviews]) {
         if (v.tag==101) {
             [v removeFromSuperview];
@@ -205,7 +201,7 @@
     }
     //使过长的字滚动
     TextFlowView* tete=[[TextFlowView alloc] initWithFrame:_yaoyao.frame Text:xixi.text textColor:[UIColor blackColor] font:[UIFont systemFontOfSize:18] backgroundColor:[UIColor clearColor] alignLeft:YES];
-     TextFlowView* te=[[TextFlowView alloc] initWithFrame:_changchang.frame Text:haha.text textColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:15] backgroundColor:[UIColor clearColor] alignLeft:YES];
+    TextFlowView* te=[[TextFlowView alloc] initWithFrame:_changchang.frame Text:haha.text textColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:15] backgroundColor:[UIColor clearColor] alignLeft:YES];
     tete.tag=101;
     te.tag=101;
     [te addSubview:haha];
@@ -215,7 +211,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *id1 =@"mycell2";
-
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath ];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id1];
@@ -249,9 +245,9 @@
                 //如果是在上传列表中取出的数据  那么  tt需要赋值
                 tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
                 [pop addObject:tt];
-            if (zi==1) {
-                tt =pop[indexPath.section];
-               }
+                if (zi==1) {
+                    tt =pop[indexPath.section];
+                }
             }
         }else{
             //没有上传文件
@@ -261,7 +257,7 @@
             if (zi==1) {
                 tt =pop[indexPath.section];
             }
-
+            
         }
         //查询之后，tableview中的第一个textfield成为第一响应者；
         NSLog(@"%ld-------%ld",pop.count , liebiao.count);
@@ -283,7 +279,7 @@
     }
     [cell addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  
+    
     return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -327,7 +323,6 @@
     [self presentViewController:alert animated:YES completion:^{
         
     }];
-    
 
 }
 
@@ -500,7 +495,6 @@
             [_tableview reloadData];
         }
     }
-     NSLog(@"%d----",ji);
     
 }
 
@@ -515,6 +509,7 @@
 
 
 -(void)queding{
+   
     NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
     NSFileManager*fm=[NSFileManager defaultManager];
     if (ji==1) {
@@ -524,18 +519,18 @@
         NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
         [liebiao[0] setObject:timeSp forKey:@"date"];
         [liebiao[0] setObject:xixi.text forKey:@"shuliang"];
-         NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
         int op=0;
         for (int kl=0; kl<arp.count-op; kl++) {
             if ([_sousuo.text isEqual:[NSString stringWithFormat:@
                                        "%@",[arp[kl] objectForKey:@"txm"]]]) {
                 if([pp.text isEqual:[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"ph" ]]]){
                     
-                [arp removeObjectAtIndex:kl-op];
-                op++;
-                NSLog(@"/*/*/*/*%ld",arp.count);
+                    [arp removeObjectAtIndex:kl-op];
+                    op++;
+                    NSLog(@"/*/*/*/*%ld",arp.count);
                 }
-               
+                
             }
         }
         //添加新数据
@@ -552,74 +547,75 @@
         zi=0;
         //判断是否数量有空值
         int h=0;
-    
-    if (pop.count!=liebiao.count) {
-        [WarningBox warningBoxModeText:@"请仔细检查数量问题!" andView:self.view];
-    }else{
-    for (int i=0; i<liebiao.count; i++) {
-        UITextField*xixi=pop[i];
-        if ([xixi.text isEqual:@""]) {
-            h=1;
-        }
+        //有点小问题。。。。。
         
-    }
-    
-    
-    //如果没有空值
-    if (h==0) {
-        //先把数量添加到liebiao中；
-        for (int m=0; m<liebiao.count; m++) {
-            UITextField*xixi=pop[m];
-            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-            NSTimeInterval a=[dat timeIntervalSince1970];
-            NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
-            [liebiao[m] setObject:timeSp forKey:@"date"];
-            [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
+        if (pop.count<liebiao.count) {
+            [WarningBox warningBoxModeText:@"请仔细检查数量问题!" andView:self.view];
+        }else{
+            for (int i=0; i<liebiao.count; i++) {
+                UITextField*xixi=pop[i];
+                if ([xixi.text isEqual:@""]) {
+                    h=1;
+                }
+                
+            }
             
-        }
-        NSLog(@"%@",liebiao);
-        if (![fm fileExistsAtPath:path1]) {
-            [liebiao writeToFile:path1 atomically:YES];
-        }
-        
-        else{
-            if (w!=0) {
-         //这里有一点点 漏洞     应该好使了
-                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-                //删除文件中原有数据
-                int op=0;
-                for (int kl=0; kl<arp.count+op; kl++) {
-                    if ([_sousuo.text isEqual:[NSString stringWithFormat:@
-                                            "%@",[arp[kl-op] objectForKey:@"txm"]]]) {
-                        [arp removeObjectAtIndex:kl-op];
-                        op++;
-                        NSLog(@"/*/*/*/*%ld",arp.count);
+            
+            //如果没有空值
+            if (h==0) {
+                //先把数量添加到liebiao中；
+                for (int m=0; m<liebiao.count; m++) {
+                    UITextField*xixi=pop[m];
+                    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+                    NSTimeInterval a=[dat timeIntervalSince1970];
+                    NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
+                    [liebiao[m] setObject:timeSp forKey:@"date"];
+                    [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
+                    
+                }
+                NSLog(@"%@",liebiao);
+                if (![fm fileExistsAtPath:path1]) {
+                    [liebiao writeToFile:path1 atomically:YES];
+                }
+                
+                else{
+                    if (w!=0) {
+                        //这里有一点点 漏洞     应该好使了
+                        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                        //删除文件中原有数据
+                        int op=0;
+                        for (int kl=0; kl<arp.count+op; kl++) {
+                            if ([_sousuo.text isEqual:[NSString stringWithFormat:@
+                                                       "%@",[arp[kl-op] objectForKey:@"txm"]]]) {
+                                [arp removeObjectAtIndex:kl-op];
+                                op++;
+                                NSLog(@"/*/*/*/*%ld",arp.count);
+                            }
+                        }
+                        //添加新数据
+                        for (NSDictionary*d in liebiao) {
+                            [arp addObject:d];
+                        }
+                        //写入
+                        [arp writeToFile:path1 atomically:YES];
+                        
+                    }else{
+                        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                        for (NSDictionary*d in liebiao) {
+                            [arp addObject:d];
+                        }
+                        [arp writeToFile:path1 atomically:YES];
                     }
                 }
-                //添加新数据
-                for (NSDictionary*d in liebiao) {
-                    [arp addObject:d];
-                }
-                //写入
-                [arp writeToFile:path1 atomically:YES];
-
-            }else{
-                NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-                for (NSDictionary*d in liebiao) {
-                    [arp addObject:d];
-                }
-                [arp writeToFile:path1 atomically:YES];
+                [tiaoshu addObject:_sousuo.text];
+                [WarningBox warningBoxModeText:@"数据添加成功!" andView:self.view];
+                oo=3;
+                [self viewWillAppear:YES];
+            }
+            else{
+                [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
             }
         }
-        [tiaoshu addObject:_sousuo.text];
-        [WarningBox warningBoxModeText:@"数据添加成功!" andView:self.view];
-        oo=3;
-        [self viewWillAppear:YES];
-    }
-    else{
-        [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
-    }
-    }
     }
 }
 @end
