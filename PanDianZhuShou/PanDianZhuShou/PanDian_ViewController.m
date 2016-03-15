@@ -64,23 +64,36 @@
    
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    for (UITextField*ss in pop) {
+        ss.layer.borderWidth=0;
+    }
+    textField.layer.borderColor=[[UIColor greenColor] CGColor];
+    textField.layer.borderWidth=1.0;
     if (textField!=_sousuo) {
-        
+        _sousuo.layer.borderWidth=0;
         oo=1;
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_mr_27.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_dk_04_10.png"] forState:UIControlStateHighlighted];
         //下边这句话憋了我一天半  十分重要；tableview里textfield取值
         po=(int)textField.tag-10000;
     }else{
+        for (UITextField*ss in pop) {
+            ss.layer.borderWidth=0;
+        }
         oo=0;
         _sousuo.text=@"";
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun_press.png"] forState:UIControlStateHighlighted];
         
     }
+//    textField.backgroundColor=[UIColor colorWithRed:0.2 green:0.9 blue:0.5 alpha:0.3];
     
-    return YES;
+    
+   
+    return NO;
 }
+
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField==_sousuo) {
         [_sousuo resignFirstResponder];
@@ -226,7 +239,7 @@
     
     if (indexPath.row==0) {
         shuliang.text=@"药品数量:";
-        tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
+        tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 0, 300, 30)];
         tt.delegate=self;
         tt.tag=10000+indexPath.section;
         
@@ -281,6 +294,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (liebiao==nil) {

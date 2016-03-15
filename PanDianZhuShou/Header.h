@@ -7,4 +7,4 @@
 //
 
 #define  wangzhi @"http://www.yaopandian.com/stock/stockIntf/"
-  
+//#define  wangzhi @"http://192.168.1.103:8080/platform/stockIntf/"

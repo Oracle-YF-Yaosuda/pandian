@@ -50,6 +50,7 @@
             [guo setValue:[dd objectForKey:@"date"] forKey:@"scrq"];
             [shang1chuan addObject:guo];
         }
+        
         NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
         NSLog(@"%@",params);
         //post请求
@@ -66,6 +67,7 @@
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:&err];
+            NSLog(@"%@",dic);
             if([[dic objectForKey:@"flag"] intValue]==1){
                 
                 [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
@@ -173,7 +175,7 @@
 }
 //同步异常数据点击事件
 - (IBAction)ShuJu_Button:(id)sender {
-    [WarningBox warningBoxModeText:@"异常数据同步中..." andView:self.view];
+    [WarningBox warningBoxModeIndeterminate:@"异常数据同步中..." andView:self.view];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
@@ -200,7 +202,7 @@
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
         if ([[dic objectForKey:@"flag"]intValue]==1) {
-            [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
+            [WarningBox warningBoxModeText:@"同步异步库存成功!" andView:self.view];
             for (int i=0; i<[[dic objectForKey:@"data"] count]; i++) {
                 if ([[[dic objectForKey:@"data"][i] objectForKey:@"gg"]isEqual:[NSNull null]]) {
                     [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"gg"];
