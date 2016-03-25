@@ -164,6 +164,7 @@
         //post请求
         [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [WarningBox warningBoxHide:YES andView:self.view];
+            @try{
             //返回数据转换json
             NSData *haha = responseObject;
             NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
@@ -190,7 +191,10 @@
             }else{
                 [WarningBox warningBoxModeText:@"登录失败,用户名或密码不正确!" andView:self.view];
             }
-            
+            }
+            @catch(NSException * e){
+                [WarningBox warningBoxModeText:@"请仔细检查您的网络!" andView:self.view];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [WarningBox warningBoxHide:YES andView:self.view];
             [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
