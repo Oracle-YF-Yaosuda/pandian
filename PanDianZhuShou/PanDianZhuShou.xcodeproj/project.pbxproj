@@ -134,6 +134,16 @@
 		9564E3C61C4F252900C39DE2 /* cehua_12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9564E3C51C4F252900C39DE2 /* cehua_12.png */; };
 		D202BCD81C55EFB20047EC12 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D202BCD71C55EFB20047EC12 /* TextFlowView.m */; };
 		D24E34EB1C5D90F2005137E4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E34EA1C5D90F2005137E4 /* icon.png */; };
+		D25B163B1CA8E27800BCECE4 /* DSBaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16301CA8E27800BCECE4 /* DSBaseKeyboard.m */; };
+		D25B163C1CA8E27800BCECE4 /* DSKyeboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16321CA8E27800BCECE4 /* DSKyeboard.m */; };
+		D25B163D1CA8E27800BCECE4 /* DSLetterKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16341CA8E27800BCECE4 /* DSLetterKeyboard.m */; };
+		D25B163E1CA8E27800BCECE4 /* DSLetterKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25B16351CA8E27800BCECE4 /* DSLetterKeyboard.xib */; };
+		D25B163F1CA8E27800BCECE4 /* DSNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16371CA8E27800BCECE4 /* DSNumberKeyboard.m */; };
+		D25B16401CA8E27800BCECE4 /* DSSymbolKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16391CA8E27800BCECE4 /* DSSymbolKeyboard.m */; };
+		D25B16411CA8E27800BCECE4 /* DSSymbolKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25B163A1CA8E27800BCECE4 /* DSSymbolKeyboard.xib */; };
+		D25B16461CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D25B16431CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.bundle */; };
+		D25B16471CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B16451CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.m */; };
+		D25B16491CA9053B00BCECE4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D25B16481CA9053B00BCECE4 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +337,22 @@
 		D202BCD71C55EFB20047EC12 /* TextFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFlowView.m; sourceTree = "<group>"; };
 		D24E34EA1C5D90F2005137E4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D25674621C50AAC600FB2242 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = ../Header.h; sourceTree = "<group>"; };
+		D25B162F1CA8E27800BCECE4 /* DSBaseKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSBaseKeyboard.h; sourceTree = "<group>"; };
+		D25B16301CA8E27800BCECE4 /* DSBaseKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSBaseKeyboard.m; sourceTree = "<group>"; };
+		D25B16311CA8E27800BCECE4 /* DSKyeboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKyeboard.h; sourceTree = "<group>"; };
+		D25B16321CA8E27800BCECE4 /* DSKyeboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKyeboard.m; sourceTree = "<group>"; };
+		D25B16331CA8E27800BCECE4 /* DSLetterKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLetterKeyboard.h; sourceTree = "<group>"; };
+		D25B16341CA8E27800BCECE4 /* DSLetterKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLetterKeyboard.m; sourceTree = "<group>"; };
+		D25B16351CA8E27800BCECE4 /* DSLetterKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSLetterKeyboard.xib; sourceTree = "<group>"; };
+		D25B16361CA8E27800BCECE4 /* DSNumberKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNumberKeyboard.h; sourceTree = "<group>"; };
+		D25B16371CA8E27800BCECE4 /* DSNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNumberKeyboard.m; sourceTree = "<group>"; };
+		D25B16381CA8E27800BCECE4 /* DSSymbolKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSymbolKeyboard.h; sourceTree = "<group>"; };
+		D25B16391CA8E27800BCECE4 /* DSSymbolKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSymbolKeyboard.m; sourceTree = "<group>"; };
+		D25B163A1CA8E27800BCECE4 /* DSSymbolKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSSymbolKeyboard.xib; sourceTree = "<group>"; };
+		D25B16431CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZYCustomKeyboardTypeNumberView.bundle; sourceTree = "<group>"; };
+		D25B16441CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCustomKeyboardTypeNumberView.h; sourceTree = "<group>"; };
+		D25B16451CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCustomKeyboardTypeNumberView.m; sourceTree = "<group>"; };
+		D25B16481CA9053B00BCECE4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +360,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25B16491CA9053B00BCECE4 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +384,7 @@
 		952FD6121C4E189000F74A1E = {
 			isa = PBXGroup;
 			children = (
+				D25B16481CA9053B00BCECE4 /* CoreBluetooth.framework */,
 				952FD61D1C4E189000F74A1E /* PanDianZhuShou */,
 				952FD6371C4E189000F74A1E /* PanDianZhuShouTests */,
 				952FD6421C4E189000F74A1E /* PanDianZhuShouUITests */,
@@ -415,6 +443,8 @@
 		952FD6661C4E1CDF00F74A1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D25B16421CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView */,
+				D25B162E1CA8E27800BCECE4 /* Views */,
 				D202BCD51C55EFA40047EC12 /* lable */,
 				952FD7251C4E205E00F74A1E /* SBJSON */,
 				952FD6FE1C4E204B00F74A1E /* AFNetworking */,
@@ -709,6 +739,35 @@
 			name = lable;
 			sourceTree = "<group>";
 		};
+		D25B162E1CA8E27800BCECE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D25B162F1CA8E27800BCECE4 /* DSBaseKeyboard.h */,
+				D25B16301CA8E27800BCECE4 /* DSBaseKeyboard.m */,
+				D25B16311CA8E27800BCECE4 /* DSKyeboard.h */,
+				D25B16321CA8E27800BCECE4 /* DSKyeboard.m */,
+				D25B16331CA8E27800BCECE4 /* DSLetterKeyboard.h */,
+				D25B16341CA8E27800BCECE4 /* DSLetterKeyboard.m */,
+				D25B16351CA8E27800BCECE4 /* DSLetterKeyboard.xib */,
+				D25B16361CA8E27800BCECE4 /* DSNumberKeyboard.h */,
+				D25B16371CA8E27800BCECE4 /* DSNumberKeyboard.m */,
+				D25B16381CA8E27800BCECE4 /* DSSymbolKeyboard.h */,
+				D25B16391CA8E27800BCECE4 /* DSSymbolKeyboard.m */,
+				D25B163A1CA8E27800BCECE4 /* DSSymbolKeyboard.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D25B16421CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView */ = {
+			isa = PBXGroup;
+			children = (
+				D25B16431CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.bundle */,
+				D25B16441CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.h */,
+				D25B16451CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.m */,
+			);
+			path = ZYCustomKeyboardTypeNumberView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -776,7 +835,7 @@
 				TargetAttributes = {
 					952FD61A1C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = JT6M7XYGJW;
+						DevelopmentTeam = KBRTKNG36Q;
 					};
 					952FD6331C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
@@ -826,6 +885,7 @@
 				952FD6CC1C4E1E2800F74A1E /* icon_07.png in Resources */,
 				952FD6B41C4E1E2800F74A1E /* actionbar_back.png in Resources */,
 				952FD7801C4E218C00F74A1E /* icon_01_14.png in Resources */,
+				D25B163E1CA8E27800BCECE4 /* DSLetterKeyboard.xib in Resources */,
 				952FD6C31C4E1E2800F74A1E /* icon_01_11.png in Resources */,
 				952FD6F21C4E1E2800F74A1E /* toolbar_color.png in Resources */,
 				952FD6C71C4E1E2800F74A1E /* icon_02_11.png in Resources */,
@@ -882,7 +942,9 @@
 				952FD6291C4E189000F74A1E /* Main.storyboard in Resources */,
 				952FD6E31C4E1E2800F74A1E /* jianpan_mr_11.png in Resources */,
 				952FD7A91C4E218C00F74A1E /* jianpan_mr_35.png in Resources */,
+				D25B16411CA8E27800BCECE4 /* DSSymbolKeyboard.xib in Resources */,
 				952FD77C1C4E218C00F74A1E /* bg.png in Resources */,
+				D25B16461CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.bundle in Resources */,
 				952FD6EE1C4E1E2800F74A1E /* login_input.9.png in Resources */,
 				952FD7981C4E218C00F74A1E /* jianpan_dk_04_05.png in Resources */,
 				952FD6C61C4E1E2800F74A1E /* icon_02_07.png in Resources */,
@@ -924,6 +986,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25B16401CA8E27800BCECE4 /* DSSymbolKeyboard.m in Sources */,
 				952FD7451C4E205E00F74A1E /* SBJsonStreamWriter.m in Sources */,
 				952FD7191C4E204B00F74A1E /* AFHTTPRequestOperation.m in Sources */,
 				952FD6531C4E197C00F74A1E /* LogIn_ViewController.m in Sources */,
@@ -931,10 +994,13 @@
 				952FD7441C4E205E00F74A1E /* SBJsonStreamParserState.m in Sources */,
 				952FD7211C4E204B00F74A1E /* AFURLSessionManager.m in Sources */,
 				952FD7231C4E204B00F74A1E /* DownloadTask.m in Sources */,
+				D25B16471CA8F58B00BCECE4 /* ZYCustomKeyboardTypeNumberView.m in Sources */,
 				952FD6201C4E189000F74A1E /* main.m in Sources */,
 				952FD7411C4E205E00F74A1E /* SBJsonStreamParser.m in Sources */,
 				952FD71E1C4E204B00F74A1E /* AFURLConnectionOperation.m in Sources */,
+				D25B163D1CA8E27800BCECE4 /* DSLetterKeyboard.m in Sources */,
 				952FD71A1C4E204B00F74A1E /* AFHTTPRequestOperationManager.m in Sources */,
+				D25B163B1CA8E27800BCECE4 /* DSBaseKeyboard.m in Sources */,
 				952FD73F1C4E205E00F74A1E /* NSObject+SBJson.m in Sources */,
 				952FD6591C4E1AA400F74A1E /* PanDian_ViewController.m in Sources */,
 				952FD74A1C4E205E00F74A1E /* SBJsonWriter.m in Sources */,
@@ -952,6 +1018,7 @@
 				952FD6561C4E199500F74A1E /* XiuGai_ViewController.m in Sources */,
 				952FD7401C4E205E00F74A1E /* SBJsonParser.m in Sources */,
 				952FD7201C4E204B00F74A1E /* AFURLResponseSerialization.m in Sources */,
+				D25B163F1CA8E27800BCECE4 /* DSNumberKeyboard.m in Sources */,
 				952FD65C1C4E1ADC00F74A1E /* LianXi_ViewController.m in Sources */,
 				952FD6F71C4E1FF400F74A1E /* MBProgressHUD.m in Sources */,
 				952FD7221C4E204B00F74A1E /* AFDownloadRequestOperation.m in Sources */,
@@ -962,6 +1029,7 @@
 				952FD7431C4E205E00F74A1E /* SBJsonStreamParserAdapter.m in Sources */,
 				952FD7421C4E205E00F74A1E /* SBJsonStreamParserAccumulator.m in Sources */,
 				952FD7241C4E204B00F74A1E /* Networking.m in Sources */,
+				D25B163C1CA8E27800BCECE4 /* DSKyeboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,7 +1176,7 @@
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1125,7 +1193,7 @@
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

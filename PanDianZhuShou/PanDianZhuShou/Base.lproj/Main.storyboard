@@ -847,7 +847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duM-op-01m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="1105"/>
+            <point key="canvasLocation" x="255" y="1104"/>
         </scene>
         <!--设置-->
         <scene sceneID="aG9-fQ-GZ8">
