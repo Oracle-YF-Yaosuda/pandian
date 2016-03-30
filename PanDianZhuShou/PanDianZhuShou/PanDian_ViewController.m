@@ -11,10 +11,13 @@
 #import "TextFlowView.h"
 #import "Color+Hex.h"
 #import "DSKyeboard.h"
-#import <CoreBluetooth/CoreBluetooth.h>
+//#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface PanDian_ViewController ()<CBCentralManagerDelegate,CBPeripheralDelegate>
-{
+@interface PanDian_ViewController ()//<CBCentralManagerDelegate,CBPeripheralDelegate>
+{   //我哭了
+    int zuopan;
+    //这个啥也不是
+    NSMutableArray*hahapi;
     //已经不知道是 判断啥的了
     int paue;
     //判断是那刷新的
@@ -64,10 +67,12 @@
     UITextField *hao1;//批号
     UITextField *hwei1;//货位
     UITextField *biaohaoaa1;//编号
+    
+    int first;
 }
 @property (weak, nonatomic) IBOutlet UITextField *hhhwww;
 @property (weak, nonatomic) IBOutlet UIButton *xiugaianniu;
-@property (nonatomic, retain) CBCentralManager *centralManager;
+//@property (nonatomic, retain) CBCentralManager *centralManager;
 @end
 /**
  *  textfield 消失再出现的时候文本也会跟着消失;
@@ -80,7 +85,7 @@
     [self.view endEditing:YES];
     if (tiji==0) {
         [ WarningBox warningBoxModeText:@"请先查找药品" andView:self.view];
-        
+        [_sousuo becomeFirstResponder];
         
     }else{
         shu1.text=@"";
@@ -91,14 +96,25 @@
 }
 
 - (void)viewDidLoad {
-     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    // self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    
+    first=0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     
+                                             selector:@selector(keyboardwillShown:)
+     
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     
+                                             selector:@selector(keyboardWasShown:)
+     
+                                                 name:UIKeyboardDidShowNotification object:nil];
     
     
-    self.centralManager.delegate=self;
-    
-    
-    
-    
+    hahapi=[NSMutableArray array];
+    zuopan=0;
     woshixiangying=0;
     NSLog(@"%@",NSHomeDirectory());
     ji=0;
@@ -107,7 +123,7 @@
     paue=0;
     _hhhwww.layer.borderWidth=1;
     _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
-    _sousuo.hidden=YES;
+    
     _sousuo.delegate=self;
     _tableview.delegate=self;
     _tableview.dataSource=self;
@@ -128,59 +144,23 @@
     
     
 }
--(void)centralManagerDidUpdateState:(CBCentralManager *)central
-{
-    NSString * state = nil;
+
+-(void)keyboardWasShown:(NSNotification*)a{
     
-    switch ([central state])
-    {
-        case CBCentralManagerStateUnsupported:
-            state = @"平台/硬件不支持蓝牙低能量。";
-            break;
-        case CBCentralManagerStateUnauthorized:
-            state = @"这个应用程序未被授权使用蓝牙低能量。";
-            break;
-        case CBCentralManagerStatePoweredOff:
-            state = @"目前蓝牙驱动。";
-            break;
-        case CBCentralManagerStatePoweredOn:{
-            state = @"工作";
-            
-            [self scan];
-            
-        }
-            break;
-        case CBCentralManagerStateUnknown:
-        default:
-            ;
-    }
     
-    NSLog(@"Central manager state: %@", state);
+    
 }
-
--(void)scan{
+-(void)keyboardwillShown:(NSNotification*)aNotification{
+        UIWindow *hahahap=[[[UIApplication sharedApplication]windows] objectAtIndex:[[UIApplication sharedApplication]windows].count-1];
+    NSLog(@"--%@",[[UIApplication sharedApplication]windows]);
     
-    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-}
-
-
-
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI{
+    if (first==1)
+    [hahahap setAlpha:0];
     
-    NSLog(@"name:%@",peripheral);
     
-    if (!peripheral || !peripheral.name || ([peripheral.name isEqualToString:@""])) {
-        return;
-    }
-    
-    if (peripheral.state == CBPeripheralStateConnected) {
-       
-        NSLog(@"is connected");
+    else
         
-//        [_sousuo becomeFirstResponder];
-    }
-    
-    
+        [hahahap setAlpha:1];
 }
 
 -(void)tianjiapihao{
@@ -363,6 +343,7 @@
         woshixiangying=1;
         _tableview.contentOffset=CGPointMake(0, 0);
         qwer=0;
+        
         [_tableview reloadData];
         [self textfuzhi:liebiao[0]];
     }
@@ -371,6 +352,7 @@
     _sousuo.text=@"";
     [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun.png"] forState:UIControlStateNormal];
     [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun_press.png"] forState:UIControlStateHighlighted];
+    [_sousuo becomeFirstResponder];
     dabeijing.hidden=YES;
     jiemian1.hidden=YES;
 }
@@ -421,13 +403,13 @@
     
     
     
-    [_sousuo becomeFirstResponder];
+    
     [self textfuzhi:nil];
     
     liebiao=nil;
     qwer=1;
     [_tableview reloadData];
-    
+    [_sousuo becomeFirstResponder];
 }
 
 
@@ -698,21 +680,24 @@
     [_vvvv addSubview:te];
     [_vvvv addSubview:tete];
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    static NSString * identifer = @"identifer";
-    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-    static NSString *id1 =@"mycell2";
+        static NSString * identifer = @"identifer";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath ];
+    
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id1];
-    }
+ 
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        //cell = [tableView cellForRowAtIndexPath:indexPath];
+      
+          }
+ 
     NSArray *row1=[cell.contentView subviews];
     for (UIView *vv2 in row1) {
         [vv2 removeFromSuperview];
     }
-    
     UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(5, 10, 75, 20)];
     
     //[pop removeAllObjects];
@@ -721,7 +706,16 @@
         shuliang.text=@"药品数量:";
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 10, 300, 20)];
         [tt.layer setCornerRadius:5];
-        tt.delegate=self;
+        tt.layer.masksToBounds = YES;
+        
+        tt.layer.cornerRadius = 5;
+        
+        tt.layer.borderColor = [[UIColor whiteColor]CGColor];
+        
+        tt.delegate = self;
+        
+        tt.backgroundColor = [UIColor whiteColor];
+        
         tt.tag=10000+indexPath.section;
         
         if (liebiao!=nil&&w!=0) {
@@ -769,10 +763,10 @@
             tt.text=@"";
             if (paue==1) {
                 if ([[liebiao[indexPath.section] allKeys ] containsObject:@"shuliang"]) {
-                     tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section] objectForKey:@"shuliang"]];
+                    tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section] objectForKey:@"shuliang"]];
                 }
                 
-               
+                
             }
             
             if (woshixiangying==1) {
@@ -788,28 +782,19 @@
             if (dapi==0) {
                 [pop addObject:tt];
             }
-            NSLog(@"pop-------%@",pop);
+            
             if (zi==1) {
                 
                 tt.text =((UITextField*)pop[indexPath.section]).text;
-                //NSLog(@"%@",((UITextField*)pop[indexPath.section]).text);
+                
             }
             
         }
         //查询之后，tableview中的第一个textfield成为第一响应者；
-        
-       // NSLog(@"%lu    %lu",pop.count,liebiao.count);
         if (qwer==0) {
             [pop[0] becomeFirstResponder];
         }
-        
-        
-        
-        
-        // }
-        
-        
-        [cell addSubview:tt];
+        [cell.contentView addSubview:tt];
         
         
     }
@@ -821,14 +806,17 @@
         }else{
             pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
         }
-        [cell addSubview:pp];
+        [cell.contentView addSubview:pp];
     }
-    [cell addSubview:shuliang];
+    [cell.contentView addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    return cell;
-}
 
+         return cell;
+}
+-(void)flashScrollIndicators{
+    [self.tableview flashScrollIndicators];
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (liebiao==nil) {
         tableView.hidden=YES;
@@ -883,20 +871,28 @@
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"0"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"0"];
         
         [pop replaceObjectAtIndex:po withObject:xixi];
         qwer=1;
         [_tableview reloadData];
+        [pop[po] becomeFirstResponder];
     }
-    
+    }
 }
 
 - (IBAction)yi:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"1"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"1"];
         
@@ -904,12 +900,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)er:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"2"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"2"];
         
@@ -919,12 +919,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)san:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"3"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"3"];
         
@@ -932,12 +936,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)si:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"4"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"4"];
         
@@ -945,13 +953,17 @@
         qwer=1;
         [_tableview reloadData];
     }
-    
+    }
 }
 
 - (IBAction)wu:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"5"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"5"];
         
@@ -959,12 +971,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)liu:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"6"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"6"];
         
@@ -972,12 +988,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)qi:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"7"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"7"];
         
@@ -985,12 +1005,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)ba:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"8"];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"8"];
         
@@ -998,14 +1022,17 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)jiu:(id)sender {
    
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"9"];
     }else{
-        
+        if (zuopan==1) {
+            
+        }else{
+
         
         UITextField*xixi=pop[po];
         xixi.text=[xixi.text stringByAppendingString:@"9"];
@@ -1014,12 +1041,16 @@
         qwer=1;
         [_tableview reloadData];
     }
-}
+    }}
 
 - (IBAction)qingkong:(id)sender {
     if (oo==0) {
         _sousuo.text=@"";
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         xixi.text=@"";
         
@@ -1027,7 +1058,7 @@
         qwer=1;
         [_tableview reloadData];
     }
-    
+    }
 }
 
 - (IBAction)houtui:(id)sender {
@@ -1037,6 +1068,10 @@
         }else
             _sousuo.text= [_sousuo.text substringToIndex:[_sousuo.text length] - 1];
     }else{
+        if (zuopan==1) {
+            
+        }else{
+
         UITextField*xixi=pop[po];
         
         if ([xixi.text isEqual:@""]) {
@@ -1047,7 +1082,7 @@
         [pop replaceObjectAtIndex:po withObject:xixi];
         qwer=1;
         [_tableview reloadData];
-        
+        }
     }
 }
 
@@ -1211,7 +1246,7 @@
             //有点小问题。。。。。
             
             if (pop.count<liebiao.count) {
-                [WarningBox warningBoxModeText:@"请仔细检查数量问题!" andView:self.view];
+                [WarningBox warningBoxModeText:@"看看所有批号都填了吗?" andView:self.view];
             }
             else{
                 for (int i=0; i<liebiao.count; i++) {
@@ -1435,17 +1470,23 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField!=_sousuo) {
+        zuopan=0;
+        
+        first=10;
+        
         _sousuo.layer.borderWidth=0;
         oo=1;
+        _hhhwww.layer.borderWidth=1;
+        _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_mr_27.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_dk_04_10.png"] forState:UIControlStateHighlighted];
         //下边这句话憋了我一天半  十分重要；tableview里textfield取值
         po=(int)textField.tag-10000;
     }else{
+       
         
-        for (UITextField*ss in pop) {
-            ss.layer.borderWidth=0;
-        }
+        first=1;
+        
         _hhhwww.layer.borderWidth=1;
         _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
         oo=0;
@@ -1456,44 +1497,54 @@
     }
 
     if (textField==_hhhwww||textField==shu1||textField==liang1||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
+        zuopan=1;
+        for (UITextField*ss in pop) {
+            ss.layer.borderWidth=0;
+        }
         return YES;
     }
-    [self.view endEditing:YES];
+    //[self.view endEditing:YES];
     for (UITextField*ss in pop) {
         ss.layer.borderWidth=0;
     }
     textField.layer.borderColor=[[UIColor greenColor] CGColor];
     textField.layer.borderWidth=1.0;
-    
-    
-//    NSArray *aa=[self.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:@"180F"]]];
-//    
-//    NSLog(@"---%@",aa);
-    
+
     if (textField==_sousuo) {
-//        if ([aa count]>0) {
-            return YES;
-//        }else
-//            return NO;
+        return YES;
     }
-    
-    return NO;
+        return NO;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
         [self setupCustomedKeyboard:textField];
     }
+    textField.layer.borderWidth=1;
     
-    
-    
-    
-  
+    textField.layer.borderColor = [[UIColor greenColor]CGColor];
+   
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (textField!=_sousuo) {
+        
+    }else{
+    po=(int)textField.tag-10000;
+    textField.layer.borderWidth=1;
+    textField.layer.borderColor=[[UIColor redColor] CGColor];
+    }
     return YES;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    textField.layer.borderWidth=0;
+    if ([textField isFirstResponder]) {
+        
+        [textField resignFirstResponder];
+        
+        textField.layer.borderWidth=0;
+        
+        textField.layer.borderColor = [[UIColor whiteColor]CGColor];
+        
+        
+    }
     if (textField==_hhhwww||textField==shu1||textField==liang1||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
         textField.layer.borderWidth=1;
         textField.layer.borderColor=[[UIColor blackColor] CGColor];
@@ -1503,6 +1554,9 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    
+    
     return YES;
 }
 

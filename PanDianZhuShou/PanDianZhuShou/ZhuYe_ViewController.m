@@ -34,7 +34,7 @@
     NSFileManager*fm=[NSFileManager defaultManager];
     if ([fm fileExistsAtPath:path]) {
         
-        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"同步提示" message:@"同步全部库存将会清空本次盘点未提交的数据,确定要同步全部数据吗?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"提交提示" message:@"提交盘点结果将会清空已经盘点的数据,确定要提交盘点结果吗?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*action1=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
