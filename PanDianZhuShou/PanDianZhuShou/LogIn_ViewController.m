@@ -177,7 +177,7 @@
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:&err];
             
-            
+                NSLog(@"%@",dic);
             if ([[dic objectForKey:@"flag"] intValue]==1) {
                 [defaults setObject:_Password_Text.text forKey:@"pass"];
                 [defaults setObject:_Username_Text.text forKey:@"name"];
@@ -198,6 +198,7 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [WarningBox warningBoxHide:YES andView:self.view];
             [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
+            NSLog(@"%@",error);
             
         }];
     }

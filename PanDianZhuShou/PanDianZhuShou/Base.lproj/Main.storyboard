@@ -1221,7 +1221,7 @@
                                             <constraint firstAttribute="width" constant="35" id="MkI-wy-zB5"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信：18390907126" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCF-Mg-IIj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信：CSkanglin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCF-Mg-IIj">
                                         <rect key="frame" x="8" y="15" width="192" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="8ZC-IZ-mlC"/>
@@ -1261,7 +1261,7 @@
                                             <constraint firstAttribute="width" constant="35" id="vYe-e9-2MU"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q Q：1604200734" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFh-4V-7OK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Q Q：2941808616" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFh-4V-7OK">
                                         <rect key="frame" x="8" y="15" width="192" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="5Ll-Mc-mcF"/>

@@ -115,11 +115,11 @@
                 [defaultManager removeItemAtPath:path1 error:NULL];
                 
             }else{
-                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"message"]] andView:self.view];
+                [WarningBox warningBoxModeText:@"提交未成功，请重试..." andView:self.view];
             }
         }
         @catch (NSException * e) {
-            [WarningBox warningBoxModeText:@"请仔细检查你的数据!" andView:self.view];
+            [WarningBox warningBoxModeText:@"请仔细检查你的网络!" andView:self.view];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
@@ -215,7 +215,7 @@
                     }
                 }
                 if (hahaha==0) {
-                    [WarningBox warningBoxModeText:@"同步异步库存成功!" andView:self.view];
+                    [WarningBox warningBoxModeText:@"同步异常数据成功!" andView:self.view];
                 }else
                     [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
                 NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
@@ -229,7 +229,7 @@
             }
         }
         @catch (NSException * e) {
-            [WarningBox warningBoxModeText:@"请仔细检查你的数据!" andView:self.view];
+            [WarningBox warningBoxModeText:@"请仔细检查你的网络!" andView:self.view];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
@@ -280,7 +280,7 @@
         
         
         
-        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"同步提示" message:@"同步异步库存将会清空本次盘点未提交的数据,确定要同步异步数据吗?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"同步提示" message:@"同步异常数据将会清空本次盘点未提交的数据,确定要同步异步数据吗?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*action1=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
