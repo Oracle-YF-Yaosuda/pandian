@@ -34,7 +34,7 @@
     NSFileManager*fm=[NSFileManager defaultManager];
     if ([fm fileExistsAtPath:path]) {
         
-        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"提交提示" message:@"提交盘点结果将会清空已经盘点的数据,确定要提交盘点结果吗?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"提交提示" message:@"确定要提交盘点结果吗？" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*action1=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
@@ -55,6 +55,7 @@
 -(void)shang:(NSString*)path{
     //如果上传成功  需要删除本地所有plist文件
     [WarningBox warningBoxModeIndeterminate:@"提交数据中..." andView:self.view];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/plate",@"text/html",nil ];
     //接收数据类型
@@ -62,18 +63,17 @@
     //上传数据类型
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //请求地址
-    NSString *url = [NSString stringWithFormat:  @"%@upload",wangzhi ];
+    NSString *url = [NSString stringWithFormat:@"%@upload",wangzhi ];
     //入参
     NSMutableArray*shang1chuan=[[NSMutableArray alloc] init];
     NSArray*guodu=[NSArray arrayWithContentsOfFile:path];
+    
     for (NSDictionary*dd in guodu) {
         NSMutableDictionary*guo=[[NSMutableDictionary alloc] init];
         [guo setValue:[dd objectForKey:@"shuliang"] forKey:@"imp_quantity"];//数量
         [guo setValue:[dd objectForKey:@"imp_detail_id"] forKey:@"imp_detail_id"];//id
         [guo setValue:[dd objectForKey:@"date"] forKey:@"scrq"];//时间
         [guo setValue:[dd objectForKey:@"ypbh"] forKey:@"code"];//编号
-        
-        
         [guo setValue:[dd objectForKey:@"ph"] forKey:@"license_number"];//批号
         [guo setValue:[dd objectForKey:@"license_flag"] forKey:@"license_flag"];//数据标识
         [guo setValue:[dd objectForKey:@"hwh"] forKey:@"hwh"];//货位号
@@ -83,13 +83,17 @@
         [shang1chuan addObject:guo];
     }
     
+    NSLog(@"%lu",(unsigned long)shang1chuan.count);
+    
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
-    NSLog(@"%@",params);
+    // NSLog(@"%@",params);
+    
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];
         @try
         {
+            
             //返回数据转换json
             NSData *haha = responseObject;
             NSString *hehe =  [[NSString alloc]initWithData:haha encoding:NSUTF8StringEncoding];
@@ -104,15 +108,7 @@
             NSLog(@"%@",dic);
             if([[dic objectForKey:@"flag"] intValue]==1){
                 
-                [WarningBox warningBoxModeText:@"提交成功!" andView:self.view];
-                
-                //删除本地文件
-                NSFileManager *defaultManager;
-                defaultManager = [NSFileManager defaultManager];
-                NSString*path=[NSString stringWithFormat:@"%@/Documents/shangchuanshuju.plist",NSHomeDirectory()];
-                NSString*path1=[NSString stringWithFormat:@"%@/Documents/xiazaishuju.plist",NSHomeDirectory()];
-                [defaultManager removeItemAtPath:path error:NULL];
-                [defaultManager removeItemAtPath:path1 error:NULL];
+                [WarningBox warningBoxModeText:[NSString stringWithFormat:@"成功提交%lu 条数据，请等待后台处理",(unsigned long)shang1chuan.count ] andView:self.view];
                 
             }else{
                 [WarningBox warningBoxModeText:@"提交未成功，请重试..." andView:self.view];
@@ -123,7 +119,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [WarningBox warningBoxHide:YES andView:self.view];
-        [WarningBox warningBoxModeText:[NSString stringWithFormat:@"%@", error ] andView:self.view];
+        [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
         NSLog(@"%@",error);
         
     }];
@@ -131,12 +127,6 @@
     
 }
 -(void)tongbulea{
-    
-    
-    
-    
-    
-    
     
     if (hahaha==0) {
         [WarningBox warningBoxModeIndeterminate:@"异常数据同步中..." andView:self.view];
@@ -154,8 +144,6 @@
     NSString *url = [NSString stringWithFormat:  @"%@download",wangzhi ];
     //入参
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]] };
-    
-    
     
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {

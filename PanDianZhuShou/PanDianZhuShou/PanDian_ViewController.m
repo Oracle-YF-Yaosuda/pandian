@@ -7,15 +7,19 @@
 //
 
 #import "PanDian_ViewController.h"
+#import "ZhuYe_ViewController.h"
+#import "ZhuJiMaViewController.h"
 #import "WarningBox.h"
 #import "TextFlowView.h"
 #import "Color+Hex.h"
 #import "DSKyeboard.h"
+
+#import "ZhuJiMaViewController.h"
 #import <QuartzCore/QuartzCore.h>
-//#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface PanDian_ViewController ()//<CBCentralManagerDelegate,CBPeripheralDelegate>
 {   //我哭了
+    int chuanzhipanduan;
     int zuopan;
     //这个啥也不是
     NSMutableArray*hahapi;
@@ -98,7 +102,7 @@
 
 - (void)viewDidLoad {
     // self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    
+    chuanzhipanduan=0;
     first=0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -152,11 +156,11 @@
     
 }
 -(void)keyboardwillShown:(NSNotification*)aNotification{
-        UIWindow *hahahap=[[[UIApplication sharedApplication]windows] objectAtIndex:[[UIApplication sharedApplication]windows].count-1];
-   // NSLog(@"--%@",[[UIApplication sharedApplication]windows]);
+    UIWindow *hahahap=[[[UIApplication sharedApplication]windows] objectAtIndex:[[UIApplication sharedApplication]windows].count-1];
+    NSLog(@"--%@",[[UIApplication sharedApplication]windows]);
     
     if (first==1)
-    [hahahap setAlpha:0];
+        [hahahap setAlpha:0];
     
     
     else
@@ -327,7 +331,7 @@
 }
 -(void)cuncun{
     [jiemian1 endEditing:YES];
-    if ([tiaoma1.text isEqual:@""]||[liang1.text isEqual:@""]||[hwei1.text isEqual:@""]||[biaohaoaa1.text isEqual:@""]) {
+    if ([tiaoma1.text isEqual:@""]||[liang1.text isEqual:@""]||[biaohaoaa1.text isEqual:@""]) {
         [WarningBox warningBoxModeText:@"请填写完整信息!" andView:jiemian1];
     }else{
         NSMutableDictionary*dda=[[NSMutableDictionary alloc] init];
@@ -350,7 +354,7 @@
         woshixiangying=1;
         _tableview.contentOffset=CGPointMake(0, 0);
         qwer=0;
-        
+        self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
         [_tableview reloadData];
         [self textfuzhi:liebiao[0]];
     }
@@ -394,6 +398,7 @@
             paue=1;
             _tableview.contentOffset=CGPointMake(0, 0);
             qwer=1;
+            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
             [_tableview reloadData];
             
         }else{
@@ -408,15 +413,20 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    
-    
-    
-    [self textfuzhi:nil];
-    
-    liebiao=nil;
-    qwer=1;
-    [_tableview reloadData];
-    [_sousuo becomeFirstResponder];
+    if (chuanzhipanduan==1) {
+        chuanzhipanduan=0;
+        [self shuosou:_sousuo.text];
+        [_tableview reloadData];
+    }
+    else{
+        
+        [self textfuzhi:nil];
+        
+        liebiao=nil;
+        qwer=1;
+        [_tableview reloadData];
+        [_sousuo becomeFirstResponder];
+    }
 }
 
 
@@ -484,6 +494,7 @@
             NSLog(@"%@",liebiao);
             
             _tableview.contentOffset=CGPointMake(0, 0);
+            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
             [_tableview reloadData];
         }
         else{
@@ -495,8 +506,8 @@
                     q++;p++;
                     //下载文件里有
                     tiji=1;
-//                    [arr[i] setObject:@"0" forKey:@"new_added"];
-//                    [arr[i] setObject:@"0" forKey:@"hwh_flag"];
+                    //                    [arr[i] setObject:@"0" forKey:@"new_added"];
+                    //                    [arr[i] setObject:@"0" forKey:@"hwh_flag"];
                     [arr[i] setObject:@"0" forKey:@"license_flag"];
                     [liebiao addObject:arr[i]];
                     [self textfuzhi:arr[i]];
@@ -516,8 +527,8 @@
                             q++;p++;
                             //下载文件里有
                             tiji=1;
-//                            [xixi setValue:@"0" forKey:@"new_added"];
-//                            [xixi setValue:@"0" forKey:@"hwh_flag"];
+                            //                            [xixi setValue:@"0" forKey:@"new_added"];
+                            //                            [xixi setValue:@"0" forKey:@"hwh_flag"];
                             [xixi setValue:@"0" forKey:@"license_flag"];
                             [liebiao addObject:xixi];
                             [self textfuzhi:xixi];
@@ -525,9 +536,9 @@
                     }
                 }
             }
-
-            _tableview.contentOffset=CGPointMake(0, 0);
             
+            _tableview.contentOffset=CGPointMake(0, 0);
+            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
             [_tableview reloadData];
         }
         //搜索 上传文件  没有 符合  则p＝＝0
@@ -542,7 +553,7 @@
                     tiji=1;
                     [arr[i] setObject:@"0" forKey:@"new_added"];
                     [arr[i] setObject:@"0" forKey:@"hwh_flag"];
-
+                    
                     [arr[i] setObject:@"0" forKey:@"license_flag"];
                     [liebiao addObject:arr[i]];
                     [self textfuzhi:arr[i]];
@@ -571,11 +582,11 @@
                     }
                 }
             }
-
+            
             
             
             _tableview.contentOffset=CGPointMake(0, 0);
-            
+            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
             [_tableview reloadData];
         }
         [_sousuo resignFirstResponder];
@@ -587,7 +598,7 @@
 #pragma sss ok
             tiji=0;
             //添加aleter
-            UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"提示:" message:@"没有查询到能匹配次条码的药品,需要新增吗?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"提示:" message:@"没有查询到能匹配此条码的药品" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*action1=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 _sousuo.text=@"";[_sousuo becomeFirstResponder];
                 tiji=0;
@@ -596,7 +607,7 @@
                 
                 
             }];
-            UIAlertAction*action2=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction*action2=[UIAlertAction actionWithTitle:@"新增药品" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 liang1.text=@"";
                 hao1.text=@"";
                 hwei1.text=@"";
@@ -606,8 +617,18 @@
                 jiemian1.hidden=NO;
                 
             }];
-            [alert addAction:action1];
+            UIAlertAction*action3=[UIAlertAction actionWithTitle:@"助记码查询" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                ZhuJiMaViewController *c = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuji"];
+                
+                
+                [self.navigationController pushViewController:c animated:YES];
+                
+            }];
+            
             [alert addAction:action2];
+            [alert addAction:action3];
+            [alert addAction:action1];
+            
             [self presentViewController:alert animated:YES completion:^{
                 
             }];
@@ -616,6 +637,7 @@
             [self textfuzhi:nil];
             _tableview.contentOffset=CGPointMake(0, 0);
             oo=0;qwer=1;
+            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
             [_tableview reloadData];
         }
         
@@ -698,16 +720,16 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-        static NSString * identifer = @"identifer";
+    static NSString * identifer = @"identifer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     
     //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath ];
     
     if (cell == nil) {
- 
+        
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         //cell = [tableView cellForRowAtIndexPath:indexPath];
-      
+        
     }
     NSArray *row1=[cell.contentView subviews];
     for (UIView *vv2 in row1) {
@@ -719,12 +741,12 @@
         tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 6, 300, 20)];
         tt.placeholder = @"请输入数量";
         [tt.layer setCornerRadius:5];
-       
+        
         tt.layer.borderColor = [[UIColor grayColor]CGColor];
         
         tt.delegate = self;
         
-       
+        
         
         tt.tag=10000+indexPath.section;
         
@@ -805,7 +827,7 @@
             [pop[0] becomeFirstResponder];
             qwer=1;
         }
-      
+        
         [cell.contentView addSubview:tt];
         
         
@@ -823,8 +845,8 @@
     [cell.contentView addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-
-         return cell;
+    
+    return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (liebiao==nil) {
@@ -856,6 +878,10 @@
 - (IBAction)fanfanhui:(id)sender {
     UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"退出提示" message:@"确定要结束本次盘点吗?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*action1=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        ZhuJiMaViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
+        
+        
+        //[self.navigationController popToRootViewControllerAnimated:YES];
         [self.navigationController popViewControllerAnimated:YES];
     }];
     UIAlertAction*action2=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -868,7 +894,7 @@
         
     }];
 }
-
+#pragma mark - 键盘界面
 - (IBAction)ling:(id)sender {
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"0"];
@@ -877,12 +903,12 @@
             
         }else{
             
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"0"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"0"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
@@ -894,13 +920,13 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"1"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"1"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
@@ -914,15 +940,15 @@
             
         }
         else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"2"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        
-      //  NSLog(@"pop----%@",((UITextField*)pop[po]).text);
-        qwer=1;
-        [_tableview reloadData];
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"2"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            
+            //  NSLog(@"pop----%@",((UITextField*)pop[po]).text);
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
@@ -936,12 +962,12 @@
             
         }
         else{
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"3"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"3"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
@@ -955,13 +981,13 @@
             
         }
         else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"4"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"4"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
@@ -973,14 +999,14 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"5"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"5"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
+        }
     }}
 
 - (IBAction)liu:(id)sender {
@@ -990,14 +1016,14 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"6"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"6"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
+        }
     }}
 
 - (IBAction)qi:(id)sender {
@@ -1007,14 +1033,14 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"7"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"7"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
+        }
     }}
 
 - (IBAction)ba:(id)sender {
@@ -1024,33 +1050,33 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"8"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"8"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
+        }
     }}
 
 - (IBAction)jiu:(id)sender {
-   
+    
     if (oo==0) {
         _sousuo.text=[_sousuo.text stringByAppendingString:@"9"];
     }else{
         if (zuopan==1) {
             
         }else{
-
-        
-        UITextField*xixi=pop[po];
-        xixi.text=[xixi.text stringByAppendingString:@"9"];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            
+            UITextField*xixi=pop[po];
+            xixi.text=[xixi.text stringByAppendingString:@"9"];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;woshixiangying=1;
+            [_tableview reloadData];
+        }
     }}
 
 - (IBAction)qingkong:(id)sender {
@@ -1060,14 +1086,14 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        xixi.text=@"";
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
-    }
+            
+            UITextField*xixi=pop[po];
+            xixi.text=@"";
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
+        }
     }
 }
 
@@ -1081,46 +1107,56 @@
         if (zuopan==1) {
             
         }else{
-
-        UITextField*xixi=pop[po];
-        
-        if ([xixi.text isEqual:@""]) {
-            [WarningBox warningBoxModeText:@"已经没有了..." andView:self.view];
-        }else
-            xixi.text= [xixi.text substringToIndex:[xixi.text length] - 1];
-        
-        [pop replaceObjectAtIndex:po withObject:xixi];
-        qwer=1;
-        [_tableview reloadData];
+            
+            UITextField*xixi=pop[po];
+            
+            if ([xixi.text isEqual:@""]) {
+                [WarningBox warningBoxModeText:@"已经没有了..." andView:self.view];
+            }else
+                xixi.text= [xixi.text substringToIndex:[xixi.text length] - 1];
+            
+            [pop replaceObjectAtIndex:po withObject:xixi];
+            qwer=1;
+            [_tableview reloadData];
         }
     }
 }
 - (IBAction)shangyitiao:(id)sender {
-    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
-    NSFileManager*fm=[NSFileManager defaultManager];
-    if (![fm fileExistsAtPath:path1]){
-        [WarningBox warningBoxModeText:@"还没有添加数据哟..." andView:self.view];
-    }else{
-        ji=1;
-        tiao ++;
-        NSArray*arp=[NSArray arrayWithContentsOfFile:path1];
-        if ((int)arp.count - tiao < 0) {
-            [WarningBox warningBoxModeText:@"已经没有上一条了!" andView:self.view];
-        }else{
-            w=1;
-            _sousuo.text=[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ];
-            [self textfuzhi:arp[arp.count - tiao]];
-            liebiao=nil;
-            pop=nil;
-            NSArray*xixi=[[NSArray alloc] initWithObjects:arp[arp.count - tiao], nil];
-            pop=[NSMutableArray array];
-            liebiao=[NSMutableArray arrayWithArray:xixi];
-            [_sousuo resignFirstResponder];
-            ///////////////////-------------/////////////////
-            qwer=0;
-            [_tableview reloadData];
-        }
-    }
+    ZhuJiMaViewController *zhujima = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuji"];
+    [zhujima passValue:^(NSString *str) {
+        _sousuo.text=str;
+        chuanzhipanduan=1;
+        NSLog(@"%@",str);
+    }];
+    
+    [self.navigationController pushViewController:zhujima animated:YES];
+    //    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+    //    NSFileManager*fm=[NSFileManager defaultManager];
+    //    if (![fm fileExistsAtPath:path1]){
+    //        [WarningBox warningBoxModeText:@"还没有添加数据哟..." andView:self.view];
+    //    }else{
+    //        ji=1;
+    //        tiao ++;
+    //        NSArray*arp=[NSArray arrayWithContentsOfFile:path1];
+    //        if ((int)arp.count - tiao < 0) {
+    //            [WarningBox warningBoxModeText:@"已经没有上一条了!" andView:self.view];
+    //        }else{
+    //            w=1;
+    //            _sousuo.text=[NSString stringWithFormat:@"%@",[arp[arp.count - tiao] objectForKey:@"txm"] ];
+    //            [self textfuzhi:arp[arp.count - tiao]];
+    //            liebiao=nil;
+    //            pop=nil;
+    //            NSArray*xixi=[[NSArray alloc] initWithObjects:arp[arp.count - tiao], nil];
+    //            pop=[NSMutableArray array];
+    //            liebiao=[NSMutableArray arrayWithArray:xixi];
+    //            [_sousuo resignFirstResponder];
+    //            ///////////////////-------------/////////////////
+    //            qwer=0;
+    //            self.navigationItem.title=[NSString stringWithFormat:@"找到 %lu 条数据",liebiao.count];
+    //            [_tableview reloadData];
+    //        }
+    //    }
+    
 }
 - (IBAction)chaxun:(id)sender {
     if(oo==1){
@@ -1130,121 +1166,130 @@
         [self shuosou:_sousuo.text];
     }
 }
--(void)queding{
 
-        NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
-        
-        NSFileManager*fm=[NSFileManager defaultManager];
-        if (ji==1) {
-            UITextField*xixi=pop[0];
-            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-            NSTimeInterval a=[dat timeIntervalSince1970]*1000;
-            NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
-            [liebiao[0] setObject:timeSp forKey:@"date"];
-            [liebiao[0] setObject:xixi.text forKey:@"shuliang"];
-            NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-            int op=0;int liuliu=0;
-            NSMutableArray*pkq=[NSMutableArray array];
-            int wawawapi=0;
-            for (int kl=0; kl<arp.count-op; kl++) {
-                if ([[NSString stringWithFormat:@
-                                 "%@",[arp[kl] objectForKey:@"txm"]] isEqual:_sousuo.text]){
-                    liuliu++;
-                    if([pp.text isEqual:[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"ph" ]]]){
+-(void)queding{
+    
+    NSString *path1 =[NSHomeDirectory() stringByAppendingString:@"/Documents/shangchuanshuju.plist"];
+    
+    NSFileManager*fm=[NSFileManager defaultManager];
+    if (ji==1) {
+        UITextField*xixi=pop[0];
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+        NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
+        [liebiao[0] setObject:timeSp forKey:@"date"];
+        [liebiao[0] setObject:xixi.text forKey:@"shuliang"];
+        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+        int op=0;int liuliu=0;
+        NSMutableArray*pkq=[NSMutableArray array];
+        int wawawapi=0;
+        for (int kl=0; kl<arp.count-op; kl++) {
+            if ([[NSString stringWithFormat:@
+                  "%@",[arp[kl] objectForKey:@"txm"]] isEqual:_sousuo.text]){
+                liuliu++;
+                if([pp.text isEqual:[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"ph" ]]]){
+                    
+                    [arp removeObjectAtIndex:kl-op];
+                    op++;
+                    //NSLog(@"/*/*/*/*%ld",arp.count);
+                }
+            }
+            else{
+                if ([[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"txm"]]rangeOfString:@","].location!=NSNotFound) {
+                    [pkq addObject:arp[kl]];
+                    wawawapi=1;
+                }
+            }
+            
+        }
+        if (liuliu==0) {
+            int heh=0;
+            for (int lp=0; lp<pkq.count-heh; lp++) {
+                NSArray*uty=[[pkq[lp] objectForKey:@"txm"]componentsSeparatedByString:@","];
+                for (NSString *nono in uty) {
+                    if ([nono isEqual:_sousuo.text]) {
+                        if([pp.text isEqual:[NSString stringWithFormat:@"%@",[pkq[lp] objectForKey:@"ph" ]]]){
+                            
+                            [arp removeObjectAtIndex:lp-heh];
+                            heh++;
+                            //NSLog(@"/*/*/*/*%ld",arp.count);
+                        }
                         
-                        [arp removeObjectAtIndex:kl-op];
-                        op++;
-                        //NSLog(@"/*/*/*/*%ld",arp.count);
                     }
                 }
+            }
+        }
+        //添加新数据
+        
+        [arp addObject:liebiao[0]];
+        
+        //写入
+        tiji=0;
+        if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
+            for (NSDictionary*dd in liebiao) {
+                [dd setValue:@"0" forKey:@"hwh_flag"];
+            }
+            if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
+                for (int plc2=0; plc2<liebiao.count; plc2++) {
+                    [liebiao[plc2] setObject:@"1" forKey:@"hwh_flag"];
+                }
+            }
+            self.navigationItem.title=@"";
+            [arp writeToFile:path1 atomically:YES];
+        }
+        else{
+            NSMutableArray*pkq=[NSMutableArray array];
+            int wawawapi=0;
+            int wahaha=0;
+            for (NSDictionary*dd in arp) {
+                [dd setValue:@"0" forKey:@"hwh_flag"];
+                if ([dd objectForKey:@"new_added"]==nil) {
+                    [dd setValue:@"0" forKey:@"new_added"];
+                }
+                if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
+                    wahaha++;
+                    [dd setValue:@"1" forKey:@"hwh_flag"];
+                    [dd setValue:_hhhwww.text forKey:@"hwh"];
+                    
+                }
                 else{
-                    if ([[NSString stringWithFormat:@"%@",[arp[kl] objectForKey:@"txm"]]rangeOfString:@","].location!=NSNotFound) {
-                        [pkq addObject:arp[kl]];
+                    if ([[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
+                        [pkq addObject:dd];
                         wawawapi=1;
                     }
                 }
-
             }
-            if (liuliu==0) {
-                int heh=0;
-                for (int lp=0; lp<pkq.count-heh; lp++) {
-                    NSArray*uty=[[pkq[lp] objectForKey:@"txm"]componentsSeparatedByString:@","];
-                    for (NSString *nono in uty) {
-                        if ([nono isEqual:_sousuo.text]) {
-                            if([pp.text isEqual:[NSString stringWithFormat:@"%@",[pkq[lp] objectForKey:@"ph" ]]]){
-                                
-                                [arp removeObjectAtIndex:lp-heh];
-                                heh++;
-                                //NSLog(@"/*/*/*/*%ld",arp.count);
-                            }
-
-                        }
-                    }
-                }
-            }
-            //添加新数据
-            
-            [arp addObject:liebiao[0]];
-            
-            //写入
-            tiji=0;
-            if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
-                for (NSDictionary*dd in liebiao) {
-                    [dd setValue:@"0" forKey:@"hwh_flag"];
-                }
-                if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
-                    for (int plc2=0; plc2<liebiao.count; plc2++) {
-                        [liebiao[plc2] setObject:@"1" forKey:@"hwh_flag"];
-                    }
-                }
-                [arp writeToFile:path1 atomically:YES];
-                }
-            else{
-                NSMutableArray*pkq=[NSMutableArray array];
-                int wawawapi=0;
-                int wahaha=0;
-                for (NSDictionary*dd in arp) {
-                    [dd setValue:@"0" forKey:@"hwh_flag"];
-                    if ([dd objectForKey:@"new_added"]==nil) {
-                            [dd setValue:@"0" forKey:@"new_added"];
-                        }
-                    if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
-                        wahaha++;
-                        [dd setValue:@"1" forKey:@"hwh_flag"];
-                        [dd setValue:_hhhwww.text forKey:@"hwh"];
-                        
-                    }
-                    else{
-                        if ([[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
-                            [pkq addObject:dd];
-                            wawawapi=1;
-                        }
-                    }
-                }
-                if (wahaha==0) {
-                    for (NSDictionary*xixi in pkq) {
-                        NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
-                        for (NSString*nono in uty) {
-                            if ([nono isEqualToString:_sousuo.text]) {
-                    
-                                [xixi setValue:@"1" forKey:@"hwh_flag"];
-                                [xixi setValue:_hhhwww.text forKey:@"hwh"];
-                                if ([xixi objectForKey:@"new_added"]==nil) {
-                                    [xixi setValue:@"0" forKey:@"new_added"];
-                                }
-
+            if (wahaha==0) {
+                for (NSDictionary*xixi in pkq) {
+                    NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
+                    for (NSString*nono in uty) {
+                        if ([nono isEqualToString:_sousuo.text]) {
                             
+                            [xixi setValue:@"1" forKey:@"hwh_flag"];
+                            [xixi setValue:_hhhwww.text forKey:@"hwh"];
+                            if ([xixi objectForKey:@"new_added"]==nil) {
+                                [xixi setValue:@"0" forKey:@"new_added"];
                             }
+                            
+                            
                         }
                     }
                 }
-                [arp writeToFile:path1 atomically:YES];
             }
-            
-            [WarningBox warningBoxModeText:@"数据更改成功!" andView:self.view];
-            oo=3;
-            tiji=0;
-            [self viewWillAppear:YES];
+            self.navigationItem.title=@"";
+            [arp writeToFile:path1 atomically:YES];
+        }
+        
+        [WarningBox warningBoxModeText:@"数据更改成功!" andView:self.view];
+        oo=3;
+        tiji=0;
+        [self viewWillAppear:YES];
+    }
+    else{
+        
+        
+        if (pop.count<liebiao.count) {
+            [WarningBox warningBoxModeText:@"看看所有批号都填了吗?" andView:self.view];
         }
         else{
             tiao=0;
@@ -1252,54 +1297,142 @@
             //判断是否数量有空值
             int h=0;
             //有点小问题。。。。。
-            
-            if (pop.count<liebiao.count) {
-                [WarningBox warningBoxModeText:@"看看所有批号都填了吗?" andView:self.view];
+            for (int i=0; i<liebiao.count; i++) {
+                UITextField*xixi=pop[i];
+                if ([xixi.text isEqual:@""]) {
+                    h=1;
+                }
+                
             }
-            else{
-                for (int i=0; i<liebiao.count; i++) {
-                    UITextField*xixi=pop[i];
-                    if ([xixi.text isEqual:@""]) {
-                        h=1;
-                    }
+            //如果没有空值
+            if (h==0) {
+                
+                //先把数量添加到liebiao中；
+                for (int m=0; m<liebiao.count; m++) {
+                    UITextField*xixi=pop[m];
+                    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+                    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+                    NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
+                    [liebiao[m] setObject:timeSp forKey:@"date"];
+                    [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
                     
                 }
-                //如果没有空值
-                if (h==0) {
-                   
-                    //先把数量添加到liebiao中；
-                    for (int m=0; m<liebiao.count; m++) {
-                        UITextField*xixi=pop[m];
-                        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-                        NSTimeInterval a=[dat timeIntervalSince1970]*1000;
-                        NSString *timeSp = [NSString stringWithFormat:@"%.0f",a];
-                        [liebiao[m] setObject:timeSp forKey:@"date"];
-                        [liebiao[m] setObject:xixi.text forKey:@"shuliang"];
-                        
+                NSLog(@"%@",liebiao);
+                tiji=0;
+                if (![fm fileExistsAtPath:path1]) {
+                    if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
+                        for (NSDictionary*dd in liebiao) {
+                            [dd setValue:@"0" forKey:@"hwh_flag"];
+                            if ([dd objectForKey:@"new_added"]==nil) {
+                                [dd setValue:@"0" forKey:@"new_added"];
+                            }
+                        }
+                        if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
+                            for (int plc3=0; plc3<liebiao.count; plc3++) {
+                                [liebiao[plc3] setObject:@"1" forKey:@"hwh_flag"];
+                            }
+                        }
+                        self.navigationItem.title=@"";
+                        [liebiao writeToFile:path1 atomically:YES];
                     }
-                    NSLog(@"%@",liebiao);
+                    else{
+                        NSMutableArray*pkq=[NSMutableArray array];
+                        int wawawapi=0;
+                        int wahaha=0;
+                        
+                        for (NSDictionary*dd in liebiao) {
+                            if ([dd objectForKey:@"new_added"]==nil) {
+                                [dd setValue:@"0" forKey:@"new_added"];
+                            }
+                            if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
+                                wahaha++;
+                                [dd setValue:@"1" forKey:@"hwh_flag"];
+                                [dd setValue:_hhhwww.text forKey:@"hwh"];
+                            }else{
+                                if ([(NSString*)[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
+                                    [pkq addObject:dd];
+                                    wawawapi=1;
+                                }
+                            }
+                            
+                        }
+                        if (wahaha==0) {
+                            for (NSDictionary*xixi in pkq) {
+                                NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
+                                for (NSString*nono in uty) {
+                                    if ([nono isEqualToString:_sousuo.text]) {
+                                        [xixi setValue:@"1" forKey:@"hwh_flag"];
+                                        [xixi setValue:_hhhwww.text forKey:@"hwh"];
+                                    }
+                                }
+                            }
+                        }
+                    }self.navigationItem.title=@"";
+                    [liebiao writeToFile:path1 atomically:YES];
+                }
+                else{
                     tiji=0;
-                    if (![fm fileExistsAtPath:path1]) {
+                    if (w!=0) {
+                        //这里有一点点 漏洞     应该好使了
+                        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                        //删除文件中原有数据
+                        int op=0;
+                        NSMutableArray*pkq=[NSMutableArray array];
+                        int wawawapi=0;
+                        int wahaha=0;
+                        for (int kl=0; kl<arp.count+op; kl++) {
+                            if ([[NSString stringWithFormat:@
+                                  "%@",[arp[kl-op] objectForKey:@"txm"]] isEqual:_sousuo.text]){
+                                wahaha++;
+                                [arp removeObjectAtIndex:kl-op];
+                                op++;
+                                // NSLog(@"/*/*/*/*%ld",arp.count);
+                            }
+                            else{
+                                
+                                if (op==0) {
+                                    if ([(NSString*)[arp[kl] objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
+                                        [pkq addObject:arp[kl]];
+                                        wawawapi=1;
+                                    }
+                                    
+                                }
+                                
+                            }
+                        }
+                        if (wahaha==0) {
+                            int memede=0;
+                            for (int kl=0; kl<arp.count+memede; kl++) {
+                                NSArray*uty=[[arp[kl-memede] objectForKey:@"txm"] componentsSeparatedByString:@","];
+                                for (NSString*nono in uty) {
+                                    if ([nono isEqual:_sousuo.text]) {
+                                        [arp removeObjectAtIndex:kl-memede];
+                                        memede++;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        //添加新数据
+                        for (NSDictionary*d in liebiao) {
+                            [arp addObject:d];
+                        }
+                        //写入
                         if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
-                            for (NSDictionary*dd in liebiao) {
-                                [dd setValue:@"0" forKey:@"hwh_flag"];
-                                if ([dd objectForKey:@"new_added"]==nil) {
-                                    [dd setValue:@"0" forKey:@"new_added"];
-                                }
-                            }
                             if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
-                                for (int plc3=0; plc3<liebiao.count; plc3++) {
-                                    [liebiao[plc3] setObject:@"1" forKey:@"hwh_flag"];
+                                for (int plc=0; plc<liebiao.count; plc++) {
+                                    [liebiao[plc] setObject:@"1" forKey:@"hwh_flag"];
                                 }
                             }
-                            [liebiao writeToFile:path1 atomically:YES];
-                            }
+                            self.navigationItem.title=@"";
+                            [arp writeToFile:path1 atomically:YES];
+                        }
                         else{
                             NSMutableArray*pkq=[NSMutableArray array];
                             int wawawapi=0;
                             int wahaha=0;
                             
-                            for (NSDictionary*dd in liebiao) {
+                            for (NSDictionary*dd in arp) {
                                 if ([dd objectForKey:@"new_added"]==nil) {
                                     [dd setValue:@"0" forKey:@"new_added"];
                                 }
@@ -1313,8 +1446,7 @@
                                         wawawapi=1;
                                     }
                                 }
-
-                                }
+                            }
                             if (wahaha==0) {
                                 for (NSDictionary*xixi in pkq) {
                                     NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
@@ -1325,167 +1457,77 @@
                                         }
                                     }
                                 }
-                            }
+                                
+                            }self.navigationItem.title=@"";
+                            [arp writeToFile:path1 atomically:YES];
                         }
-                            [liebiao writeToFile:path1 atomically:YES];
-                }
-                else{
-                        tiji=0;
-                        if (w!=0) {
-                            //这里有一点点 漏洞     应该好使了
-                            NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-                            //删除文件中原有数据
-                            int op=0;
+                        
+                        
+                    }
+                    else{
+                        NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
+                        for (NSDictionary*d in liebiao) {
+                            [arp addObject:d];
+                        }
+                        if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
+                            if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
+                                for (int plc1=0; plc1<liebiao.count; plc1++) {
+                                    [liebiao[plc1] setObject:@"1" forKey:@"hwh_flag"];
+                                }
+                            }self.navigationItem.title=@"";
+                            [arp writeToFile:path1 atomically:YES];
+                        }
+                        
+                        else{
                             NSMutableArray*pkq=[NSMutableArray array];
                             int wawawapi=0;
                             int wahaha=0;
-                            for (int kl=0; kl<arp.count+op; kl++) {
-                                if ([[NSString stringWithFormat:@
-                                      "%@",[arp[kl-op] objectForKey:@"txm"]] isEqual:_sousuo.text]){
-                                    wahaha++;
-                                    [arp removeObjectAtIndex:kl-op];
-                                    op++;
-                                    // NSLog(@"/*/*/*/*%ld",arp.count);
+                            for (NSDictionary*dd in arp) {
+                                if ([dd objectForKey:@"new_added"]==nil) {
+                                    [dd setValue:@"0" forKey:@"new_added"];
+                                }
+                                if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
+                                    wahaha=1;
+                                    [dd setValue:@"1" forKey:@"hwh_flag"];
+                                    [dd setValue:_hhhwww.text forKey:@"hwh"];
                                 }
                                 else{
-                                    
-                                    if (op==0) {
-                                        if ([(NSString*)[arp[kl] objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
-                                        [pkq addObject:arp[kl]];
+                                    if ([(NSString*)[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
+                                        [pkq addObject:dd];
                                         wawawapi=1;
                                     }
-
-                                    }
-                                    
                                 }
                             }
                             if (wahaha==0) {
-                                int memede=0;
-                                for (int kl=0; kl<arp.count+memede; kl++) {
-                                    NSArray*uty=[[arp[kl-memede] objectForKey:@"txm"] componentsSeparatedByString:@","];
+                                for (NSDictionary*xixi in pkq) {
+                                    NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
                                     for (NSString*nono in uty) {
-                                        if ([nono isEqual:_sousuo.text]) {
-                                            [arp removeObjectAtIndex:kl-memede];
-                                            memede++;
-                                            
+                                        if ([nono isEqualToString:_sousuo.text]) {
+                                            [xixi setValue:@"1" forKey:@"hwh_flag"];
+                                            [xixi setValue:_hhhwww.text forKey:@"hwh"];
                                         }
                                     }
                                 }
-                            }
-                            //添加新数据
-                            for (NSDictionary*d in liebiao) {
-                                [arp addObject:d];
-                            }
-                            //写入
-                            if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
-                                if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
-                                    for (int plc=0; plc<liebiao.count; plc++) {
-                                        [liebiao[plc] setObject:@"1" forKey:@"hwh_flag"];
-                                    }
-                                }
-                                [arp writeToFile:path1 atomically:YES];
-                            }
-                            else{
-                                NSMutableArray*pkq=[NSMutableArray array];
-                                int wawawapi=0;
-                                int wahaha=0;
-
-                                for (NSDictionary*dd in arp) {
-                                    if ([dd objectForKey:@"new_added"]==nil) {
-                                        [dd setValue:@"0" forKey:@"new_added"];
-                                    }
-                                    if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
-                                        wahaha++;
-                                        [dd setValue:@"1" forKey:@"hwh_flag"];
-                                        [dd setValue:_hhhwww.text forKey:@"hwh"];
-                                    }else{
-                                        if ([(NSString*)[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
-                                            [pkq addObject:dd];
-                                            wawawapi=1;
-                                        }
-                                    }
-                                }
-                                if (wahaha==0) {
-                                    for (NSDictionary*xixi in pkq) {
-                                        NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
-                                        for (NSString*nono in uty) {
-                                            if ([nono isEqualToString:_sousuo.text]) {
-                                                [xixi setValue:@"1" forKey:@"hwh_flag"];
-                                                [xixi setValue:_hhhwww.text forKey:@"hwh"];
-                                            }
-                                        }
-                                    }
-
-                                }
-                                [arp writeToFile:path1 atomically:YES];
-                            }
-                            
-                            
+                                
+                            }self.navigationItem.title=@"";
+                            [arp writeToFile:path1 atomically:YES];
                         }
-                        else{
-                            NSMutableArray*arp=[NSMutableArray arrayWithContentsOfFile:path1];
-                            for (NSDictionary*d in liebiao) {
-                                [arp addObject:d];
-                            }
-                            if ([[liebiao[0] objectForKey:@"hwh"] isEqual:_hhhwww.text]) {
-                                if ([[liebiao[0] objectForKey:@"hwh_flag"] isEqual:@"1"]) {
-                                    for (int plc1=0; plc1<liebiao.count; plc1++) {
-                                        [liebiao[plc1] setObject:@"1" forKey:@"hwh_flag"];
-                                    }
-                                }
-                                [arp writeToFile:path1 atomically:YES];
-                            }
-                            
-                            else{
-                                NSMutableArray*pkq=[NSMutableArray array];
-                                int wawawapi=0;
-                                int wahaha=0;
-                                for (NSDictionary*dd in arp) {
-                                    if ([dd objectForKey:@"new_added"]==nil) {
-                                        [dd setValue:@"0" forKey:@"new_added"];
-                                    }
-                                    if ([[dd objectForKey:@"txm"] isEqual:_sousuo.text]) {
-                                        wahaha=1;
-                                        [dd setValue:@"1" forKey:@"hwh_flag"];
-                                        [dd setValue:_hhhwww.text forKey:@"hwh"];
-                                    }
-                                    else{
-                                        if ([(NSString*)[dd objectForKey:@"txm"] rangeOfString:@","].location!=NSNotFound) {
-                                            [pkq addObject:dd];
-                                            wawawapi=1;
-                                        }
-                                    }
-                                }
-                                if (wahaha==0) {
-                                    for (NSDictionary*xixi in pkq) {
-                                        NSArray*uty=[[xixi objectForKey:@"txm"] componentsSeparatedByString:@","];
-                                        for (NSString*nono in uty) {
-                                            if ([nono isEqualToString:_sousuo.text]) {
-                                                [xixi setValue:@"1" forKey:@"hwh_flag"];
-                                                [xixi setValue:_hhhwww.text forKey:@"hwh"];
-                                            }
-                                        }
-                                    }
-
-                                }
-                                [arp writeToFile:path1 atomically:YES];
-                            }
-                            
-                        }
+                        
                     }
-                    [tiaoshu addObject:_sousuo.text];
-                    [WarningBox warningBoxModeText:@"数据添加成功!" andView:self.view];
-                    oo=3;
-                    [self viewWillAppear:YES];
                 }
-                
-                else{
-                    [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
-                    zi=1;
-                }
+                [tiaoshu addObject:_sousuo.text];
+                [WarningBox warningBoxModeText:@"数据添加成功!" andView:self.view];
+                oo=3;
+                [self viewWillAppear:YES];
+            }
+            
+            else{
+                [WarningBox warningBoxModeText:@"请填完整数量信息!" andView:self.view];
+                zi=1;
             }
         }
     }
+}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -1530,7 +1572,7 @@
     textField.layer.borderWidth=1;
     
     textField.layer.borderColor = [[UIColor greenColor]CGColor];
-   
+    
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1||textField==shu1||textField==liang1) {
@@ -1542,9 +1584,9 @@
     return YES;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-   if (textField==hwei1||textField==biaohaoaa1) {
-       [self animateTextField: textField up: NO];
-   }
+    if (textField==hwei1||textField==biaohaoaa1) {
+        [self animateTextField: textField up: NO];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -1572,10 +1614,11 @@
         return YES;
     }
     
-
+    
     return YES;
 }
 
+//自定义键盘
 - (void)setupCustomedKeyboard:(UITextField*)tf {
     tf.inputView = [DSKyeboard keyboardWithTextField:tf];
     
@@ -1590,21 +1633,24 @@
 }
 - (void) animateTextField: (UITextField *) textField up: (BOOL) up
 {
-   
-        //设置视图上移的距离，单位像素
-        const int movementDistance = 150; // tweak as needed
-        //三目运算，判定是否需要上移视图或者不变
-        int movement = (up ? -movementDistance : movementDistance);
-        //设置动画的名字
-        [UIView beginAnimations: @"Animation" context: nil];
-        //设置动画的开始移动位置
-        [UIView setAnimationBeginsFromCurrentState: YES];
-        //设置动画的间隔时间
-        [UIView setAnimationDuration: 0.20];
-        //设置视图移动的位移
-        jiemian1.frame = CGRectOffset(jiemian1.frame, 0, movement);
-        //设置动画结束
-        [UIView commitAnimations];
+    
+    //设置视图上移的距离，单位像素
+    const int movementDistance = 150; // tweak as needed
+    //三目运算，判定是否需要上移视图或者不变
+    int movement = (up ? -movementDistance : movementDistance);
+    //设置动画的名字
+    [UIView beginAnimations: @"Animation" context: nil];
+    //设置动画的开始移动位置
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    //设置动画的间隔时间
+    [UIView setAnimationDuration: 0.20];
+    //设置视图移动的位移
+    jiemian1.frame = CGRectOffset(jiemian1.frame, 0, movement);
+    //设置动画结束
+    [UIView commitAnimations];
     
 }
+
+
+
 @end

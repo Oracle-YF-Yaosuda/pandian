@@ -6,5 +6,5 @@
 //  Copyright © 2016年 sk. All rights reserved.
 //
 
-#define  wangzhi @"http://www.yaopandian.com/stock/stockIntf/"
-//#define  wangzhi @"http://192.168.1.108:8080/platform/stockIntf/"
+#define  wangzhi @"http://www.yaopandian.com/stock/stockIntf/"//外网
+//#define  wangzhi @"http://192.168.1.121:9090/platform/stockIntf/"//小展

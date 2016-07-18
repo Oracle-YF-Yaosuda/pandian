@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PanDian_ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+   // PanDian_ViewController *pandian=[[PanDian_ViewController alloc] init];
+    //UINavigationController *nc=[[UINavigationController alloc]initWithRootViewController:pandian];
+    //self.window=[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //self.window.rootViewController=nc;
+    //[self.window makeKeyWindow];
     return YES;
 }
 

@@ -17,7 +17,9 @@ typedef void(^DSKeyboardLogin)(NSString *password);
 @property (nonatomic, copy) DSKeyboardLogin loginBlock;
 
 + (instancetype)keyboardWithTextField:(UITextField *)testField;
++(instancetype)keyboardWithSearchBar:(UISearchBar *)searchBar;
 - (instancetype)initWithTextField:(UITextField *)tf;
+-(instancetype)initWithSearchBar:(UISearchBar *)sb;
 - (void)dsKeyboardTextChangedOutputBlock:(DSKeyboardOutput)output loginBlock:(DSKeyboardLogin)login;
 - (void)clear;
 

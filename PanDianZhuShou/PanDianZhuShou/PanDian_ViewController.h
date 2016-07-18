@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZYCustomKeyboardTypeNumberView.h"
+#import "ZhuJiMaViewController.h"
 
 @interface PanDian_ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ZYCustomKeyboardTypeNumberViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *sousuo;

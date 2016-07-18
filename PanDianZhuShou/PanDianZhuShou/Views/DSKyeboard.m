@@ -20,6 +20,7 @@
     UIButton *_selectedBtn;
 }
 @property (nonatomic, strong) UITextField *tf;
+@property(nonatomic,strong)UISearchBar *sb;
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) DSNumberKeyboard *numberKB;
 @property (nonatomic, strong) DSLetterKeyboard *letterKB;
@@ -122,6 +123,19 @@ CGFloat _dsKeyboardToolH;
     if (self = [super init]) {
         self.tf = tf;
         self.frame = CGRectMake(0, 0, kScreenWidth, _dsKeyboardH);
+        [self editingData];
+    }
+    return self;
+}
+
++(instancetype)keyboardWithSearchBar:(UISearchBar *)sb{
+    return [[self alloc]initWithSearchBar:sb];
+}
+
+-(instancetype)initWithSearchBar:(UISearchBar *)sb{
+    if (self=[super init]) {
+        self.sb=sb;
+        self.frame=CGRectMake(0, 0, kScreenWidth, _dsKeyboardH);
         [self editingData];
     }
     return self;

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C8E9CFC1D2CF9CA00B4CF17 /* ZhuJiMaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E9CFB1D2CF9CA00B4CF17 /* ZhuJiMaViewController.m */; };
+		5C8E9CFF1D2CFBE700B4CF17 /* 助记码2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E9CFD1D2CFBE700B4CF17 /* 助记码2.png */; };
+		5C8E9D001D2CFBE700B4CF17 /* 助记码.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E9CFE1D2CFBE700B4CF17 /* 助记码.png */; };
+		5C8E9D291D33449300B4CF17 /* CFDynamicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E9D281D33449300B4CF17 /* CFDynamicLabel.m */; };
 		952FD6201C4E189000F74A1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD61F1C4E189000F74A1E /* main.m */; };
 		952FD6231C4E189000F74A1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD6221C4E189000F74A1E /* AppDelegate.m */; };
 		952FD6291C4E189000F74A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952FD6271C4E189000F74A1E /* Main.storyboard */; };
@@ -164,6 +168,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C8E9CFA1D2CF9CA00B4CF17 /* ZhuJiMaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuJiMaViewController.h; sourceTree = "<group>"; };
+		5C8E9CFB1D2CF9CA00B4CF17 /* ZhuJiMaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuJiMaViewController.m; sourceTree = "<group>"; };
+		5C8E9CFD1D2CFBE700B4CF17 /* 助记码2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "助记码2.png"; sourceTree = "<group>"; };
+		5C8E9CFE1D2CFBE700B4CF17 /* 助记码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "助记码.png"; sourceTree = "<group>"; };
+		5C8E9D271D33449300B4CF17 /* CFDynamicLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFDynamicLabel.h; sourceTree = "<group>"; };
+		5C8E9D281D33449300B4CF17 /* CFDynamicLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFDynamicLabel.m; sourceTree = "<group>"; };
 		952FD61B1C4E189000F74A1E /* PanDianZhuShou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanDianZhuShou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		952FD61F1C4E189000F74A1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		952FD6211C4E189000F74A1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -381,6 +391,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C8E9CF91D2CF6E500B4CF17 /* 助记码 */ = {
+			isa = PBXGroup;
+			children = (
+				5C8E9CFA1D2CF9CA00B4CF17 /* ZhuJiMaViewController.h */,
+				5C8E9CFB1D2CF9CA00B4CF17 /* ZhuJiMaViewController.m */,
+				5C8E9D271D33449300B4CF17 /* CFDynamicLabel.h */,
+				5C8E9D281D33449300B4CF17 /* CFDynamicLabel.m */,
+			);
+			name = "助记码";
+			sourceTree = "<group>";
+		};
 		952FD6121C4E189000F74A1E = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +498,7 @@
 		952FD6681C4E1D1D00F74A1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5C8E9CF91D2CF6E500B4CF17 /* 助记码 */,
 				952FD6691C4E1D5600F74A1E /* 登录 */,
 				952FD66C1C4E1D8E00F74A1E /* 设置 */,
 				952FD66B1C4E1D7200F74A1E /* 盘点 */,
@@ -578,6 +600,8 @@
 				952FD6841C4E1E2800F74A1E /* icon_02_07.png */,
 				952FD6851C4E1E2800F74A1E /* icon_02_11.png */,
 				952FD6861C4E1E2800F74A1E /* icon_02_14.png */,
+				5C8E9CFD1D2CFBE700B4CF17 /* 助记码2.png */,
+				5C8E9CFE1D2CFBE700B4CF17 /* 助记码.png */,
 				952FD6871C4E1E2800F74A1E /* icon_02_18.png */,
 				952FD6881C4E1E2800F74A1E /* icon_02_23.png */,
 				952FD6891C4E1E2800F74A1E /* icon_03.png */,
@@ -874,6 +898,7 @@
 			files = (
 				952FD6B91C4E1E2800F74A1E /* change2.png in Resources */,
 				9564E3C41C4F235900C39DE2 /* icon_02_03.png in Resources */,
+				5C8E9CFF1D2CFBE700B4CF17 /* 助记码2.png in Resources */,
 				952FD6C01C4E1E2800F74A1E /* ic_weixin.png in Resources */,
 				952FD6D11C4E1E2800F74A1E /* jianpan_chaxun_press.png in Resources */,
 				952FD79F1C4E218C00F74A1E /* jianpan_mr_09.png in Resources */,
@@ -923,6 +948,7 @@
 				952FD6CA1C4E1E2800F74A1E /* icon_02_23.png in Resources */,
 				952FD6F01C4E1E2800F74A1E /* pd_03.png in Resources */,
 				952FD79C1C4E218C00F74A1E /* jianpan_mr_05.png in Resources */,
+				5C8E9D001D2CFBE700B4CF17 /* 助记码.png in Resources */,
 				952FD7911C4E218C00F74A1E /* jianpan_dk_01_03_03.png in Resources */,
 				952FD6CF1C4E1E2800F74A1E /* input_over.9.png in Resources */,
 				952FD6EB1C4E1E2800F74A1E /* jianpan_mr_35.png in Resources */,
@@ -991,6 +1017,7 @@
 				952FD7191C4E204B00F74A1E /* AFHTTPRequestOperation.m in Sources */,
 				952FD6531C4E197C00F74A1E /* LogIn_ViewController.m in Sources */,
 				952FD6231C4E189000F74A1E /* AppDelegate.m in Sources */,
+				5C8E9D291D33449300B4CF17 /* CFDynamicLabel.m in Sources */,
 				952FD7441C4E205E00F74A1E /* SBJsonStreamParserState.m in Sources */,
 				952FD7211C4E204B00F74A1E /* AFURLSessionManager.m in Sources */,
 				952FD7231C4E204B00F74A1E /* DownloadTask.m in Sources */,
@@ -1027,6 +1054,7 @@
 				D202BCD81C55EFB20047EC12 /* TextFlowView.m in Sources */,
 				952FD65F1C4E1AF000F74A1E /* ShuoMing_ViewController.m in Sources */,
 				952FD7431C4E205E00F74A1E /* SBJsonStreamParserAdapter.m in Sources */,
+				5C8E9CFC1D2CF9CA00B4CF17 /* ZhuJiMaViewController.m in Sources */,
 				952FD7421C4E205E00F74A1E /* SBJsonStreamParserAccumulator.m in Sources */,
 				952FD7241C4E204B00F74A1E /* Networking.m in Sources */,
 				D25B163C1CA8E27800BCECE4 /* DSKyeboard.m in Sources */,
