@@ -859,7 +859,7 @@
 				TargetAttributes = {
 					952FD61A1C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = KBRTKNG36Q;
+						DevelopmentTeam = GP8BUACAG4;
 					};
 					952FD6331C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
@@ -1204,7 +1204,7 @@
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1221,7 +1221,7 @@
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

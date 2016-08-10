@@ -83,7 +83,7 @@
         [shang1chuan addObject:guo];
     }
     
-    NSLog(@"%lu",(unsigned long)shang1chuan.count);
+    NSLog(@"%@",shang1chuan);
     
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
     // NSLog(@"%@",params);
