@@ -105,17 +105,7 @@
     chuanzhipanduan=0;
     first=0;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardwillShown:)
-     
-                                                 name:UIKeyboardWillShowNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardWasShown:)
-     
-                                                 name:UIKeyboardDidShowNotification object:nil];
     
     
     hahapi=[NSMutableArray array];
@@ -412,6 +402,19 @@
     jiemian.hidden=YES;
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     
+                                             selector:@selector(keyboardwillShown:)
+     
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     
+                                             selector:@selector(keyboardWasShown:)
+     
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    
     
     if (chuanzhipanduan==1) {
         chuanzhipanduan=0;

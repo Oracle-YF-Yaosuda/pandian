@@ -53,7 +53,7 @@
     _mytf.layer.cornerRadius=8.0f;
     _mytf.layer.borderColor=[[UIColor grayColor]CGColor];
     _mytf.clearButtonMode = UITextFieldViewModeNever;
-
+   [_mytf becomeFirstResponder];
     
     self.myTabel=[[UITableView alloc] initWithFrame:CGRectMake(0, 110, self.view.frame.size.width, self.view.frame.size.height-110)];
     self.myTabel.delegate=self;
@@ -140,8 +140,6 @@
         [tf resignFirstResponder];
     }];
 }
-
-
 #pragma mark - tableview
 
 // 数据源方法,特例,重要~ 一共有多少个分组 (默认就是返回1)
@@ -202,7 +200,7 @@
             lll1.text=@"药品名称：";
             
             ll1=[[CFDynamicLabel alloc] initWithFrame:CGRectMake(100, 15, CGRectGetWidth(self.view.frame)-100,44)];
-            ll1.speed=0.15;
+            ll1.speed=0.5;
             ll1.backgroundColor=[UIColor clearColor];
             ll1.text= [array[indexPath.section] objectForKey:@"ypmc"];
             ll1.font=[UIFont boldSystemFontOfSize:25];
@@ -231,7 +229,7 @@
             lll2.text=@"药品编号：";
             
             ll2=[[CFDynamicLabel alloc] initWithFrame:CGRectMake(100, 22, CGRectGetWidth(self.view.frame)-100,44)];
-            ll2.speed=0.15;
+            ll2.speed=0.5;
             ll2.backgroundColor=[UIColor clearColor];
             ll2.text= [array[indexPath.section] objectForKey:@"ypbh"];
             
@@ -259,7 +257,7 @@
             lll3.text=@"批      号：";
             
             ll3=[[CFDynamicLabel alloc] initWithFrame:CGRectMake(100, 22, CGRectGetWidth(self.view.frame)-100,44)];
-            ll3.speed=0.15;
+            ll3.speed=0.5;
             ll3.backgroundColor=[UIColor clearColor];
             ll3.text= [array[indexPath.section] objectForKey:@"ph"];
             
@@ -287,7 +285,7 @@
             lll4.text=@"生产厂家：";
             
             ll4=[[CFDynamicLabel alloc] initWithFrame:CGRectMake(100, 22, CGRectGetWidth(self.view.frame)-100,44)];
-            ll4.speed=0.15;
+            ll4.speed=0.5;
             ll4.backgroundColor=[UIColor clearColor];
             ll4.text= [array[indexPath.section] objectForKey:@"sccj"];
             ll4.font=[UIFont boldSystemFontOfSize:17];
@@ -316,7 +314,7 @@
             lll5.text=@"药品规格：";
             
             ll5=[[CFDynamicLabel alloc] initWithFrame:CGRectMake(100, 22, CGRectGetWidth(self.view.frame)-100,44)];
-            ll5.speed=0.15;
+            ll5.speed=0.5;
             ll5.backgroundColor=[UIColor clearColor];
             ll5.text= [array[indexPath.section] objectForKey:@"gg"];
             
