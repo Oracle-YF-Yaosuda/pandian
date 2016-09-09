@@ -48,13 +48,6 @@
                                     <constraint firstAttribute="height" constant="60" id="oYE-2G-e4E"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-wp-azN">
-                                <rect key="frame" x="255" y="60" width="90" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="TaR-mJ-P81"/>
-                                    <constraint firstAttribute="height" constant="90" id="hjw-jY-uZt"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nk-7k-SQT">
                                 <rect key="frame" x="50" y="297" width="15" height="19"/>
                                 <constraints>
@@ -87,6 +80,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_01_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-wp-azN">
+                                <rect key="frame" x="255" y="60" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="TaR-mJ-P81"/>
+                                    <constraint firstAttribute="height" constant="90" id="hjw-jY-uZt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

@@ -358,8 +358,7 @@
             
             self.passValueBlock(txm);
         }
-        PanDian_ViewController *tt=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"pandian"];
-        
+      
         [self.navigationController popViewControllerAnimated:YES];
 
     }
