@@ -424,7 +424,7 @@
 
 - (IBAction)fanhui:(id)sender {
     
-    PanDian_ViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"pandian"];
+//    PanDian_ViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"pandian"];
     
     [self.navigationController popViewControllerAnimated:YES];
 

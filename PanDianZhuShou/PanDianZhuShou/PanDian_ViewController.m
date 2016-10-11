@@ -118,8 +118,9 @@
     paue=0;
     _hhhwww.layer.borderWidth=1;
     _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
-    
+ 
     _sousuo.delegate=self;
+   
     _tableview.delegate=self;
     _tableview.dataSource=self;
     [_xiugaianniu.layer setCornerRadius:5];
@@ -1550,6 +1551,7 @@
     }
     else{
         first=1;
+        _sousuo.inputView=[[UIView alloc]initWithFrame:CGRectZero];
         _hhhwww.layer.borderWidth=1;
         _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
         oo=0;
@@ -1566,16 +1568,16 @@
     return YES;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
-        [self setupCustomedKeyboard:textField];
-    }
+    
     if (textField==hwei1||textField==biaohaoaa1) {
         [self animateTextField: textField up: YES];
     }
     textField.layer.borderWidth=1;
     
     textField.layer.borderColor = [[UIColor greenColor]CGColor];
-    
+    if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
+        [self setupCustomedKeyboard:textField];
+    }
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1||textField==shu1||textField==liang1) {
@@ -1601,7 +1603,7 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     
-    [(DSKyeboard *)textField.inputView clear];
+//    [(DSKyeboard *)textField.inputView clear];
     
     return YES;
 }
