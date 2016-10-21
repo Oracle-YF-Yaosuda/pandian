@@ -28,6 +28,7 @@
     defaults=[NSUserDefaults standardUserDefaults];
     _Password_Text.delegate=self;
     _Username_Text.delegate=self;
+    _Username_Text.autocorrectionType = UITextAutocorrectionTypeNo;
     if ([defaults objectForKey:@"name"]==nil) {
         
     }else{
