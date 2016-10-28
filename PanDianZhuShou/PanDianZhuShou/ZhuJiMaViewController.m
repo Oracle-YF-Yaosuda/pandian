@@ -14,47 +14,32 @@
 #import "DSKyeboard.h"
 
 
-@interface ZhuJiMaViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchDisplayDelegate,UISearchBarDelegate,UITextFieldDelegate>
+@interface ZhuJiMaViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
-    
     NSMutableArray *array;
     
     NSMutableArray *kong;
     
     int flog;
-    
-    int first;
-    
 }
 
 @end
 
 @implementation ZhuJiMaViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    _mytf.text=@"";
+    [_mytf becomeFirstResponder];
+}
+-(void)textdelegate{
+    _mytf.delegate=self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     flog=2;
-    first=0;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardwillShown:)
-     
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardWasShown:)
-     
-                                                 name:UIKeyboardDidShowNotification object:nil];
-    
+    [self textdelegate];
 
-    _mytf.delegate=self;
-    _mytf.layer.borderWidth=1.0f;
-    _mytf.layer.cornerRadius=8.0f;
-    _mytf.layer.borderColor=[[UIColor grayColor]CGColor];
-    _mytf.clearButtonMode = UITextFieldViewModeNever;
-   [_mytf becomeFirstResponder];
-    
     self.myTabel=[[UITableView alloc] initWithFrame:CGRectMake(0, 110, self.view.frame.size.width, self.view.frame.size.height-110)];
     self.myTabel.delegate=self;
     self.myTabel.dataSource=self;
@@ -68,77 +53,58 @@
     for (int i=0; i<self.arr.count; i++) {
         p=[self.arr[i] objectForKey:@"pzwh"];
     }
+    NSLog(@"%@",p);
     flog=2;
     
     // Do any additional setup after loading the view.
 }
-
-#pragma mark - keyboard
-
--(void)keyboardwillShown:(NSNotification*)aNotification{
-    
-    UIWindow *hahahap=[[[UIApplication sharedApplication]windows] objectAtIndex:[[UIApplication sharedApplication]windows].count-1];
-    
-    if (first==1)
-        
-        [hahahap setAlpha:0];
-    
-    else
-        
-        [hahahap setAlpha:1];
-
-}
--(void)keyboardWasShown:(NSNotification*)a
-{
-    
-}
-
 //自定义键盘
-- (void)setupCustomedKeyboard:(UITextField*)tf {
+- (void)zidingyijianpan:(UITextField*)tf {
     
     tf.inputView = [DSKyeboard keyboardWithTextField:tf];
     
     [(DSKyeboard *)tf.inputView dsKeyboardTextChangedOutputBlock:^(NSString *fakePassword) {
-        
         tf.text = fakePassword;
-        
-        array=[[NSMutableArray alloc] initWithCapacity:0];
-        
-        NSString *str =[tf.text uppercaseString];
-        
-        for (int i = 0; i<self.arr.count; i++) {
-            
-            NSString *str1=[self.arr[i] objectForKey:@"pzwh"];
-            
-            NSString *str2=[str1 uppercaseString];
-
-            //比较字符串 只从前面开始比较
-            if (str2.length<str.length) {
-                
-            }else{
-                    NSString *str3=[str2 substringToIndex:str.length];
-
-                if ([str isEqualToString:@""]) {
-                    
-                }else{
-                    if ([str isEqualToString:str3]) {
-                        
-                        [array addObject:self.arr[i]];
-                    }                
-                }
-            }
-        }
-        if ([array count]==0) {
-            flog=2;
-        }else{
-            flog=1;
-        }
-      
-        
-        [self.myTabel reloadData];
+        [self sousuo:tf.text];
     } loginBlock:^(NSString *password) {
         [tf resignFirstResponder];
     }];
+}
+-(void)sousuo:(NSString*)kkk{
+    array=[[NSMutableArray alloc] initWithCapacity:0];
+    
+    NSString *str =[kkk uppercaseString];
+    
+    for (int i = 0; i<self.arr.count; i++) {
+        
+        NSString *str1=[self.arr[i] objectForKey:@"pzwh"];
+        
+        NSString *str2=[str1 uppercaseString];
+        
+        //比较字符串 只从前面开始比较
+        if (str2.length<str.length) {
+            
+        }else{
+            NSString *str3=[str2 substringToIndex:str.length];
+            
+            if ([str isEqualToString:@""]) {
+                
+            }else{
+                if ([str isEqualToString:str3]) {
+                    
+                    [array addObject:self.arr[i]];
+                }
+            }
+        }
+    }
+    if ([array count]==0) {
+        flog=2;
+    }else{
+        flog=1;
+    }
+    
+    
+    [self.myTabel reloadData];
 }
 #pragma mark - tableview
 
@@ -319,7 +285,7 @@
             ll5.text= [array[indexPath.section] objectForKey:@"gg"];
             
             hehe=[[UIView alloc] initWithFrame:CGRectMake(0, 45, CGRectGetWidth(self.view.frame), 2)];
-            hehe.backgroundColor=[UIColor greenColor];
+            hehe.backgroundColor=[UIColor colorWithHexString:@"34C083"];
         }
     }
     
@@ -374,36 +340,19 @@
 
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
+
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField==_mytf) {
-        
-        [self setupCustomedKeyboard:textField];
-        textField.layer.borderWidth=1;
-        textField.layer.borderColor = [[UIColor greenColor]CGColor];
-    }
+    textField.layer.borderColor= [[UIColor colorWithHexString:@"34C083"] CGColor];
+    textField.layer.cornerRadius=5;
+    textField.layer.borderWidth=1.0;
+    [self zidingyijianpan:textField];
 }
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if (textField==_mytf) {
-    
-    textField.layer.borderColor= [[UIColor greenColor] CGColor];
-    textField.layer.borderWidth=1.0f;
-    textField.layer.cornerRadius=8.0f;
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    
-    [(DSKyeboard *)textField.inputView clear];
-    
-    return YES;
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    _mytf.layer.borderColor = [[UIColor blackColor]CGColor];
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {

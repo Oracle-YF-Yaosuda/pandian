@@ -86,7 +86,7 @@
     NSLog(@"%@",shang1chuan);
     
     NSDictionary *params = @{@"username":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]],@"password":[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"pass"]],@"data":shang1chuan};
-    // NSLog(@"%@",params);
+     NSLog(@"%@",params);
     
     //post请求
     [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -175,12 +175,13 @@
                 for (int i=0; i<[[dic objectForKey:@"data"] count]; i++) {
                     if ([[[dic objectForKey:@"data"][i] objectForKey:@"gg"]isEqual:[NSNull null]]) {
                         [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"gg"];
-                        
-                        
                     }
-                    if ([[[dic objectForKey:@"data"][i] objectForKey:@"mnemonic_code"]isEqual:[NSNull null]]) {
-                        [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"mnemonic_code"];
-                    }
+                    
+          //新加的字段；
+//                    if ([[[dic objectForKey:@"data"][i] objectForKey:@"mnemonic_code"]isEqual:[NSNull null]]) {
+//                        [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"mnemonic_code"];
+//                    }
+          //－＊－＊－＊－＊-
                     if ([[[dic objectForKey:@"data"][i] objectForKey:@"hwh"]isEqual:[NSNull null]]) {
                         [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"hwh"];
                     }

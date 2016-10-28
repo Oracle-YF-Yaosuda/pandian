@@ -141,23 +141,7 @@
     
 }
 
--(void)keyboardWasShown:(NSNotification*)a{
-    
-    
-    
-}
--(void)keyboardwillShown:(NSNotification*)aNotification{
-    UIWindow *hahahap=[[[UIApplication sharedApplication]windows] objectAtIndex:[[UIApplication sharedApplication]windows].count-1];
-    NSLog(@"--%@",[[UIApplication sharedApplication]windows]);
-    
-    if (first==1)
-        [hahahap setAlpha:0];
-    
-    
-    else
-        
-        [hahahap setAlpha:1];
-}
+
 
 -(void)tianjiapihao{
     float width = [[UIScreen mainScreen] bounds].size.width;
@@ -403,19 +387,6 @@
     jiemian.hidden=YES;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardwillShown:)
-     
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-     
-                                             selector:@selector(keyboardWasShown:)
-     
-                                                 name:UIKeyboardDidShowNotification object:nil];
-    
-    
     
     if (chuanzhipanduan==1) {
         chuanzhipanduan=0;
@@ -645,8 +616,6 @@
             [_tableview reloadData];
         }
         
-        
-        
     }
 }
 //这个不用看 跟逻辑没啥关系
@@ -726,14 +695,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * identifer = @"identifer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath ];
-    
     if (cell == nil) {
-        
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-        //cell = [tableView cellForRowAtIndexPath:indexPath];
-        
     }
     NSArray *row1=[cell.contentView subviews];
     for (UIView *vv2 in row1) {
@@ -742,7 +705,7 @@
     UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(5, 5, 75, 20)];
     if (indexPath.row==0) {
         shuliang.text=@"药品数量:";
-        tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 6, 300, 20)];
+        tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 6, self.view.frame.size.width-85-5, 20)];
         tt.placeholder = @"请输入数量";
         [tt.layer setCornerRadius:5];
         
@@ -849,7 +812,6 @@
     [cell.contentView addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
     return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -882,7 +844,7 @@
 - (IBAction)fanfanhui:(id)sender {
     UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"退出提示" message:@"确定要结束本次盘点吗?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*action1=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        ZhuJiMaViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
+//        ZhuJiMaViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
         
         
         //[self.navigationController popToRootViewControllerAnimated:YES];
@@ -1535,6 +1497,7 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
     if (textField!=_sousuo) {
         zuopan=0;
         
@@ -1562,9 +1525,11 @@
     if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1||textField==shu1||textField==liang1) {
         first=10;
         zuopan=1;
-    }
-    textField.layer.borderColor=[[UIColor greenColor] CGColor];
+    }else
+        textField.inputView=[[UIView alloc] init];
+    textField.layer.borderColor=[[UIColor colorWithHexString:@"34C083"] CGColor];
     textField.layer.borderWidth=1.0;
+    
     return YES;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -1574,7 +1539,7 @@
     }
     textField.layer.borderWidth=1;
     
-    textField.layer.borderColor = [[UIColor greenColor]CGColor];
+    textField.layer.borderColor = [[UIColor colorWithHexString:@"34C083"]CGColor];
     if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1) {
         [self setupCustomedKeyboard:textField];
     }
