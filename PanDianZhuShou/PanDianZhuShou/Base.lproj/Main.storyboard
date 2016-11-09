@@ -465,114 +465,99 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-m1-h1M">
-                                <frame key="frameInset" minY="400" width="600" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-m1-h1M">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCY-Iv-yAz">
-                                        <frame key="frameInset" minX="5" minY="5" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCY-Iv-yAz">
                                         <state key="normal" backgroundImage="jianpan_mr_03.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_02_03_03_03.png"/>
                                         <connections>
                                             <action selector="qi:" destination="CaW-2O-whF" eventType="touchUpInside" id="6Rp-t4-n2S"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrJ-p1-5hX">
-                                        <frame key="frameInset" minX="243" minY="5" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrJ-p1-5hX">
                                         <state key="normal" backgroundImage="jianpan_mr_07.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_mr_09.png"/>
                                         <connections>
                                             <action selector="jiu:" destination="CaW-2O-whF" eventType="touchUpInside" id="K3Q-z1-tNf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwL-Ck-Abj">
-                                        <frame key="frameInset" minX="362" minY="5" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwL-Ck-Abj">
                                         <state key="normal" backgroundImage="jianpan_mr_36.png"/>
                                         <connections>
                                             <action selector="qingkong:" destination="CaW-2O-whF" eventType="touchUpInside" id="inC-Zf-zrr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kK2-Oo-e8L">
-                                        <frame key="frameInset" minX="481" minY="5" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kK2-Oo-e8L">
                                         <state key="normal" backgroundImage="助记码.png"/>
                                         <state key="highlighted" backgroundImage="助记码2.png"/>
                                         <connections>
                                             <action selector="shangyitiao:" destination="CaW-2O-whF" eventType="touchUpInside" id="mxm-sV-yOE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFv-Nx-pNA">
-                                        <frame key="frameInset" minX="5" minY="70" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFv-Nx-pNA">
                                         <state key="normal" backgroundImage="jianpan_mr_19.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_01_03_03.png"/>
                                         <connections>
                                             <action selector="si:" destination="CaW-2O-whF" eventType="touchUpInside" id="MfA-ip-vds"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltg-n5-GXD">
-                                        <frame key="frameInset" minX="5" minY="135" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltg-n5-GXD">
                                         <state key="normal" backgroundImage="jianpan_mr_33.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_03.png"/>
                                         <connections>
                                             <action selector="yi:" destination="CaW-2O-whF" eventType="touchUpInside" id="wRr-xe-nKy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80t-nr-5Tp">
-                                        <frame key="frameInset" minX="124" minY="70" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80t-nr-5Tp">
                                         <state key="normal" backgroundImage="jianpan_mr_21.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_02_03.png"/>
                                         <connections>
                                             <action selector="wu:" destination="CaW-2O-whF" eventType="touchUpInside" id="dex-Dl-0S7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iub-67-0ef">
-                                        <frame key="frameInset" minX="124" minY="135" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iub-67-0ef">
                                         <state key="normal" backgroundImage="jianpan_mr_34.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_01_03.png"/>
                                         <connections>
                                             <action selector="er:" destination="CaW-2O-whF" eventType="touchUpInside" id="zTc-6P-4JS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtV-ma-UiD">
-                                        <frame key="frameInset" minX="243" minY="70" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtV-ma-UiD">
                                         <state key="normal" backgroundImage="jianpan_mr_23.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_02_03_03.png"/>
                                         <connections>
                                             <action selector="liu:" destination="CaW-2O-whF" eventType="touchUpInside" id="WZM-z3-17P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHw-EQ-lrE">
-                                        <frame key="frameInset" minX="243" minY="135" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHw-EQ-lrE">
                                         <state key="normal" backgroundImage="jianpan_mr_35.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_02.png"/>
                                         <connections>
                                             <action selector="san:" destination="CaW-2O-whF" eventType="touchUpInside" id="TgA-YD-KNX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tn-d3-moO">
-                                        <frame key="frameInset" minX="362" minY="70" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tn-d3-moO">
                                         <state key="normal" backgroundImage="jianpan_mr_25.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_04_03.png"/>
                                         <connections>
                                             <action selector="ling:" destination="CaW-2O-whF" eventType="touchUpInside" id="jyB-mo-dYt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-hR-dxp">
-                                        <frame key="frameInset" minX="362" minY="135" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-hR-dxp">
                                         <state key="normal" backgroundImage="jianpan_mr_08.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_dk_04_13.png"/>
                                         <connections>
                                             <action selector="houtui:" destination="CaW-2O-whF" eventType="touchUpInside" id="h1r-jx-cxs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R33-cH-029">
-                                        <frame key="frameInset" minX="124" minY="5" width="114" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R33-cH-029">
                                         <state key="normal" backgroundImage="jianpan_mr_05.png"/>
                                         <state key="highlighted" backgroundImage="jianpan_mr_09_03.png"/>
                                         <connections>
                                             <action selector="ba:" destination="CaW-2O-whF" eventType="touchUpInside" id="s7d-xo-raM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOd-UE-i1A">
-                                        <frame key="frameInset" minX="481" minY="70" width="114" height="125"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOd-UE-i1A">
                                         <connections>
                                             <action selector="chaxun:" destination="CaW-2O-whF" eventType="touchUpInside" id="xEH-Rv-0ca"/>
                                         </connections>
@@ -638,8 +623,7 @@
                                     <constraint firstItem="kK2-Oo-e8L" firstAttribute="width" secondItem="sCY-Iv-yAz" secondAttribute="width" id="yW9-JE-TEB"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUg-hl-ney">
-                                <frame key="frameInset" minY="195" width="600" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUg-hl-ney">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="药品名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMb-R4-Xts">
                                         <constraints>
@@ -674,43 +658,37 @@
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLU-cV-lUO">
-                                        <frame key="frameInset" minY="31" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLU-cV-lUO">
                                         <color key="backgroundColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Vzb-NS-E26"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A2Z-1z-yb8">
-                                        <frame key="frameInset" minY="65" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2Z-1z-yb8">
                                         <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="E0K-gK-dvI"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mDU-Zt-941">
-                                        <frame key="frameInset" minY="98" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDU-Zt-941">
                                         <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="fTS-C3-sxi"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7O-6X-M2W">
-                                        <frame key="frameInset" minY="131" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7O-6X-M2W">
                                         <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="x7m-Wf-0oL"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGd-RM-PYD">
-                                        <frame key="frameInset" minY="165" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGd-RM-PYD">
                                         <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="5wG-9y-vRW"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtV-dM-Hol">
-                                        <frame key="frameInset" minX="91" minY="40" width="501" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtV-dM-Hol">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="yrr-dE-Gfq"/>
                                         </constraints>
@@ -718,8 +696,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-kd-dkX">
-                                        <frame key="frameInset" minX="91" minY="106" width="501" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-kd-dkX">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LTX-WF-R0O"/>
                                         </constraints>
@@ -727,8 +704,7 @@
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fw-1b-1xX">
-                                        <frame key="frameInset" minX="91" minY="173" width="501" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fw-1b-1xX">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Ahb-Gf-h1a"/>
                                         </constraints>
@@ -736,12 +712,10 @@
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSb-u3-ghn">
-                                        <frame key="frameInset" minX="91" minY="4" width="501" height="25"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSb-u3-ghn">
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-33-CR9">
-                                        <frame key="frameInset" minX="91" minY="138" width="501" height="25"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-33-CR9">
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="S1p-o9-lW6"/>
@@ -752,14 +726,27 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hv-9Y-FJE">
-                                        <frame key="frameInset" minX="91" minY="68" width="501" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hv-9Y-FJE">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-3b-5uq">
+                                        <color key="backgroundColor" red="0.20392156862745098" green="0.75294117647058822" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="yds-Mx-dic"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="修改">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Xiugg:" destination="CaW-2O-whF" eventType="touchUpInside" id="Gxs-aU-Oor"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="8L5-3b-5uq" firstAttribute="top" secondItem="A2Z-1z-yb8" secondAttribute="bottom" constant="2.5" id="0NS-BR-sUV"/>
                                     <constraint firstItem="Fbb-fh-N2W" firstAttribute="leading" secondItem="rUg-hl-ney" secondAttribute="leading" constant="8" id="0Tb-WQ-Kqm"/>
                                     <constraint firstItem="a4D-kd-dkX" firstAttribute="centerY" secondItem="Fbb-fh-N2W" secondAttribute="centerY" id="14A-rE-WfI"/>
                                     <constraint firstAttribute="trailing" secondItem="EtV-dM-Hol" secondAttribute="trailing" constant="8" id="2v9-wq-Ykd"/>
@@ -776,6 +763,7 @@
                                     <constraint firstItem="Fbb-fh-N2W" firstAttribute="width" secondItem="CMb-R4-Xts" secondAttribute="width" id="7gK-wT-uIr"/>
                                     <constraint firstItem="7hv-9Y-FJE" firstAttribute="leading" secondItem="drv-pn-RcW" secondAttribute="trailing" constant="8" id="8fW-Dz-A9J"/>
                                     <constraint firstItem="Fbb-fh-N2W" firstAttribute="top" secondItem="drv-pn-RcW" secondAttribute="bottom" constant="8" id="9nG-u4-gb3"/>
+                                    <constraint firstItem="mDU-Zt-941" firstAttribute="top" secondItem="8L5-3b-5uq" secondAttribute="bottom" constant="-0.5" id="CIb-Wg-fea"/>
                                     <constraint firstItem="l7O-6X-M2W" firstAttribute="leading" secondItem="rUg-hl-ney" secondAttribute="leading" id="CgH-SM-Bjd"/>
                                     <constraint firstItem="drv-pn-RcW" firstAttribute="top" secondItem="ff9-KJ-CYe" secondAttribute="bottom" constant="8" id="D7V-aK-Nd6"/>
                                     <constraint firstItem="KSb-u3-ghn" firstAttribute="top" secondItem="rUg-hl-ney" secondAttribute="top" constant="4" id="DIb-A2-E0j"/>
@@ -807,12 +795,13 @@
                                     <constraint firstItem="kGd-RM-PYD" firstAttribute="leading" secondItem="rUg-hl-ney" secondAttribute="leading" id="ihZ-5D-fqi"/>
                                     <constraint firstItem="fGf-33-CR9" firstAttribute="leading" secondItem="tlx-fI-lKi" secondAttribute="trailing" constant="8" id="kEP-fE-3BZ"/>
                                     <constraint firstAttribute="trailing" secondItem="fGf-33-CR9" secondAttribute="trailing" constant="8" id="kq0-8D-Q2B"/>
+                                    <constraint firstItem="8L5-3b-5uq" firstAttribute="leading" secondItem="7hv-9Y-FJE" secondAttribute="trailing" constant="8" id="lcW-P8-h4o"/>
                                     <constraint firstItem="drv-pn-RcW" firstAttribute="width" secondItem="CMb-R4-Xts" secondAttribute="width" id="n5X-F9-A93"/>
                                     <constraint firstItem="a4D-kd-dkX" firstAttribute="leading" secondItem="Fbb-fh-N2W" secondAttribute="trailing" constant="8" id="nPs-tl-fOk"/>
-                                    <constraint firstAttribute="trailing" secondItem="7hv-9Y-FJE" secondAttribute="trailing" constant="8" id="o6e-7R-4Sy"/>
                                     <constraint firstItem="tlx-fI-lKi" firstAttribute="leading" secondItem="rUg-hl-ney" secondAttribute="leading" constant="8" id="oSk-2i-ZBR"/>
                                     <constraint firstItem="drv-pn-RcW" firstAttribute="height" secondItem="CMb-R4-Xts" secondAttribute="height" id="r6A-1U-5HP"/>
                                     <constraint firstItem="adz-3p-9Gg" firstAttribute="height" secondItem="CMb-R4-Xts" secondAttribute="height" id="rju-8P-J8P"/>
+                                    <constraint firstAttribute="trailing" secondItem="8L5-3b-5uq" secondAttribute="trailing" constant="8" id="sb4-9n-WO5"/>
                                     <constraint firstAttribute="trailing" secondItem="a4D-kd-dkX" secondAttribute="trailing" constant="8" id="tIQ-Lk-EiF"/>
                                     <constraint firstItem="A2Z-1z-yb8" firstAttribute="top" secondItem="ff9-KJ-CYe" secondAttribute="bottom" constant="2" id="us6-La-J1Y"/>
                                     <constraint firstItem="adz-3p-9Gg" firstAttribute="top" secondItem="tlx-fI-lKi" secondAttribute="bottom" constant="8" id="uwB-w8-aCH"/>
@@ -822,16 +811,14 @@
                                     <constraint firstItem="A2Z-1z-yb8" firstAttribute="leading" secondItem="rUg-hl-ney" secondAttribute="leading" id="zub-C3-vGl"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔍扫描或输入药品条形码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="613-w2-QA2">
-                                <frame key="frameInset" minY="20" width="600" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔍扫描或输入药品条形码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="613-w2-QA2">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qni-gU-v2d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pVq-UP-2Hv">
-                                <frame key="frameInset" minY="68" width="600" height="119"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pVq-UP-2Hv">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -890,7 +877,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duM-op-01m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="255" y="1104"/>
+            <point key="canvasLocation" x="253.59999999999999" y="1103.2983508245877"/>
         </scene>
         <!--设置-->
         <scene sceneID="aG9-fQ-GZ8">

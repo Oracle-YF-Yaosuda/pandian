@@ -21,6 +21,7 @@
 {   //我哭了
     int chuanzhipanduan;
     int zuopan;
+    int hwpd;
     //这个啥也不是
     NSMutableArray*hahapi;
     //已经不知道是 判断啥的了
@@ -78,6 +79,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *hhhwww;
 @property (weak, nonatomic) IBOutlet UIButton *xiugaianniu;
 //@property (nonatomic, retain) CBCentralManager *centralManager;
+- (IBAction)Xiugg:(id)sender;
 @end
 /**
  *  textfield 消失再出现的时候文本也会跟着消失;
@@ -104,7 +106,7 @@
     // self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     chuanzhipanduan=0;
     first=0;
-    
+    hwpd=0;
     
     
     
@@ -1615,7 +1617,17 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
+    if (textField==_hhhwww) {
+        if (hwpd==1) {
+            hwpd=0;
+            textField.layer.borderColor=[[UIColor colorWithHexString:@"34C083"] CGColor];
+            return YES;
+        }else{
+            _hhhwww.layer.borderWidth=1;
+            _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
+            return NO;
+        }
+    }
     if (textField!=_sousuo) {
         zuopan=0;
         
@@ -1623,6 +1635,7 @@
         
         _sousuo.layer.borderWidth=0;
         oo=1;
+        
         _hhhwww.layer.borderWidth=1;
         _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_mr_27.png"] forState:UIControlStateNormal];
@@ -1640,13 +1653,14 @@
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun.png"] forState:UIControlStateNormal];
         [_chading setBackgroundImage:[UIImage imageNamed:@"jianpan_chaxun_press.png"] forState:UIControlStateHighlighted];
     }
-    if (textField==_hhhwww||textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1||textField==shu1||textField==liang1) {
+    if (textField==pi1||textField==hao1||textField==hwei1||textField==biaohaoaa1||textField==shu1||textField==liang1) {
         first=10;
         zuopan=1;
     }else
         textField.inputView=[[UIView alloc] init];
     textField.layer.borderColor=[[UIColor colorWithHexString:@"34C083"] CGColor];
     textField.layer.borderWidth=1.0;
+    
     
     return YES;
 }
@@ -1741,4 +1755,10 @@
 
 
 
+- (IBAction)Xiugg:(id)sender {
+    
+    hwpd=1;
+    [_hhhwww becomeFirstResponder];
+    
+}
 @end
