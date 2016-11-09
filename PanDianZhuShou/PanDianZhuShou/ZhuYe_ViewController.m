@@ -170,17 +170,16 @@
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                 options:NSJSONReadingMutableContainers
                                                                   error:&err];
-            NSLog(@"%@",dic);
+             NSLog(@"%@",dic);
             if ([[dic objectForKey:@"flag"]intValue]==1) {
                 for (int i=0; i<[[dic objectForKey:@"data"] count]; i++) {
                     if ([[[dic objectForKey:@"data"][i] objectForKey:@"gg"]isEqual:[NSNull null]]) {
                         [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"gg"];
                     }
-                    
           //新加的字段；
-//                    if ([[[dic objectForKey:@"data"][i] objectForKey:@"mnemonic_code"]isEqual:[NSNull null]]) {
-//                        [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"mnemonic_code"];
-//                    }
+                    if ([[[dic objectForKey:@"data"][i] objectForKey:@"mnemonic_code"]isEqual:[NSNull null]]) {
+                        [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"mnemonic_code"];
+                    }
           //－＊－＊－＊－＊-
                     if ([[[dic objectForKey:@"data"][i] objectForKey:@"hwh"]isEqual:[NSNull null]]) {
                         [[dic objectForKey:@"data"][i] setObject:@"" forKey:@"hwh"];
@@ -213,7 +212,7 @@
                     [WarningBox warningBoxModeText:@"同步全部库存成功!" andView:self.view];
                 NSString *path =[NSHomeDirectory() stringByAppendingString:@"/Documents/xiazaishuju.plist"];
                 [dic writeToFile:path atomically:YES];
-                NSLog(@"%@",dic);
+               
                 NSLog(@"%@",NSHomeDirectory());
                 
             }

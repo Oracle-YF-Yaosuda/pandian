@@ -118,9 +118,9 @@
     paue=0;
     _hhhwww.layer.borderWidth=1;
     _hhhwww.layer.borderColor=[[UIColor grayColor] CGColor];
- 
+    
     _sousuo.delegate=self;
-   
+    
     _tableview.delegate=self;
     _tableview.dataSource=self;
     [_xiugaianniu.layer setCornerRadius:5];
@@ -700,46 +700,81 @@
     }
     NSArray *row1=[cell.contentView subviews];
     for (UIView *vv2 in row1) {
+//        NSLog(@"%@",[row1 Class]);
         [vv2 removeFromSuperview];
     }
-    UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(5, 5, 75, 20)];
-    if (indexPath.row==0) {
-        shuliang.text=@"药品数量:";
-        tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 6, self.view.frame.size.width-85-5, 20)];
-        tt.placeholder = @"请输入数量";
-        [tt.layer setCornerRadius:5];
-        
-        tt.layer.borderColor = [[UIColor grayColor]CGColor];
-        
-        tt.delegate = self;
-        
-        
-        
-        tt.tag=10000+indexPath.section;
-        
-        if  (liebiao!=nil&&w!=0) {
-            //有上传文件
-            if ([liebiao[indexPath.section]objectForKey:@"shuliang"]==nil) {
-                //但是  数据是在下载文件拿到的;
-                tt.text=@"";
-                int dapi=0;
-                for (int pi=0; pi<pop.count; pi++) {
-                    if (((UITextField*)pop[pi]).tag==tt.tag) {
-                        dapi=1;
+    if (liebiao.count==1) {
+       
+        UILabel*shuliang=[[UILabel alloc] initWithFrame:CGRectMake(10, 7, 50, 30)];
+        if (indexPath.row==0) {
+            shuliang.text=@"数量:";
+            tt=[[UITextField alloc] initWithFrame:CGRectMake(85, 7, 300, 30)];
+            tt.placeholder = @"请输入数量";
+            [tt.layer setCornerRadius:5];
+            
+            tt.layer.borderColor = [[UIColor grayColor]CGColor];
+            
+            tt.delegate = self;
+            
+            
+            
+            tt.tag=10000+indexPath.section;
+            
+            if  (liebiao!=nil&&w!=0) {
+                //有上传文件
+                if ([liebiao[indexPath.section]objectForKey:@"shuliang"]==nil) {
+                    //但是  数据是在下载文件拿到的;
+                    tt.text=@"";
+                    int dapi=0;
+                    for (int pi=0; pi<pop.count; pi++) {
+                        if (((UITextField*)pop[pi]).tag==tt.tag) {
+                            dapi=1;
+                        }
+                    }
+                    if (dapi==0) {
+                        [pop addObject:tt];
+                    }
+                    
+                    //这个小的if从句  就是决解滑动tableview  数字消失的 方法
+                    if (zi==1) {
+                        tt.text =((UITextField*)pop[indexPath.section]).text;
                     }
                 }
-                if (dapi==0) {
-                    [pop addObject:tt];
-                }
-                
-                //这个小的if从句  就是决解滑动tableview  数字消失的 方法
-                if (zi==1) {
-                    tt.text =((UITextField*)pop[indexPath.section]).text;
+                else{
+                    //如果是在上传列表中取出的数据  那么  tt需要赋值
+                    tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
+                    int dapi=0;
+                    for (int pi=0; pi<pop.count; pi++) {
+                        if (((UITextField*)pop[pi]).tag==tt.tag) {
+                            dapi=1;
+                        }
+                    }
+                    if (dapi==0) {
+                        [pop addObject:tt];
+                    }
+                    
+                    if (zi==1) {
+                        tt.text =((UITextField*)pop[indexPath.section]).text;
+                        //NSLog(@"%@",((UITextField*)pop[indexPath.section]).text);
+                    }
                 }
             }
             else{
-                //如果是在上传列表中取出的数据  那么  tt需要赋值
-                tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
+                //没有上传文件
+                //直接下载列表
+                tt.text=@"";
+                if (paue==1) {
+                    if ([[liebiao[indexPath.section] allKeys ] containsObject:@"shuliang"]) {
+                        tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section] objectForKey:@"shuliang"]];
+                    }
+                    
+                    
+                }
+                
+                if (woshixiangying==1) {
+                    tt.text=[NSString stringWithFormat:@"%@",liang1.text];
+                    woshixiangying=0;
+                }
                 int dapi=0;
                 for (int pi=0; pi<pop.count; pi++) {
                     if (((UITextField*)pop[pi]).tag==tt.tag) {
@@ -751,27 +786,76 @@
                 }
                 
                 if (zi==1) {
+                    
                     tt.text =((UITextField*)pop[indexPath.section]).text;
-                    //NSLog(@"%@",((UITextField*)pop[indexPath.section]).text);
+                    
                 }
+                
+            }
+            //查询之后，tableview中的第一个textfield成为第一响应者；
+            if (qwer==0) {
+                [pop[0] becomeFirstResponder];
+                qwer=1;
+            }
+            
+            [cell.contentView addSubview:tt];
+            
+        }
+        else{
+            shuliang.text=@"批号:";
+            pp=[[UILabel alloc] initWithFrame:CGRectMake(85, 7, 300, 30)];
+            if (liebiao==nil||liebiao.count==0) {
+                pp.text=@"";
+            }else{
+                pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
+            }
+            
+            [cell.contentView addSubview:pp];
+        }
+        [cell.contentView addSubview:shuliang];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }else{
+    UILabel*shuliang=[[UILabel alloc] init];
+    UILabel * piiiii=[[UILabel alloc] initWithFrame:CGRectMake(10, 7, 50, 30)];
+    
+    shuliang.text=@"数量:";
+    tt=[[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width-120, 11, 95, 25)];
+    shuliang.frame=CGRectMake(tt.frame.origin.x-55, 7, 50, 30);
+    tt.placeholder = @"请输入数量";
+    [tt.layer setCornerRadius:5];
+    
+    tt.layer.borderColor = [[UIColor grayColor]CGColor];
+    
+    tt.delegate = self;
+    
+    
+    
+    tt.tag=10000+indexPath.section;
+    
+    if  (liebiao!=nil&&w!=0) {
+        //有上传文件
+        if ([liebiao[indexPath.section]objectForKey:@"shuliang"]==nil) {
+            //但是  数据是在下载文件拿到的;
+            tt.text=@"";
+            int dapi=0;
+            for (int pi=0; pi<pop.count; pi++) {
+                if (((UITextField*)pop[pi]).tag==tt.tag) {
+                    dapi=1;
+                }
+            }
+            if (dapi==0) {
+                [pop addObject:tt];
+            }
+            
+            //这个小的if从句  就是决解滑动tableview  数字消失的 方法
+            if (zi==1) {
+                tt.text =((UITextField*)pop[indexPath.section]).text;
             }
         }
         else{
-            //没有上传文件
-            //直接下载列表
-            tt.text=@"";
-            if (paue==1) {
-                if ([[liebiao[indexPath.section] allKeys ] containsObject:@"shuliang"]) {
-                    tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section] objectForKey:@"shuliang"]];
-                }
-                
-                
-            }
-            
-            if (woshixiangying==1) {
-                tt.text=[NSString stringWithFormat:@"%@",liang1.text];
-                woshixiangying=0;
-            }
+            //如果是在上传列表中取出的数据  那么  tt需要赋值
+            tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section]objectForKey:@"shuliang"]];
             int dapi=0;
             for (int pi=0; pi<pop.count; pi++) {
                 if (((UITextField*)pop[pi]).tag==tt.tag) {
@@ -783,35 +867,67 @@
             }
             
             if (zi==1) {
-                
                 tt.text =((UITextField*)pop[indexPath.section]).text;
-                
+                //NSLog(@"%@",((UITextField*)pop[indexPath.section]).text);
             }
-            
         }
-        //查询之后，tableview中的第一个textfield成为第一响应者；
-        if (qwer==0) {
-            [pop[0] becomeFirstResponder];
-            qwer=1;
-        }
-        
-        [cell.contentView addSubview:tt];
-        
-        
     }
     else{
-        shuliang.text=@"批        号:";
-        pp=[[UILabel alloc] initWithFrame:CGRectMake(85, 6, 300, 20)];
-        if (liebiao==nil||liebiao.count==0) {
-            pp.text=@"";
-        }else{
-            pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
+        //没有上传文件
+        //直接下载列表
+        tt.text=@"";
+        if (paue==1) {
+            if ([[liebiao[indexPath.section] allKeys ] containsObject:@"shuliang"]) {
+                tt.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section] objectForKey:@"shuliang"]];
+            }
+            
+            
         }
-        [cell.contentView addSubview:pp];
+        
+        if (woshixiangying==1) {
+            tt.text=[NSString stringWithFormat:@"%@",liang1.text];
+            woshixiangying=0;
+        }
+        int dapi=0;
+        for (int pi=0; pi<pop.count; pi++) {
+            if (((UITextField*)pop[pi]).tag==tt.tag) {
+                dapi=1;
+            }
+        }
+        if (dapi==0) {
+            [pop addObject:tt];
+        }
+        
+        if (zi==1) {
+            
+            tt.text =((UITextField*)pop[indexPath.section]).text;
+            
+        }
+        
     }
+    //查询之后，tableview中的第一个textfield成为第一响应者；
+    if (qwer==0) {
+        [pop[0] becomeFirstResponder];
+        qwer=1;
+    }
+    
+    [cell.contentView addSubview:tt];
+    
+    
+    ////----------
+    piiiii.text=@"批号:";
+    pp=[[UILabel alloc] initWithFrame:CGRectMake(piiiii.frame.size.width+10, 7, 150, 30)];
+    if (liebiao==nil||liebiao.count==0) {
+        pp.text=@"";
+    }else{
+        pp.text=[NSString stringWithFormat:@"%@",[liebiao[indexPath.section ] objectForKey:@"ph"]];
+    }
+    [cell.contentView addSubview:piiiii];
+    [cell.contentView addSubview:pp];
+    
     [cell.contentView addSubview:shuliang];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    }
     return cell;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -831,11 +947,13 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 30;
+    return 44;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 2;
+    if (liebiao.count==1) {
+        return 2;
+    }else
+    return 1;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.view endEditing:YES];
@@ -844,7 +962,7 @@
 - (IBAction)fanfanhui:(id)sender {
     UIAlertController*alert=[UIAlertController alertControllerWithTitle:@"退出提示" message:@"确定要结束本次盘点吗?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*action1=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        ZhuJiMaViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
+        //        ZhuJiMaViewController *fanhui = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
         
         
         //[self.navigationController popToRootViewControllerAnimated:YES];
@@ -1568,7 +1686,7 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     
-//    [(DSKyeboard *)textField.inputView clear];
+    //    [(DSKyeboard *)textField.inputView clear];
     
     return YES;
 }

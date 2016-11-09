@@ -55,8 +55,6 @@
     }
     NSLog(@"%@",p);
     flog=2;
-    
-    // Do any additional setup after loading the view.
 }
 //自定义键盘
 - (void)zidingyijianpan:(UITextField*)tf {
@@ -74,10 +72,22 @@
     array=[[NSMutableArray alloc] initWithCapacity:0];
     
     NSString *str =[kkk uppercaseString];
-    
-    for (int i = 0; i<self.arr.count; i++) {
+    int mehe=0;
+    for (int i=0; i<10; i++) {
         
-        NSString *str1=[self.arr[i] objectForKey:@"pzwh"];
+        if (NULL == [_arr[i] objectForKey:@"mnemonic_code"]) {
+            
+        }else{
+            mehe=1;
+        }
+    }
+    for (int i = 0; i<self.arr.count; i++) {
+        NSString *str1;
+        if (mehe==0) {
+            str1=[self.arr[i] objectForKey:@"pzwh"];
+        }else
+            str1=[self.arr[i] objectForKey:@"mnemonic_code"];
+        
         
         NSString *str2=[str1 uppercaseString];
         
@@ -102,8 +112,6 @@
     }else{
         flog=1;
     }
-    
-    
     [self.myTabel reloadData];
 }
 #pragma mark - tableview
