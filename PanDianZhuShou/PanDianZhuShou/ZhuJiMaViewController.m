@@ -73,7 +73,14 @@
     
     NSString *str =[kkk uppercaseString];
     int mehe=0;
-    for (int i=0; i<10; i++) {
+    int mengxin=0;
+    if (_arr.count>10) {
+        mengxin=10;
+    }else{
+        mengxin=(int)_arr.count;
+    }
+    
+    for (int i=0; i<mengxin; i++) {
         
         if (NULL == [_arr[i] objectForKey:@"mnemonic_code"]) {
             

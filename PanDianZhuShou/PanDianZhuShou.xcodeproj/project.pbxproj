@@ -102,8 +102,8 @@
 		952FD74A1C4E205E00F74A1E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 952FD73E1C4E205E00F74A1E /* SBJsonWriter.m */; };
 		952FD77C1C4E218C00F74A1E /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD74C1C4E218C00F74A1E /* bg.png */; };
 		952FD77E1C4E218C00F74A1E /* icon_01_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD74E1C4E218C00F74A1E /* icon_01_07.png */; };
-		952FD7801C4E218C00F74A1E /* icon_01_14.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7501C4E218C00F74A1E /* icon_01_14.png */; };
-		952FD7841C4E218C00F74A1E /* icon_02_14.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7541C4E218C00F74A1E /* icon_02_14.png */; };
+		952FD7801C4E218C00F74A1E /* icon_01_haha.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7501C4E218C00F74A1E /* icon_01_haha.png */; };
+		952FD7841C4E218C00F74A1E /* icon_haha_14.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7541C4E218C00F74A1E /* icon_haha_14.png */; };
 		952FD7871C4E218C00F74A1E /* icon_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7571C4E218C00F74A1E /* icon_03.png */; };
 		952FD7881C4E218C00F74A1E /* icon_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7581C4E218C00F74A1E /* icon_07.png */; };
 		952FD7891C4E218C00F74A1E /* jianpan_chaxun.png in Resources */ = {isa = PBXBuildFile; fileRef = 952FD7591C4E218C00F74A1E /* jianpan_chaxun.png */; };
@@ -308,8 +308,8 @@
 		952FD73E1C4E205E00F74A1E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		952FD74C1C4E218C00F74A1E /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		952FD74E1C4E218C00F74A1E /* icon_01_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_01_07.png; sourceTree = "<group>"; };
-		952FD7501C4E218C00F74A1E /* icon_01_14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_01_14.png; sourceTree = "<group>"; };
-		952FD7541C4E218C00F74A1E /* icon_02_14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_02_14.png; sourceTree = "<group>"; };
+		952FD7501C4E218C00F74A1E /* icon_01_haha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_01_haha.png; sourceTree = "<group>"; };
+		952FD7541C4E218C00F74A1E /* icon_haha_14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_haha_14.png; sourceTree = "<group>"; };
 		952FD7571C4E218C00F74A1E /* icon_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_03.png; sourceTree = "<group>"; };
 		952FD7581C4E218C00F74A1E /* icon_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_07.png; sourceTree = "<group>"; };
 		952FD7591C4E218C00F74A1E /* jianpan_chaxun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jianpan_chaxun.png; sourceTree = "<group>"; };
@@ -711,8 +711,8 @@
 			children = (
 				952FD74C1C4E218C00F74A1E /* bg.png */,
 				952FD74E1C4E218C00F74A1E /* icon_01_07.png */,
-				952FD7501C4E218C00F74A1E /* icon_01_14.png */,
-				952FD7541C4E218C00F74A1E /* icon_02_14.png */,
+				952FD7501C4E218C00F74A1E /* icon_01_haha.png */,
+				952FD7541C4E218C00F74A1E /* icon_haha_14.png */,
 				952FD7571C4E218C00F74A1E /* icon_03.png */,
 				952FD7581C4E218C00F74A1E /* icon_07.png */,
 				952FD7591C4E218C00F74A1E /* jianpan_chaxun.png */,
@@ -860,6 +860,7 @@
 					952FD61A1C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = GP8BUACAG4;
+						ProvisioningStyle = Manual;
 					};
 					952FD6331C4E189000F74A1E = {
 						CreatedOnToolsVersion = 7.2;
@@ -909,7 +910,7 @@
 				952FD6F31C4E1E2800F74A1E /* verson.png in Resources */,
 				952FD6CC1C4E1E2800F74A1E /* icon_07.png in Resources */,
 				952FD6B41C4E1E2800F74A1E /* actionbar_back.png in Resources */,
-				952FD7801C4E218C00F74A1E /* icon_01_14.png in Resources */,
+				952FD7801C4E218C00F74A1E /* icon_01_haha.png in Resources */,
 				D25B163E1CA8E27800BCECE4 /* DSLetterKeyboard.xib in Resources */,
 				952FD6C31C4E1E2800F74A1E /* icon_01_11.png in Resources */,
 				952FD6F21C4E1E2800F74A1E /* toolbar_color.png in Resources */,
@@ -934,7 +935,7 @@
 				952FD6BD1C4E1E2800F74A1E /* ic_kefu.png in Resources */,
 				952FD7951C4E218C00F74A1E /* jianpan_dk_02_03_03_03.png in Resources */,
 				952FD7941C4E218C00F74A1E /* jianpan_dk_02_03_03.png in Resources */,
-				952FD7841C4E218C00F74A1E /* icon_02_14.png in Resources */,
+				952FD7841C4E218C00F74A1E /* icon_haha_14.png in Resources */,
 				952FD6B61C4E1E2800F74A1E /* base_action_bar_bg.9.png in Resources */,
 				952FD7921C4E218C00F74A1E /* jianpan_dk_02.png in Resources */,
 				952FD7A01C4E218C00F74A1E /* jianpan_mr_09_03.png in Resources */,
@@ -1203,16 +1204,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
 				DEVELOPMENT_TEAM = GP8BUACAG4;
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3569b9a8-e122-43da-906d-1f12e6c85f1c";
-				PROVISIONING_PROFILE_SPECIFIER = cashi_pandianzhushou;
+				PROVISIONING_PROFILE = "bef954cf-e65f-433b-828f-422b27477b82";
+				PROVISIONING_PROFILE_SPECIFIER = shengchan_pandianzhushou;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1222,16 +1223,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
 				DEVELOPMENT_TEAM = GP8BUACAG4;
 				INFOPLIST_FILE = PanDianZhuShou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.pandianzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3569b9a8-e122-43da-906d-1f12e6c85f1c";
-				PROVISIONING_PROFILE_SPECIFIER = cashi_pandianzhushou;
+				PROVISIONING_PROFILE = "bef954cf-e65f-433b-828f-422b27477b82";
+				PROVISIONING_PROFILE_SPECIFIER = shengchan_pandianzhushou;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

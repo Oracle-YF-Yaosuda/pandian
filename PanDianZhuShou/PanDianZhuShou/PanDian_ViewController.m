@@ -225,6 +225,7 @@
     [jiemian addSubview:ge1];
     [jiemian addSubview:wei1];
 }
+
 -(void)tianjiatiaoma{
     float width = [[UIScreen mainScreen] bounds].size.width;
     //float height= [[UIScreen mainScreen] bounds].size.height;
